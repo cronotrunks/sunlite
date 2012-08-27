@@ -1,0 +1,66 @@
+#
+#    This file is part of Sunlite for BitchX.
+#
+#    Sunlite for BitchX is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    Foobar is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with Sunlite for BitchX; if not, write to the Free Software
+#    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+# Una manera de enviar el mismo texto a todas las ventanas que tengamos abiertas
+#
+alias mass {
+  usleep 2
+  for (@ i = 1, i <= [$total], @ i++ ) { 
+    msg $winnam($i) $0- } }
+
+# Vamos a darle un poco de color al texto :D
+#
+alias arcoiris {
+  @ Mensaje = [$0-]
+  @ Counter = [$absstrlen([$Mensaje])]
+  @ Colorin = 8
+  @ Mensaje_tmp = []
+  for (@ i = 0, i < [$Counter], @ i++ ) {
+    @ Mensaje_tmp = [$Mensaje_tmp] ## [$mid($i 1 $Mensaje)] ## [$Colorin]
+    if ( [$Colorin] < 15 ) {
+      @ Colorin = ([$Colorin] + 1) 
+    } {
+      @ Colorin = 1 }
+    }
+  send $Mensaje_tmp }
+
+# ¿Quieres publicar la información de tu sistema en  un canal?
+#
+alias news {
+  switch ( $0 ) {
+    ( sistema ) { 
+      exec -o echo -e "« System    » `uname -a |awk '{print($1" "$2" "$3)}'` || Creado el: `uname -v | cut -c4-` || Máquina: `uname -m`" }
+    ( procesador ) { 
+      exec -o echo -e "« Processor » Modelo: `cat /proc/cpuinfo |grep "model name" |cut -c14-` || CPU: `cat /proc/cpuinfo |grep MHz |awk '{print($4)}'` MHz || Cache: `cat /proc/cpuinfo |grep cache |awk '{ print($4)}'` KB || Bogomips: `cat /proc/cpuinfo |grep bogomips |awk '{print($3)}'`" }
+    ( memoria ) { 
+      exec -o echo -e "« Memory    » [RAM] Total: `cat /proc/meminfo |grep MemTotal: |awk '{print($2)} '` KB · Libre: `cat /proc/meminfo | grep MemFree: |awk '{print($2)}'` KB || [Swap] Total: `cat /proc/meminfo |grep SwapTotal: |awk '{print($2)}'` KB · Libre: `cat /proc/meminfo |grep SwapFree: |awk '{print ($2)}'` KB" }
+    ( sensores ) { 
+      exec -o echo -e "« Sensors   » Tª Placa Base: `sensors 2>/dev/null |grep temp1: |awk '{print($2)}'` || Tª CPU: `sensors 2>/dev/null |grep temp2 |awk '{print($2)}'` || CPU FAN: `sensors 2>/dev/null | grep fan1 |awk '{print($2)}'` RPM || Power FAN: `sensors 2>/dev/null |grep fan2 |awk '{print($2)}'` RPM || Chassis FAN: `sensors 2>/dev/null |grep fan3 |awk '{print($2)}'` RPM" }
+    ( uptime ) {
+      exec -o echo -e "« Uptime    » Hora actual: `uptime |awk '{print($1)}'` || Encendido desde hace: `uptime |cut -d"," -f1 |cut -c14-``uptime |cut -d"," -f2 | grep -v user` || UpRecord: `uprecords 2>/dev/null |sed -n 3p |cut -c11-31 |awk '{print($1" "$2" "$3" "$4)}'`" }
+    ( todo ) {
+      news sistema
+      sleep 1
+      news procesador
+      sleep 1
+      news memoria
+      sleep 1
+      news sensores
+      sleep 1
+      news uptime }
+    ( * ) {
+      xecho -win status Modo de uso: /news {todo|sistema|procesador|memoria|sensores|uptime} } } }

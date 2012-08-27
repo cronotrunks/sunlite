@@ -1,0 +1,214 @@
+ Sunlite script for BitchX By {Trunks} 
+   -Con colaboración de L00PB4cK-
+
+		( Gracias a |Poldark| por ofrecerse como testeador del
+			script en su fase de desarrollo )
+
+   -Agradecimiento especial a los usuarios del canal #barrapunto de opn
+  que se ofrecieron a probar el script :)
+
+   -Mención más especial si cabe merecen Mayoral y BaSS que se han
+  ofrecido también como betatesters del script en desarrollo y están aportando
+  una cantidad de ideas impresionante para el script ;)
+
+   -Siento no haberme acordado antes O:-) También tengo que agradecer a core
+  y kanuso el haber realizado el primer script a partir del cual me picó la 
+  curiosidad y comencé a desarrollar este nuevo Sunlite, que ha adoptado algunas
+  de las funciones que ellos ya tenían implementadas. 
+  
+----------------------------------------------------------------------------
+
+ Este script se distribuye bajo licencia GPL ( La descripción de todos 
+   los términos de esta licencia está completamente explicada en el 
+   fichero COPYING ). No está traducido al español, puesto que uno de
+   de los puntos de esta licencia es que todo aquel que distribuya un
+   un producto bajo ella debe incluirla sin ningún tipo de variación
+   en su estructura y contenido.
+
+ Bueno, pasamos a explicar las instrucciones importantes k tiene este
+   script:
+
+
+ Limpia ( Alt + l ) - Hace un clear a la ventana y presenta topic del
+   canal más un names al propio canal al instante :)
+
+ WNC ( Tb Join o j  ) - Crea una nueva ventana con un nuevo canal (loguea 
+   automáticamente).
+
+ WNS ( Tb Joins o server ) - Crea una nueva ventana para un nuevo servidor a un canal
+   especificado (también loguea automáticamente).
+
+ Tban ( Alt + b ) - Banea y patea del canal al nick especificado mostrando
+   como mensaje del salida uno opcional por defecto u otro que se pase
+   como argumento. Consta de una característica adicional muy de moda
+   en los últimos scripts como es el conteo de bans.
+
+ Fban - Limpia todos los bans que tengamos en el canal actual si 
+   existen y tenemos nivel.
+
+ Autojoin ( Alt + a ) - Entra en los canales que tengamos definidos dentro de
+   nuestra lista abriendo una ventana para cada uno de ellos
+   automáticamente y logueando :)
+
+ Opme ( Alt + o ) - Nos da arroba en el canal actual.
+
+ Deopme ( Alt + d ) - Nos quita la arroba en el canal actual.
+
+ Voiceme ( Alt + v ) - Nos da voz en el canal actual.
+
+ Devoiceme - Nos quita voz en el canal actual.
+
+ Rejoin ( Alt + j ) - Entra y sale del canal actual.
+
+ Moderre ( Alt + r ) - Protege nuestro canal contra ataques de joins flood.
+
+ InfoN - Petición de información sobre un nick al bot NiCK.
+
+ InfoCH - Petición de información sobre un canal al bot CHaN.
+
+ MemoS - Enviar un mensaje a un nick a través del bot MeMo.
+
+ MemoD - Borra el mensaje indicado de la base de datos del bot MeMo.
+
+ MemoR - Leer el mensaje indicado de la base de datos del bot MeMo.
+
+ MemoL - Leer el último mensaje de la base de datos del bot MeMo.
+
+ Addlevel - Añade un usuario a la base de datos de CHaN sobre el canal actual.
+
+ Dellevel - Elimina un usuario de la base de datos de CHaN sobre el canal 
+   actual.
+
+ Founder - Te identifica como fundador del canal actual si pasas como argumento
+   la clave del canal.
+
+ NickReg - Registramos nuestro nick la cuenta de correo que pasemos como 
+   argumento (caso bots de l hispano) o bajo la clave que indiquemos (caso bots
+   de opn o dalnet).
+
+ Part (Tb P) - Salimos del canal actual eliminando la ventana que estemos 
+   usando.
+
+ Query (Tb Q) - Abrimos un privado en una nueva ventana con una persona en 
+   concreto o cerramos el privado actual eliminado la ventana que estemos 
+   usando. Hot-key para cerrar ventana de privado -> Alt + z
+
+ QueryS - Abrimos un privado en una nueva ventana con una persona en concreto 
+   que se encuentra en otro servidor (no el principal).
+
+ Nick - Cambiamos de nick y automáticamente nos identificamos si el
+   nick lo tenemos incluído en nuestra base de datos de nicks.
+
+ Away - Nos marcamos como away y activamos la notificación de away
+   para quien nos nombre en un canal ( mediante notices ).
+
+ Conferencia ( Alt + c ) - Modo exclusivo de nuestro script :) Podemos
+   aplicarlo cuando entremos en un canal lleno de personas donde está
+   constantemente entrando y saliendo gente y no podemos leer con claridad
+   lo que se expone en el canal. Muy útil, y su propio nombre lo indica,
+   cuando hay conferencias en canales :)
+
+ Calculadora - Utilidad que sirve como bien su nombre indica para realizar
+   operaciones de todo tipo ;)
+
+ Snapshot (Alt + s ) - Curiosa utilidad que nos servirá para fotografiar 
+   algunos de los momentos más divertidos en la red.
+
+ Sms - Nueva utilidad que nos servirá para enviar sms desde la línea de
+   comandos de BitchX. Necesitarás tener instalado en tu sistema el
+   programa esms (en debian sid -> apt-get install esms)
+
+ AwayOn - Nos marcamos como away y nos deopeamos de nuestro canal actual
+
+ AwayOff - Nos quitamos la marca de away y nos volvemos a opear en el canal
+
+ Shell - Con la instrucción /shell <password> podremos salir de BX a la
+   terminal desde la que iniciamos el cliente y hacer las operaciones que
+   necesitemos. Una vez terminado traeremos a primer plano a BX con la
+   instrucción scr-bx -p. Una vez hecho esto se nos pedirá la password que
+   anteriormente definimos.
+
+ Cowsay y figlet - Estas son nuestras instrucciones para el Ascii Art. 
+   Pruébalas ;)
+
+ Mp3 - Una instrucción que nos servirá para manejar la aplicación mpg123
+   en segundo plano desde BX ;) Soporta listas, las presenta, y podemos
+   pedir la reproducción de todos los archivos de nuestro directorio
+   (definido mediante /mp3 dir path) con comodines -ej. /mp3 play */*-
+   /mp3 help para más ayuda.
+
+ Cd - Al igual que la anterior, nos servirá para oír música, pero esta
+   en formato Cd :) Introducimos el cd en el lector, ejecutamos el comando
+   /cd list y desde cddb obtendremos la lista con los titulos para reproducir
+   /cd help para más ayuda.
+
+ Color - Activa o desactiva la función de color de nuestro script.
+
+ Sonido - Activa o desactiva la función de sonido de nuestro script.
+
+ TermX - Si estamos en consola y queremos enviar una url, por ejemplo, para
+   visitarla con el navegador en X, ya no necesitamos apuntarla en un papel
+   ni elaborar un complicado comando de direccionanmiento. Con esta instrucción
+   enviaremos el texto que queramos  a la primera terminal abierta en X.
+
+ Traducir - A partir de ahora chatear en canales de habla inglesa será más
+   fácil. Sólo necesitas invocar a este salias para saber el significado de
+   esa palabra que no recuerdas o la traducción de aquella otra al inglés que
+   nunca supiste.
+
+ Reseñar que con la combinación de teclas ( Alt + q ) podemos cambiar 
+   entre la ventana de privados y la ventana principal y además con la
+   combinación ( Alt + w ) avanzamos una ventana y con ( Alt + e )
+   retrocedemos otra. Con ( Alt + z ) podemos cerrar automáticamente
+   una ventana.
+
+-----------------------------------------------------------------------------
+
+ Aparte podemos comentar que este script posee protecciones anti-flood,
+   anti-ctcp's, anti-deops, anti-bans ( para canales en los que tengamos
+   nivel suficiente como para quitarnos los bans ), ...
+
+ También contiene tratamientos de formato del texto enviado y recibido 
+   sin ningún tipo de modificación en lo que a datos se refiere, única y 
+   exclusivamente nos limitamos a modificaciones puramente estéticas.
+
+ Al conectar al IRC nos identifica automáticamente.
+
+ Tiene activo un servicio de eurocalculadora por medio de ctcp's; se
+   activa con el comando "/ctcp nuestro_nick euro cantidad" para pasar
+   euros a pesetas y con el comando "/ctcp nuestro_nick peseta cantidad"
+   para convertir pesetas a euros.
+
+ Añadido servicio de fortune mediante ctcp. Se activa con el comando
+   /ctcp nuestro_nick fortune #canal.
+
+ Todos los servicios ctcp's tienen protección anti-flood
+
+ Adherida una nueva funcionalidad de eventos de sonido (se habilita
+   mediante una variable en el archivo config). Los archivos .wav son en un
+   principio tomados de scripts clasicos de windows aunque ya desarrollaremos
+   nuestros propios efectos en breve. Necesitamos el paquete bplay (usuarios
+   de debian: apt-get install bplay) para oír los sonidos :)
+
+ También haremos notar que disponemos de una configuración de colores con la que 
+   podremos obtener un script más estético. Por defecto incluímos el script 
+   sin colores debido a que para muchos usuarios esta característica resulta 
+   un tanto molesta.
+
+ Añadida una nueva opción para activar/desactivar Autojoin y TimeStamp, además
+   de una opción para activar la apertura automática de privados en segundo 
+   plano de forma que se crea automáticamente una ventana nueva para cada
+   que nos entra.
+
+-----------------------------------------------------------------------------
+
+  Licencia de uso de script Sunlite (aplicable a todos sus módulos):
+
+  Disclaimer
+
+  THIS PROGRAM CARRIES NO WARRANTY, EXPRESSED OR IMPLIED. THE USER ASSUMES ALL RISKS,
+  KNOWN OR UNKNOWN, DIRECT OR INDIRECT, WHICH INVOLVE THIS DATABASE IN ANY WAY. IN
+  PARTICULAR, THE LICENSOR OF THE DATABASE DOES NOT TAKE ANY COMMITMENT IN VIEW OF
+  ANY POSSIBLE THIRD PARTY RIGHTS.
+
+Copyright © 2002 Javier Carranza

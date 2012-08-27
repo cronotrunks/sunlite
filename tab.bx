@@ -1,0 +1,239 @@
+#
+#    This file is part of Sunlite for BitchX.
+#
+#    Sunlite for BitchX is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    Foobar is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with Sunlite for BitchX; if not, write to the Free Software
+#    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+################################################################################
+#
+#-------------------------------------------------------------------------------
+# Módulo de Nick Completion
+# Basado en un módulo de axur(bx) by roque
+# Modificado para Luna Script por MarbleMaN
+# Adaptado para Sunlite por {Trunks}
+#-------------------------------------------------------------------------------
+
+@ c.nickcompm = [%n %n? %n* ?%n ?%n? ?%n* *%n *%n*]
+@ c.tl = [msg notice ftp ar]
+
+
+alias gettab {
+  @ :aa = L
+
+# Si la pila de nicks para uso con tab tiene algún elemento rotamos
+#
+  if (!aa || [$word(0 $aa) $word(1 $aa)] == ltab) {
+    parsekey erase_line
+    if (getitem(tabs 0)) {
+      if (getitem(tabitem 0) < 0) {
+        @ setitem(tabitem 0 ${numitems(tabs) - 1})}
+      xtype -l $getitem(tabs $getitem(tabitem 0)) ${word(0 $aa) =~ [/%] && word(2 $aa) ? fromw($word(2 $aa) $aa) : word(0 $aa) =~ [%:] && word(1 $aa) ? fromw($word(1 $aa) $aa) :}
+      @ setitem(tabitem 0 ${getitem(tabitem 0) - 1})
+      @ ltab = [$word(0 $L) $word(1 $L)]
+    } elsif (aa == []) {
+      xtype -l /msg${[ ]}}
+
+# Al pulsar 'abreviatura:' + tab se producira también el relleno de 
+# caracteres para completar el nick 
+#
+  } elsif (aa =~ [%:*]) {
+    @ :bb = _compnick($before(: $aa))
+    if (word(0 $bb)) {
+      parsekey erase_line
+      xtype -l $word(1 $bb)\: ${[$[1]after(\: $aa)] == [ ] ? right(${_absstrlen($after(\: $aa)) - 1} $after(\: $aa)) : after(\: $aa) }}
+
+  } elsif (aa =~ [/dcc s% % ?*]) {
+    parsekey erase_line
+    xtype -l $word(0 $aa) send $word(2 $aa) $_fcomp($word(3 $aa))
+
+# Mostrar ayuda al pulsar '/' + tab
+  } elsif (aa =~ [/%]) {
+    if (aa == [/]) {
+      window goto 1
+      //bhelp index
+      window goto 3
+    } else {
+      parsekey command_completion}
+
+# Se completa el nick a partir de cualquier cadena contenida en él tras pulsar tab
+  } else { 
+    @ :bb = word(${#aa - 1} $aa)
+    @ :cc = beforew($bb $aa)
+    @ :dd = _ischannel($bb) ? _chcomp($bb) : bb =~ [\*/\*] ? [f $_fcomp($bb)] : bb =~ [\*.\*] ? _hcomp($bb) : _ncomp($bb)
+    @ :ee = _xcomp($dd)
+    if (word(0 $ee)) {
+      parsekey erase_line
+      xtype -l ${cc ? cc ## [ ] :}$ee
+    }}
+  }
+
+alias _prefix {
+  @ :aa = 0
+  fec ($0) bb {
+   @ aa++
+   @ function_return #= pattern($left($aa $0)% $*) == [$*] ? bb :}}
+
+alias _addtab {
+  if (([$0] == [/msg] && match(msg $c.tl)) || ([$1] =~ [=%] && match(dmsg $c.tl)) || ([$1] =~ [-%] && match(ftp $c.tl)) || ([$0] != [/msg] && [$1] !~ [=%] && [$1] !~ [-%] && match(ar $c.tl))) {
+    if (matchitem(tabs $*) > -1) {
+      @ delitem(tabs $matchitem(tabs $*))}
+    @ setitem(tabs $numitems(tabs) $*)
+    @ setitem(tabitem 0 ${numitems(tabs) - 1})}}
+
+alias _remtab {
+  if (matchitem(tabs $*) > -1) {
+    @ delitem(tabs $matchitem(tabs $*))
+    @ setitem(tabitem 0 ${numitems(tabs) -1})}}
+
+alias _xcomp {
+  if ([$0] == [f]) {
+    @ function_return = [$1-]
+  } elsif ([$0] > 1) {
+    @ :aa = _prefix($1-)
+#    if (time() - complist < 5) {
+#      xecho -b $c1($0) encontrados$(hblk):
+      nline $1-
+#      @ complist = []
+#    } else {
+#      xecho -b $c1($0) matches $(hblk)\($(cl) <TAB> de nuevo para listar $(hblk)\)
+#      @ complist = time()
+#    }
+    @ function_return = aa ? aa :
+  } elsif ([$0] == 1) {
+    @ function_return = [$1] ## [ ]
+  }
+}
+
+alias _fcomp {
+  @ :cc = _prefix($glob($0\*))
+  if (!cc && [$0]) {
+    @ cc = [$0]
+    xecho -b $cc\: No existe es archivo/directorio
+  } elsif (cc != glob($0\*) && [$0]) {
+    if (time() - fcomplist < 6) {
+      xecho -b $c1($#glob($0\*)) encontrados$(hblk):$(cl)
+      @ :ee = []
+      fe ($glob($0\*)) dd {
+        push ee ${dd !~ [\*/\*] ? dd : right(1 $dd) == [/] ? hblu ## sar(þ/þ$(hblk)/$(cl)þ$after(-2 / $dd)) : after(-1 / $dd)}}
+      nlinefile $ee
+      @ fcomplist = []
+    } else {
+      xecho -b $c1($#glob($0\*)) matches $(hblk)\($(cl) <TAB> de nuevo para listar $(hblk)\)
+      @ fcomplist = time()
+    }
+  } elsif (right(1 $cc) != [/] && cc != [$0]) {
+    @ cc #= [ ]}
+  @ function_return = cc}
+  
+alias _eraseline {
+  @ setitem(tabitem 0 ${numitems(tabs) - 1})
+  parsekey erase_line}
+
+alias wallchan {
+  ^local aa
+    fe ($mychannels()) bb {
+    push aa *$bb\*}
+  @ function_return = rmatch($0 $aa) ? word(${rmatch($0 $aa) - 1} $mychannels()) :}
+
+  
+bind ^U parse_command _eraseline
+bind ^I parse_command gettab
+
+on #-dcc_connect 23 "% CHAT % %" {
+  _addtab /msg =$0}
+
+on #-msg 23 * { _addtab /msg $0 }
+
+on #-send_msg 23 * { _addtab /msg $0 }
+
+on #-ar_public 23 * {
+   _addtab $0\:}
+
+on #-dcc_chat 23 * {
+  _addtab /msg =$0}
+
+on #-send_dcc_chat 23 * {
+  _addtab /msg =$0}
+
+on #-dcc_lost 23 * {
+    if (match($1 CHAT)>0) {
+      _remtab /msg $0
+    }
+}
+
+on #-channel_signoff 23 * {
+  _remtab /msg $0}
+
+on #-401 23 * {
+  _remtab /msg $1}
+
+on #-369 23 * {
+  _remtab /msg $1}
+
+on #-nickname 23 * {
+  if (matchitem(tabs /msg $0) > -1) {
+    _remtab /msg $0
+    _addtab /msg $1}}
+
+alias _ischannel {
+  @ function_return = [$0] =~ [\\[\# &\\]*] ? 1 : 0}
+
+alias _hcomp {
+  @ :bb = :ee = []
+  fe ($chanusers()) aa {
+    push bb $after(@ $word(0 $uhost($aa)))}
+  push bb $otherhosts
+  @ :cc = pattern(\*$*\* $bb)
+  fe ($cc) dd {
+    if (!match($dd $ee) && word(0 $dd)) {
+      push ee $dd}}
+  @ function_return = ee ? #ee ## [ ] ## ee :}
+
+alias _chcomp {
+  @ :aa = pattern($*\* $mychannels())
+  @ function_return = aa ? #aa ## [ ] ## aa :}
+
+alias _ncomp {
+  @ :aa = :ee = []
+  fe ($mychannels()) bb {
+    push aa $chanusers($bb)}
+  fe ($sar(g/%n/$0/$c.nickcompm)) cc {
+    @ :dd = pattern($cc $aa)
+    fe ($dd) ff {
+      if (!match($ff $ee) && word(0 $ff)) {
+        push ee $ff}}}
+  @ function_return = #ee ## [ ] ## ee}
+
+alias _compnick {
+  @ :bb = []
+  fe ($mychannels()) cc {
+    push bb $chanusers($cc)}
+  fe ($sar(g/%n/$0/$c.nickcompm)) dd {
+    push function_return $pattern($dd $bb)}
+  @ function_return = word(0 $function_return) ? [1 $word(0 $function_return)] :}
+
+
+alias nline {
+  @ :aa = [$*]
+  fe ($aa) bb cc dd ee {
+    xecho $cparse("%K[ %w$[12]bb %K] [ %w$[12]cc %K] [ %w$[12]dd %K] [ %w$[12]ee %K]")
+    }
+}
+
+alias nlinefile {
+  @ :aa = [$*]
+  fe ($aa) bb {
+    xecho $cparse("%K[ %w$bb %K]")
+    }
+}

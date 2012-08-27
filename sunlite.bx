@@ -1,0 +1,200 @@
+#
+#    This file is part of Sunlite for BitchX.
+#
+#    Sunlite for BitchX is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    Foobar is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with Sunlite for BitchX; if not, write to the Free Software
+#    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+################################################################################
+#
+# Sunlite script for BitchX By {Trunks} 
+#   -Con colaboración de L00PB4cK-
+#
+#-----------------------------------------------------------------------------
+#
+# Antes de iniciar cargamos nuestro conteo de bans :o)
+#
+load ~/.BitchX/sunlite/.bans
+ 
+# Cargamos el grueso del script, entendiendo por ello eventos, aliases, 
+#   y notify personalizados
+#
+load ~/.BitchX/sunlite/notify.bx
+load ~/.BitchX/sunlite/eventos.bx
+load ~/.BitchX/sunlite/aliases.bx
+load ~/.BitchX/sunlite/tab.bx
+
+# Ahora una vez cargado el script inicializamos un par de variables
+#
+load ~/.BitchX/sunlite/config
+load ~/.BitchX/sunlite/aliases.bx
+load ~/.BitchX/sunlite/eventos.bx
+
+# Cargamos la configuración de ventanas
+#
+window name status double off split on logfile ~/.BitchX/sunlite/logs/\#msgs.log log on
+window new level msgs double off name privados hide logfile ~/.BitchX/sunlite/logs/\#privados.log log on
+if ( [$Partir] == 1 ) {
+  window new hide swap last name Cierrame double on
+  usleep .5
+  window swap $Pos3
+  usleep .5
+  window show $Pos2
+  window show $Pos1
+  switch ( $Pos1 ) {
+    ( 1 ) {
+      switch ( $Pos2 ) {
+        ( 2 ) {
+	  window goto 1
+	  window number 11
+          window size 5
+	  window goto 2
+	  window number 12
+	  window size 7
+	  window goto 3	
+	  window number 1
+	  @ Pos1 = 11
+	  @ Pos2 = 12
+	  @ Pos3 = 1
+	  @ Principal = 3 }
+	( 3 ) {
+	  window goto 3 
+	  window number 12
+	  window size 7
+	  window goto 1
+	  window number 11
+	  window size 5
+	  window goto 2	
+	  window number 1
+          @ Pos1 = 11
+          @ Pos2 = 1
+          @ Pos3 = 12		
+	  @ Principal = 2 } } }
+    ( 2 ) {
+      switch ( $Pos2 ) {
+        ( 1 ) {
+	  window goto 1
+	  window number 12
+	  window size 7
+	  window goto 2
+	  window number 11
+	  window size 5
+	  window goto 3 
+	  window number 1
+          @ Pos1 = 12
+          @ Pos2 = 11
+          @ Pos3 = 1			      
+	  @ Principal = 3 }
+	( 3 ) {
+	  window goto 3 
+	  window number 11
+	  window size 5
+	  window goto 1
+	  window number 12
+	  window size 7
+	  window goto 2 
+	  window number 1
+          @ Pos1 = 12
+          @ Pos2 = 1
+          @ Pos3 = 11			      
+	  @ Principal = 2 } } }
+    ( 3 ) {
+      switch ( $Pos2 ) {
+        ( 1 ) {
+	  window goto 2 
+	  window number 11
+	  window size 5 
+	  window goto 3
+	  window number 12
+	  window size 7
+	  window goto 1 
+	  window number 1
+          @ Pos1 = 1
+          @ Pos2 = 11
+          @ Pos3 = 12			      
+	  @ Principal = 1 }
+	( 2 ) {
+	  window goto 2 
+	  window number 12
+	  window size 7
+	  window goto 3 
+	  window number 11
+          window size 5
+	  window goto 1 
+	  window number 1
+          @ Pos1 = 1
+          @ Pos2 = 12
+          @ Pos3 = 11
+	  @ Principal = 1 } } } }
+  
+  clear
+  xecho -win privados $cparse("$Rojo\Esta es tu ventana de privados ;\)")
+  window goto $Principal
+  if ( [$theme] == [gentoo] ) {
+  wset status status_format1 3,14______________________________________________________________________________________________________________________________________________________________
+  wset status status_format 3,14______________________________________________________________________________________________________________________________________________________________
+  wset privados status_format 3,14______________________________________________________________________________________________________________________________________________________________
+  wset privados status_format1 3,14______________________________________________________________________________________________________________________________________________________________
+  wset privados status_format2 3,14______________________________________________________________________________________________________________________________________________________________ 
+  } {
+  wset status status_format1 4,14______________________________________________________________________________________________________________________________________________________________
+  wset status status_format 8,14______________________________________________________________________________________________________________________________________________________________
+  wset privados status_format 8,14______________________________________________________________________________________________________________________________________________________________
+  wset privados status_format1 4,14______________________________________________________________________________________________________________________________________________________________
+  wset privados status_format2 8,14______________________________________________________________________________________________________________________________________________________________ } }
+	    
+# Cargamos nuestro mensajito pijo del script.
+#
+eval echo $cparse("$AzulF Sunlite v1.2 for BitchX: $VerdeF[$RojoF Cargado$VerdeF ]")
+eval echo
+eval echo
+eval echo
+eval echo $cparse("$RojoF          _sudZUZ#Z#XZo=_        $AzulF DDDD   EEEEEE BBBB  IIIIII  AAAA  NN   NN")
+eval echo $cparse("$RojoF       _jmZZ2!!~---~!!X##wa      $AzulF DD DD  EE     BB BB   II   AA  AA NNN  NN")
+eval echo $cparse("$RojoF    .<wdP~~            -!YZL,    $AzulF DD  DD EEEEE  BBBBB   II   AAAAAA NNNN NN")
+eval echo $cparse("$RojoF   .mX2'       _%aaa__     XZ[.  $AzulF DD DD  EE     BB  BB  II   AA  AA NN NNNN")
+eval echo $cparse("$RojoF   oZ[      _jdXY!~?S#wa   ]Xb;  $AzulF DDDD   EEEEEE BBBBB IIIIII AA  AA NN   NN")
+eval echo $cparse("$RojoF  _#e'     .]X2(     ~Xw|  )XXc.")
+eval echo $cparse("$RojoF  2Z`      ]X[.       xY|  ]oZ/  $Blanco Debian GNU/Linux 3.0")
+eval echo $cparse("$RojoF .2#;      /3k;     _s!~   jXf`  $Blanco Sunlite v1.2 for BitchX")
+eval echo $cparse("$RojoF  1Z>      -]Xb/    ~    __#2/   $Blanco Designed By$Amarillo {Trunks}")
+eval echo $cparse("$RojoF  -Zo;       +!4ZwaaaauZZXY'")
+eval echo $cparse("$RojoF   *#[,        ~-?!!!!!!-~")
+eval echo $cparse("$RojoF    XUb;.")
+eval echo $cparse("$RojoF     VYXL,,")
+eval echo $cparse("$RojoF       +3#bc,")
+eval echo $cparse("$RojoF         -lSSL,,")
+eval echo $cparse("$RojoF            ~~~~~") 
+eval echo
+eval echo
+
+#eval echo $cparse("$Gris\...............................................................................")
+#eval echo $cparse("$Gris\.....$RojoF####$Gris\......................................$RojoF###$Gris\.............................")
+#eval echo $cparse("$Gris\....$RojoF#######$Gris\....................... $RojoF###$Gris\.........$RojoF###$Gris\.............................")
+#eval echo $cparse("$Gris\...$RojoF##########$Gris\.....................$RojoF####$Gris\....$RojoF#############$Gris\........................")
+#eval echo $cparse("$Gris\...$RojoF####$Gris\..$RojoF#######$Gris\....$RojoF#####$Gris\........$RojoF######$Gris\...$RojoF#############$Gris\...$RojoF#####$Gris\.......$RojoF#####$Gris\....")
+#eval echo $cparse("$Gris\...$RojoF#############$Gris\...$RojoF#######$Gris\......$RojoF########$Gris\...$RojoF############$Gris\..$RojoF#######$Gris\.....$RojoF#######$Gris\...")
+#eval echo $cparse("$Gris\....$RojoF###########$Gris\.. $RojoF###$Gris\.$RojoF####$Gris\..... $RojoF####$Gris\.$RojoF####$Gris\......$RojoF####$Gris\.... $RojoF#########$Gris\...$RojoF#########$Gris\..")
+#eval echo $cparse("$Gris\......$RojoF########$Gris\...$RojoF########$Gris\......$RojoF#####$Gris\..$RojoF####$Gris\.....$RojoF####$Gris\....$RojoF###########$Gris\.$RojoF###########$Gris\.")
+#eval echo $cparse("$Gris\.......$RojoF######$Gris\....$RojoF######$Gris\........$RojoF####$Gris\....$RojoF####$Gris\....$RojoF####$Gris\....$RojoF###########$Gris\.$RojoF###########$Gris\.")
+#eval echo $cparse("$Gris\......$RojoF######$Gris\.....$RojoF######$Gris\.......$RojoF#####$Gris\.....$RojoF####$Gris\...$RojoF####$Gris\....$RojoF#####$Gris\..$RojoF####$Gris\.$RojoF#####$Gris\..$RojoF####$Gris\.")
+#eval echo $cparse("$Gris\.....$RojoF######$Gris\......$RojoF##########$Gris\...$RojoF####$Gris\.......$RojoF####$Gris\..$RojoF####$Gris\....$RojoF##########$Gris\..$RojoF##########$Gris\..")
+#eval echo $cparse("$Gris\.....$RojoF#####$Gris\.......$RojoF###########$Gris\.$RojoF#####$Gris\........$RojoF####$Gris\.$RojoF####$Gris\.....$RojoF########$Gris\....$RojoF########$Gris\...")
+#eval echo $cparse("$Gris\.....$RojoF####$Gris\.........$RojoF##########$Gris\.$RojoF#####$Gris\........$RojoF####$Gris\.$RojoF####$Gris\......$RojoF######$Gris\......$RojoF######$Gris\....")
+#eval echo $cparse("$Gris\......$RojoF##$Gris\...........$RojoF########$Gris\ . $RojoF####$Gris\.........$RojoF##$Gris\...$RojoF###$Gris\.......$RojoF####$Gris\........$RojoF####$Gris\.....")
+#eval echo $cparse("$Gris\...............................................................................")
+
+@ J = [Sunlite v1.2 for BitchX]
+@ b = [$Blanco[$AzulSunlite for BX$Blanco]
+
+# Copyright © 2002 Javier Carranza

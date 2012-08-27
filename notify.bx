@@ -1,0 +1,45 @@
+#
+#    This file is part of Sunlite for BitchX.
+#
+#    Sunlite for BitchX is free software; you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation; either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    Foobar is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with Sunlite for BitchX; if not, write to the Free Software
+#    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+################################################################################
+#
+# Sección de ignores.
+#
+# Bots del Hispano.
+IGNORE global!-@-   ALL
+IGNORE shadow!^@^   ALL
+IGNORE noticias!*@* ALL
+IGNORE info!*@*     ALL
+IGNORE sms*!*@*      ALL
+IGNORE expire!*@*   ALL
+IGNORE anuncios!*@* ALL
+IGNORE exito!*@*    ALL
+IGNORE atencion!*@* ALL
+IGNORE noticia!*@*  ALL
+#
+# Nicks ignorados.
+# IGNORE nick1!*@*   ALL
+# IGNORE nick2!*@*   ALL
+
+# Notify particular.
+#
+# Añadir cuantos nicks queramos pero no eliminar NickServ si queremos 
+#   seguir contando con la funcionalidad de autoidentificación para este bot
+#
+notify NickServ
+ 
+# Copyright © 2002 Javier Carranza
