@@ -1,8 +1,7 @@
 # SunLite v1.2 for BitchX By {Trunks}
 #
-#	* Para instalar el script 'install.sh'
-#	* Para desinstalar el script 'install.sh uninstall'
-#	* Para crear archivo de preferencias y configuración del
-#	  script ejecutar 'configure'
+#	* To install this script run 'install.sh'
+#	* To uninstall this script run 'install.sh uninstall'
+#	* To create a configuration file from the script run 'configure' 
 #
-#	Importante leer README para el aprendizaje de uso del script
+#	Remember to read README file to learn to use the script

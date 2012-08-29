@@ -20,24 +20,24 @@
 ################################################################################
 #
 echo
-echo -e "Este es el script de configuración para Sunlite for BitchX"
-echo -e "----------------------------------------------------------"
-echo -e "Si quieres modificar algo de lo que aquí has definido edita el archivo config o reejecuta este script de configuración. Ten en cuenta que si lo reejecutas tendrás que definir todas las opciones de nuevo" 
+echo -e "This is the configuration script from Sunlite for BitchX"
+echo -e "--------------------------------------------------------"
+echo -e "If you want to modify something after this, you should edit config file or run this script again. You must know if you run the configuration script again you'll overwrite all the options you had defined previously" 
 echo
 
-echo -n "¿Quieres usar multiventana (Triple ventana en pantalla (Status/Privados/Principal)? [S/n] "
+echo -n "Do you want to use multi-window (Three windows on screen (Status/Queries/Main)? [Y/n] "
 read Partir
 if test "$Partir" == "n" || test "$Partir" == "N"
 then Partir=0
 else Partir=1
 	echo
-	echo "Ordena las ventanas: (1) Arriba (2) Centro (3) Abajo"
-	echo -n "¿Dónde coloco Estado? [1/2/3] [Default=1] "
+	echo "Order the windows: (1) Top (2) Center (3) Bottom"
+	echo -n "Where do I set Status? [1/2/3] [Default=1] "
 	read Pos1
 	if ! ( test "$Pos1" == "1" || test "$Pos1" == "2" || test "$Pos1" == "3" ) || test "$Pos1" == "" 
 	  then Pos1=1
 	fi
-    echo -n "¿Dónde coloco Privados? [1/2/3] [Default=2] "
+    echo -n "Where do I set Queries? [1/2/3] [Default=2] "
     read Pos2
     if ! ( test "$Pos2" == "1" || test "$Pos2" == "2" || test "$Pos2" == "3" ) || test "$Pos2" == "" 
       then if test "$Pos1" == "1" || test "$Pos1" == "3" 
@@ -59,96 +59,93 @@ else Partir=1
 fi
 echo
 
-echo -n "Define la ruta donde se encuentran tus archivos música en mp3: [/var/mp3/] "
+echo -n "Define the path where your music mp3 files are: [/var/mp3/] "
 read Mp3dir
 if test "$Mp3dir" == ""
 then Mp3dir="/var/mp3/"
 fi
 echo
 
-echo -n "¿Quieres informar a los usuarios del canal la música que oyes en cada momento? [s/N] "
+echo -n "Do you want to tell channel users the music you listen? [y/N] "
 read Notif_mp3
-if test "$Notif_mp3" == "s" || test "$Notif_mp3" == "S"
+if test "$Notif_mp3" == "y" || test "$Notif_mp3" == "Y"
 then Notif_mp3=1
 else Notif_mp3=0
 fi
 echo
 
-echo -n "¿Quieres que se te abra un privado automáticamente cuando alguien te envie un mensaje? [s/N] "
+echo -n "Do you want to open a query window on first private message from a user? [y/N] "
 read WinQuery
-if test "$WinQuery" == "s" || test "$WinQuery" == "S"
+if test "$WinQuery" == "y" || test "$WinQuery" == "Y"
 then WinQuery=1
 else WinQuery=0
 fi
 echo
 
-echo -n "¿Quieres usar colores en el script? [s/N] "
+echo -n "Do you want to use colour themes? [y/N] "
 read Color
-if test "$Color" == "s" || test "$Color" == "S"
+if test "$Color" == "y" || test "$Color" == "Y"
 then Color="si"
   echo
-  echo -n "¿Qué tema quieres usar? [(1) Default (2) BaSS Design (3) gentoo ] "
+  echo -n "Which theme do you want? [(1) Default (2) BaSS Design] "
   read theme
   if test "$theme" == "bass" || test "$theme" == "BaSS" || test "$theme" == "BaSS Design" || test "$theme" == "bass design" || test "$theme" == "2"
   then theme=bass
-  else if test "$theme" == "gentoo" || test "$theme" == "3"
-  	then theme=gentoo
-	else theme=Default
-	fi
+  else theme=Default
   fi
 else Color="no"
 fi
 echo
 
-echo -n "¿Quieres TimeStamp en mensajes y privados? [s/N] "
+echo -n "Do you want TimeStamp on channels and queries? [y/N] "
 read Hora
-if test "$Hora" == "s" || test "$Hora" == "S"
+if test "$Hora" == "y" || test "$Hora" == "Y"
 then Hora="[\$Magenta\[\$Amarillo\\\$Z\$Magenta\] ]"
 else Hora=""
 fi
 echo
 
-echo -n "Activación de sonido en el script [s/N] "
+echo -n "Active sound in the script [y/N] "
 read Sonido
-if test "$Sonido" == "s" || test "$Sonido" == "S"
+if test "$Sonido" == "y" || test "$Sonido" == "Y"
 then Sonido=1
 else Sonido=0
 fi
 echo
 
-echo -n "¿Usamos ircha cuando se nos nombre en el canal? [s/N] "
+echo -n "Do we use ircha when we are mentioned on a channel? [y/N] "
 read ircha
-if test "$ircha" == "s" || test "$ircha" == "S"
+if test "$ircha" == "y" || test "$ircha" == "Y"
 then ircha=1
 else ircha=0
 fi
 echo
 
-echo -n "Nick para away on: "
+echo -n "Nick on away on: "
 read nick_awayOn
 echo
 
-echo -n "Nick para away off: "
+echo -n "Nick on away off: "
 read nick_awayOff
 echo
 
-echo -n "Mensaje de salida por defecto: [Sunlite v1.2 for BitchX] "
+echo -n "Default output message on quit: [Sunlite v1.2 for BitchX] "
 read Msg_quit
 if test "$Msg_quit" == ""
 then Msg_quit="Sunlite v1.2 for BitchX"
 fi
 echo
 
-echo -n "Mensaje de salida de canal por defecto : [Sunlite v1.2 for BitchX] "
+echo -n "Default output message on part : [Sunlite v1.2 for BitchX] "
 read Msg_part
 if test "$Msg_part" == ""
 then Msg_part="Sunlite v1.2 for BitchX"
 fi
 echo
 
-echo -n "¿Preferirías usar como quits mensajes aleatorios de fortune? [s/N]"
+echo -n "Would you prefer to use fortune like random messages on quit? [y/N]"
 read fortune
-if test "$fortune" == "s" || test "$fortune" == "S"
+if test "$fortune" == "y" || test "$fortune" == "Y"
 then
   fortune=1
   if test -d "/usr/share/games/fortunes/" 
@@ -161,19 +158,19 @@ else fortune=0
 fi
 echo
 
-echo -n "¿Activamos autojoin por defecto? [s/N] "
+echo -n "Do we enable Autojoin default? [s/N] "
 read Autojoin
 if test "$Autojoin" == "s" || test "$Autojoin" == "S"
 then 
   Autojoin=1
   echo
-  echo -n "Canales que deseas incluir en el Autojoin "
+  echo -n "Channels you want to include in Autojoin "
   read Canales_Aj
 else Autojoin=0
 fi
 echo
 
-echo -n "¿Qué tecla prefieres para las Hot-keys? [ctrl/ALT] "
+echo -n "Which key do you prefer for Hot-keys? [ctrl/ALT] "
 read hotkey 
 if test "$hotkey" == "ctrl" || test "$hotkey" == "CTRL"
 then hotkey=ctrl
@@ -181,17 +178,17 @@ else hotkey=alt
 fi
 echo
 
-echo -n "¿Deseas ignorar los molestos Ctcp's SOUND de determinados scripts? [s/N] "
+echo -n "Do you want to ignore annoying Ctcp's SOUND? [y/N] "
 read Ctcp_mp3
-if test "$Ctcp_mp3" == "s" || test "$Ctcp_mp3" == "S"
+if test "$Ctcp_mp3" == "y" || test "$Ctcp_mp3" == "Y"
 then Ctcp_mp3=1
 else Ctcp_mp3=0
 fi
 
 if test -f config 
-then echo -n "Existe un fichero config anterior, ¿sobreescribir? [s/N] "
+then echo -n "There is already a config file, overwrite? [y/N] "
   read write
-  if test "$write" == "s" || test "$write" == "S"
+  if test "$write" == "y" || test "$write" == "Y"
   then echo -e "@ Partir=$Partir\n@ Pos1=$Pos1\n@ Pos2=$Pos2\n@ Pos3=$Pos3\n@ Mp3dir=[$Mp3dir]\n@ Notif_mp3=$Notif_mp3\n@ WinQuery=$WinQuery\n@ theme=[$theme]\nColor $Color\n@ Hora=$Hora\n@ Sonido=$Sonido\n@ ircha=$ircha\n@ nick_awayOn=[$nick_awayOn]\n@ nick_awayOff=[$nick_awayOff]\n@ Msg_quit=[$Msg_quit]\n@ Msg_part=[$Msg_part]\n@ Autojoin=$Autojoin\n@ Canales_Aj=[$Canales_Aj]\n@ fortune=$fortune\n@ hotkey=[$hotkey]\n@ Ctcp_mp3=$Ctcp_mp3" > config 
   else exit 1 
   fi
@@ -204,10 +201,10 @@ echo -e "
 
 set cloak 1
 set usermode +i-ws
-set status_window ^Activa^
-set status_query 8[15Privado: 7%Q8]
-set status_hold --más--
-set status_notify 8[Charlan: %F]
+set status_window ^Active^
+set status_query 8[15Query: 7%Q8]
+set status_hold --more--
+set status_notify 8[Talking: %F]
 set realname orion
 set flood_protection off
 set deop_on_Deopflood 5
@@ -220,6 +217,8 @@ set auto_away on
 set auto_Away_time 1800
 set mircs on
 set beep on
+set STATUS_FORMAT 8,2[3 %T 8][15%*%@%=10%N7%#%A8]%M [10%C%+3%W8] 6%Q %H%B%F 8%S
+set STATUS_FORMAT1 8,2[3 %T 8][15%*%@%=10%N7%#%A8]%M [10%C%+3%W8] 6%Q %H%B%F 8%S
 set STATUS_FORMAT2 8,14Topic 3: 14%-
 set STATUS_FORMAT3 8,14Topic 3: 14%-
 set STATUS_UMODE 8(10+15%#8)
@@ -234,12 +233,5 @@ set STATUS_CHANNEL 7%C
 set INPUT_PROMPT 8,14[4\$C8]7,14 
 set MANGLE_LOGFILES ANSI,COLOR,REVERSE,UNDERLINE,BOLD,BLINK
 " >> config
-
-if test "$theme" == "gentoo" 
-then echo -e "wset STATUS_FORMAT 8,13[ 3%T 8][15%*%@%=10%N7%#%A8]%M [10%C%+3%W8] 6%Q %H%B%F 8%S
-wset STATUS_FORMAT1 8,13[ 3%T 8][15%*%@%=10%N7%#%A8]%M [10%C%+3%W8] 6%Q %H%B%F 8%S" >> config
-else echo -e "wset STATUS_FORMAT 8,2[ 3%T 8][15%*%@%=10%N7%#%A8]%M [10%C%+3%W8] 6%Q %H%B%F 8%S 
-wset STATUS_FORMAT1 8,2[ 3%T 8][15%*%@%=10%N7%#%A8]%M [10%C%+3%W8] 6%Q %H%B%F 8%S" >> config
-fi
 
 # Copyright © 2002 Javier Carranza

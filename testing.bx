@@ -15,52 +15,32 @@
 #    along with Sunlite for BitchX; if not, write to the Free Software
 #    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-# Una manera de enviar el mismo texto a todas las ventanas que tengamos abiertas
-#
 alias mass {
   usleep 2
   for (@ i = 1, i <= [$total], @ i++ ) { 
     msg $winnam($i) $0- } }
 
-# Vamos a darle un poco de color al texto :D
-#
 alias arcoiris {
   @ Mensaje = [$0-]
   @ Counter = [$absstrlen([$Mensaje])]
-  @ Colorin = 8
-  @ Mensaje_tmp = []
+  @ Colorin = 1
   for (@ i = 0, i < [$Counter], @ i++ ) {
     @ Mensaje_tmp = [$Mensaje_tmp] ## [$mid($i 1 $Mensaje)] ## [$Colorin]
-    if ( [$Colorin] < 15 ) {
+    if ( [$Colorin] < 16 ) {
       @ Colorin = ([$Colorin] + 1) 
     } {
       @ Colorin = 1 }
     }
-  send $Mensaje_tmp }
+  send $Mensaje_tmp
+  @ Mensaje_tmp = []
+}
 
-# ¿Quieres publicar la información de tu sistema en  un canal?
-#
-alias news {
-  switch ( $0 ) {
-    ( sistema ) { 
-      exec -o echo -e "« System    » `uname -a |awk '{print($1" "$2" "$3)}'` || Creado el: `uname -v | cut -c4-` || Máquina: `uname -m`" }
-    ( procesador ) { 
-      exec -o echo -e "« Processor » Modelo: `cat /proc/cpuinfo |grep "model name" |cut -c14-` || CPU: `cat /proc/cpuinfo |grep MHz |awk '{print($4)}'` MHz || Cache: `cat /proc/cpuinfo |grep cache |awk '{ print($4)}'` KB || Bogomips: `cat /proc/cpuinfo |grep bogomips |awk '{print($3)}'`" }
-    ( memoria ) { 
-      exec -o echo -e "« Memory    » [RAM] Total: `cat /proc/meminfo |grep MemTotal: |awk '{print($2)} '` KB · Libre: `cat /proc/meminfo | grep MemFree: |awk '{print($2)}'` KB || [Swap] Total: `cat /proc/meminfo |grep SwapTotal: |awk '{print($2)}'` KB · Libre: `cat /proc/meminfo |grep SwapFree: |awk '{print ($2)}'` KB" }
-    ( sensores ) { 
-      exec -o echo -e "« Sensors   » Tª Placa Base: `sensors 2>/dev/null |grep temp1: |awk '{print($2)}'` || Tª CPU: `sensors 2>/dev/null |grep temp2 |awk '{print($2)}'` || CPU FAN: `sensors 2>/dev/null | grep fan1 |awk '{print($2)}'` RPM || Power FAN: `sensors 2>/dev/null |grep fan2 |awk '{print($2)}'` RPM || Chassis FAN: `sensors 2>/dev/null |grep fan3 |awk '{print($2)}'` RPM" }
-    ( uptime ) {
-      exec -o echo -e "« Uptime    » Hora actual: `uptime |awk '{print($1)}'` || Encendido desde hace: `uptime |cut -d"," -f1 |cut -c14-``uptime |cut -d"," -f2 | grep -v user` || UpRecord: `uprecords 2>/dev/null |sed -n 3p |cut -c11-31 |awk '{print($1" "$2" "$3" "$4)}'`" }
-    ( todo ) {
-      news sistema
-      sleep 1
-      news procesador
-      sleep 1
-      news memoria
-      sleep 1
-      news sensores
-      sleep 1
-      news uptime }
-    ( * ) {
-      xecho -win status Modo de uso: /news {todo|sistema|procesador|memoria|sensores|uptime} } } }
+alias sistema {
+  exec -o echo -e "«Info SYS» ··» `uname -a`"
+  sleep 1 
+  exec -o echo -e "«Info CPU» ··» `cat /proc/cpuinfo | grep "model name" | gawk '{ print $4 " " $5 " " $6 }'` ## `cat /proc/cpuinfo | grep MHz | gawk '{ print $4 " Mhz"}'` ## `cat /proc/cpuinfo | grep cache | gawk '{ print $4 " Kb caché" }'` ## `cat /proc/cpuinfo | grep bogomips | gawk '{ print $3 " bogomips"}'`"
+  sleep 1
+  exec -o echo -e "«Info MEM» ··» `cat /proc/meminfo | grep MemTotal: | gawk '{ print "Memoria total: "$2 " Kb" }'` ## `cat /proc/meminfo | grep MemFree: | gawk '{ print "Memoria libre: " $2 " Kb"}'` ## ` cat /proc/meminfo | grep SwapTotal: | gawk '{ print "Swap total: " $2 " Kb"}'` ## `cat /proc/meminfo | grep SwapFree: | gawk '{ print "Swap libre: " $2 " Kb"}'`"
+  sleep 1
+  exec -o echo -e "«Info UPT» ··»`uptime`"
+}

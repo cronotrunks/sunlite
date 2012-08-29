@@ -1,208 +1,176 @@
  Sunlite script for BitchX By {Trunks} 
-   -Con colaboración de L00PB4cK-
+   -With extra code by L00PB4cK-
 
-		( Gracias a |Poldark| por ofrecerse como testeador del
-			script en su fase de desarrollo )
+		( Thanks to |Poldark| for testing this script in 
+			development versions )
 
-   -Agradecimiento especial a los usuarios del canal #barrapunto de opn
-  que se ofrecieron a probar el script :)
+   -Special thanks to #barrapunto users in opn who tested the script :)
 
-   -Mención más especial si cabe merecen Mayoral y BaSS que se han
-  ofrecido también como betatesters del script en desarrollo y están aportando
-  una cantidad de ideas impresionante para el script ;)
+   -Very special thanks to Mayoral and BaSS who have also tested this script 
+     fully and they have added new original ideas to the project ;)
 
-   -Siento no haberme acordado antes O:-) También tengo que agradecer a core
-  y kanuso el haber realizado el primer script a partir del cual me picó la 
-  curiosidad y comencé a desarrollar este nuevo Sunlite, que ha adoptado algunas
-  de las funciones que ellos ya tenían implementadas. 
-  
 ----------------------------------------------------------------------------
 
- Este script se distribuye bajo licencia GPL ( La descripción de todos 
-   los términos de esta licencia está completamente explicada en el 
-   fichero COPYING ). No está traducido al español, puesto que uno de
-   de los puntos de esta licencia es que todo aquel que distribuya un
-   un producto bajo ella debe incluirla sin ningún tipo de variación
-   en su estructura y contenido.
+ This script is distributed under GPL license ( Description terms are 
+   full explained in COPYING file ). 
 
- Bueno, pasamos a explicar las instrucciones importantes k tiene este
-   script:
+ Well, now I'm going to explain the most important instructions which 
+   this script has:
 
 
- Limpia ( Alt + l ) - Hace un clear a la ventana y presenta topic del
-   canal más un names al propio canal al instante :)
+ Clean ( Alt + l ) - It clears active window and presents topic on screen
+   moreover names instruction on channel in that window :)
 
- WNC ( Tb Join o j  ) - Crea una nueva ventana con un nuevo canal (loguea 
-   automáticamente).
+ WNC ( Tb Join o j  ) - It creates a new window with a new channel (logs 
+   automatically).
 
- WNS ( Tb Joins o server ) - Crea una nueva ventana para un nuevo servidor a un canal
-   especificado (también loguea automáticamente).
+ WNS ( Tb Joins o server ) - It creates a new window with a new server (logs
+   automatically too).
 
- Tban ( Alt + b ) - Banea y patea del canal al nick especificado mostrando
-   como mensaje del salida uno opcional por defecto u otro que se pase
-   como argumento. Consta de una característica adicional muy de moda
-   en los últimos scripts como es el conteo de bans.
+ Tban ( Alt + b ) - It bans and kicks nicks in active channel and shows
+   an output default message or another wich you can include in arguments.
+   It's based on an aditional feature which is a bans counter.
 
- Fban - Limpia todos los bans que tengamos en el canal actual si 
-   existen y tenemos nivel.
+ Fban - It cleans all the bans we have in activa channel if they exist and we
+   have enough level. 
 
- Autojoin ( Alt + a ) - Entra en los canales que tengamos definidos dentro de
-   nuestra lista abriendo una ventana para cada uno de ellos
-   automáticamente y logueando :)
+ Autojoin ( Alt + a ) - It joins the channels you have defined in your list and
+   it already opens new windows and logs :)
 
- Opme ( Alt + o ) - Nos da arroba en el canal actual.
+ Opme ( Alt + o ) - It ops us in active channel.
 
- Deopme ( Alt + d ) - Nos quita la arroba en el canal actual.
+ Deopme ( Alt + d ) - It deops us in active channel.
 
- Voiceme ( Alt + v ) - Nos da voz en el canal actual.
+ Voiceme ( Alt + v ) - It changes +v mode in active channel.
 
- Devoiceme - Nos quita voz en el canal actual.
+ Devoiceme - It changes -v mode in active channel.
 
- Rejoin ( Alt + j ) - Entra y sale del canal actual.
+ Rejoin ( Alt + j ) - It joins and parts in active channel.
 
- Moderre ( Alt + r ) - Protege nuestro canal contra ataques de joins flood.
+ Moderre ( Alt + r ) - It protects our channel against join & part flood attacks.
 
- InfoN - Petición de información sobre un nick al bot NiCK.
+ InfoN - Information request to NiCK bot about a nick.
 
- InfoCH - Petición de información sobre un canal al bot CHaN.
+ InfoCH - Information request to CHaN bot about a channel.
 
- MemoS - Enviar un mensaje a un nick a través del bot MeMo.
+ MemoS - It sends a message to a nick thru MeMo bot.
 
- MemoD - Borra el mensaje indicado de la base de datos del bot MeMo.
+ MemoD - It deletes the message in MeMo database.
 
- MemoR - Leer el mensaje indicado de la base de datos del bot MeMo.
+ MemoR - It reads the message in MeMo database.
 
- MemoL - Leer el último mensaje de la base de datos del bot MeMo.
+ MemoL - It reads last message in MeMo database.
 
- Addlevel - Añade un usuario a la base de datos de CHaN sobre el canal actual.
+ Addlevel - It adds an user to CHaN database in active channel.
 
- Dellevel - Elimina un usuario de la base de datos de CHaN sobre el canal 
-   actual.
+ Dellevel - It deletes an user to CHaN database in active channel.
 
- Founder - Te identifica como fundador del canal actual si pasas como argumento
-   la clave del canal.
+ Founder - It identifies you as founder on active channel if you especify the 
+   correct password.
 
- NickReg - Registramos nuestro nick la cuenta de correo que pasemos como 
-   argumento (caso bots de l hispano) o bajo la clave que indiquemos (caso bots
-   de opn o dalnet).
+ NickReg - Register our nick with our e-mail in arguments (in case 
+   irc-hispano) or with passwords in arguments (in case opn i.e.). 
 
- Part (Tb P) - Salimos del canal actual eliminando la ventana que estemos 
-   usando.
+ Part (Tb P) - Leave active channel and delete the window which we were 
+   using. 
 
- Query (Tb Q) - Abrimos un privado en una nueva ventana con una persona en 
-   concreto o cerramos el privado actual eliminado la ventana que estemos 
-   usando. Hot-key para cerrar ventana de privado -> Alt + z
+ Query (Tb Q) - Open a query in a new window with a nick in arguments or 
+   we close active query if arguments are null. Hot-key to close query
+   window -> Alt + z
 
- QueryS - Abrimos un privado en una nueva ventana con una persona en concreto 
-   que se encuentra en otro servidor (no el principal).
+ QueryS - Open a query in a new widnow with a nick in arguments in a 
+   a server we also especify in arguments (not necessary active server).
 
- Nick - Cambiamos de nick y automáticamente nos identificamos si el
-   nick lo tenemos incluído en nuestra base de datos de nicks.
+ Nick - Change our nick automatically and identify us if that nick is 
+   included in our database.
 
- Away - Nos marcamos como away y activamos la notificación de away
-   para quien nos nombre en un canal ( mediante notices ).
+ Away - Mark us as away and active away notification. Use it 
+   when someone mention us in a channel ( based on notices ).
 
- Conferencia ( Alt + c ) - Modo exclusivo de nuestro script :) Podemos
-   aplicarlo cuando entremos en un canal lleno de personas donde está
-   constantemente entrando y saliendo gente y no podemos leer con claridad
-   lo que se expone en el canal. Muy útil, y su propio nombre lo indica,
-   cuando hay conferencias en canales :)
+ Conference ( Alt + c ) - Exclusive mode in our script :) It can be used
+   to talk in a channel which pepole is joining and parting permanently
+   and we can't read the conversation cleanly. It's very useful when there
+   is a conference in a channel ;)
 
- Calculadora - Utilidad que sirve como bien su nombre indica para realizar
-   operaciones de todo tipo ;)
+ Calculator - This utility is used to calculate operations in real time
+   in BitchX environment ;)
 
- Snapshot (Alt + s ) - Curiosa utilidad que nos servirá para fotografiar 
-   algunos de los momentos más divertidos en la red.
+ Snapshot (Alt + s ) - It's a fun utility which is used to take a snapshot 
+   of the BitchX screen.
 
- Sms - Nueva utilidad que nos servirá para enviar sms desde la línea de
-   comandos de BitchX. Necesitarás tener instalado en tu sistema el
-   programa esms (en debian sid -> apt-get install esms)
+ Sms - It's a new utility whis is used to send sms messages from BitchX
+   command line. You'll need to have installed on your system the esms
+   program (in debian sid -> apt-get install esms -if it doesn't work in 
+   your region, you can change it. Edit the code-).
 
- AwayOn - Nos marcamos como away y nos deopeamos de nuestro canal actual
+ AwayOn - Mark us as away and deop ourselves in active channel.
 
- AwayOff - Nos quitamos la marca de away y nos volvemos a opear en el canal
+ AwayOff - Mark us as regular and op ourselves in active channel.
 
- Shell - Con la instrucción /shell <password> podremos salir de BX a la
-   terminal desde la que iniciamos el cliente y hacer las operaciones que
-   necesitemos. Una vez terminado traeremos a primer plano a BX con la
-   instrucción scr-bx -p. Una vez hecho esto se nos pedirá la password que
-   anteriormente definimos.
+ Shell - /shell <password> instruction is used to leave BitchX on background
+   and we can to come back if we type 'scr-bc -p' on the shell, and then 
+   the password.
 
- Cowsay y figlet - Estas son nuestras instrucciones para el Ascii Art. 
-   Pruébalas ;)
+ Cowsay and figlet - These are our Ascii Art instructions. Test them ;) 
 
- Mp3 - Una instrucción que nos servirá para manejar la aplicación mpg123
-   en segundo plano desde BX ;) Soporta listas, las presenta, y podemos
-   pedir la reproducción de todos los archivos de nuestro directorio
-   (definido mediante /mp3 dir path) con comodines -ej. /mp3 play */*-
-   /mp3 help para más ayuda.
+ Mp3 - This instruction is used to manage mpg123 program under BitchX ;)
+   It support song lists, ask for them ( '/mp3 list' ), and we can play all 
+   the files in directory with special chars - i.e. '/mp3 play */*' - '/mp3 
+   help' for more help. 
 
- Cd - Al igual que la anterior, nos servirá para oír música, pero esta
-   en formato Cd :) Introducimos el cd en el lector, ejecutamos el comando
-   /cd list y desde cddb obtendremos la lista con los titulos para reproducir
-   /cd help para más ayuda.
+ Cd - It also is used to listen to music on BitchX environment, but now in cd
+   format :) We insert cd on cd-rom tray, run the command '/cd list'. The 
+   information will be report from cddb. '/cd help' for more help.
 
- Color - Activa o desactiva la función de color de nuestro script.
+ Color - It enables or disables colour function in BitchX script.
 
- Sonido - Activa o desactiva la función de sonido de nuestro script.
+ Sonido - It enables or disables sound function in BitchX script.
 
- TermX - Si estamos en consola y queremos enviar una url, por ejemplo, para
-   visitarla con el navegador en X, ya no necesitamos apuntarla en un papel
-   ni elaborar un complicado comando de direccionanmiento. Con esta instrucción
-   enviaremos el texto que queramos  a la primera terminal abierta en X.
+ TermX - If we want to send an url, in example, from tty to X terminal, for surfing
+   in a graphical browser, we needn't to write it in a note. Run '/termx text' and 
+   this text will be send to the first X terminal on XFree86.
 
- Traducir - A partir de ahora chatear en canales de habla inglesa será más
-   fácil. Sólo necesitas invocar a este salias para saber el significado de
-   esa palabra que no recuerdas o la traducción de aquella otra al inglés que
-   nunca supiste.
+ Traducir - From now you'll can talk in spanish channels easier. You only
+   have to type '/translate spanish word' and the script will tell you the
+   correct word in spanish language.
 
- Reseñar que con la combinación de teclas ( Alt + q ) podemos cambiar 
-   entre la ventana de privados y la ventana principal y además con la
-   combinación ( Alt + w ) avanzamos una ventana y con ( Alt + e )
-   retrocedemos otra. Con ( Alt + z ) podemos cerrar automáticamente
-   una ventana.
+ Notification: With ( Alt + q ) hot-key, we can change between main and
+   query windows and furthermore ( Alt + w ) hot-key is used to go to next
+   window and ( Alt + e ) to go to previous window. ( Alt + z ) hot-key is
+   used to close the active window.
 
 -----------------------------------------------------------------------------
 
- Aparte podemos comentar que este script posee protecciones anti-flood,
-   anti-ctcp's, anti-deops, anti-bans ( para canales en los que tengamos
-   nivel suficiente como para quitarnos los bans ), ...
+ We can also tell you this script possesses anti-flood protections, 
+   anti-ctcp's, anti-deops, anti-bans ( in channels we have enough level), ...
+   
+ It also contains themes for a more friendly BitchX using. The modifications
+   which I have made in the script are only aesthetics. It hasn't colours
+   default because the most doesn't like it.
 
- También contiene tratamientos de formato del texto enviado y recibido 
-   sin ningún tipo de modificación en lo que a datos se refiere, única y 
-   exclusivamente nos limitamos a modificaciones puramente estéticas.
+ On connect to IRC, this script identifies ourselves automatically. 
 
- Al conectar al IRC nos identifica automáticamente.
+ Its eurocalculator service is enabled for all the users on the net thru ctcp 
+   commands ( '/ctcp our_nick euro amount' from euros to pesetas and '/ctcp
+   our_nick peseta amount' from pesetas to euros ) 
 
- Tiene activo un servicio de eurocalculadora por medio de ctcp's; se
-   activa con el comando "/ctcp nuestro_nick euro cantidad" para pasar
-   euros a pesetas y con el comando "/ctcp nuestro_nick peseta cantidad"
-   para convertir pesetas a euros.
+ Added a fortune service based on ctcp's. It's enabled with '/ctcp nuestro_nick 
+   fortune #canal' command.
 
- Añadido servicio de fortune mediante ctcp. Se activa con el comando
-   /ctcp nuestro_nick fortune #canal.
+ All the ctcp's Todos los servicios ctcp's tienen protección anti-flood
 
- Todos los servicios ctcp's tienen protección anti-flood
+ Added a new function with sounds events (it enables thru a variable in config
+   file). .wav files are taken from another spanish scripts in first, but 
+   step to step they will be change ;) We need bplay package to listen these
+   sounds ( debian users must run : apt-get install bplay ) :)
 
- Adherida una nueva funcionalidad de eventos de sonido (se habilita
-   mediante una variable en el archivo config). Los archivos .wav son en un
-   principio tomados de scripts clasicos de windows aunque ya desarrollaremos
-   nuestros propios efectos en breve. Necesitamos el paquete bplay (usuarios
-   de debian: apt-get install bplay) para oír los sonidos :)
-
- También haremos notar que disponemos de una configuración de colores con la que 
-   podremos obtener un script más estético. Por defecto incluímos el script 
-   sin colores debido a que para muchos usuarios esta característica resulta 
-   un tanto molesta.
-
- Añadida una nueva opción para activar/desactivar Autojoin y TimeStamp, además
-   de una opción para activar la apertura automática de privados en segundo 
-   plano de forma que se crea automáticamente una ventana nueva para cada
-   que nos entra.
+ Added a new option for enabling/disabling Autojoin and TimeStamp, moreover
+   another option to open queries on first private message automatically with
+   a new query window.
 
 -----------------------------------------------------------------------------
 
-  Licencia de uso de script Sunlite (aplicable a todos sus módulos):
+  Usage license for Sunlite script (It's applied to all modules):
 
   Disclaimer
 

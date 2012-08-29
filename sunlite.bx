@@ -18,29 +18,28 @@
 ################################################################################
 #
 # Sunlite script for BitchX By {Trunks} 
-#   -Con colaboración de L00PB4cK-
+#   -Collaborator: L00PB4cK-
 #
 #-----------------------------------------------------------------------------
 #
-# Antes de iniciar cargamos nuestro conteo de bans :o)
+# Before starting, we load our bans counter :o)
 #
 load ~/.BitchX/sunlite/.bans
- 
-# Cargamos el grueso del script, entendiendo por ello eventos, aliases, 
-#   y notify personalizados
+
+# Load main script, meaning events, aliases, and custom notify
 #
 load ~/.BitchX/sunlite/notify.bx
 load ~/.BitchX/sunlite/eventos.bx
 load ~/.BitchX/sunlite/aliases.bx
 load ~/.BitchX/sunlite/tab.bx
 
-# Ahora una vez cargado el script inicializamos un par de variables
+# Once script is loaded we starts our custom configuration
 #
 load ~/.BitchX/sunlite/config
 load ~/.BitchX/sunlite/aliases.bx
 load ~/.BitchX/sunlite/eventos.bx
 
-# Cargamos la configuración de ventanas
+# Load the window configuration
 #
 window name status double off split on logfile ~/.BitchX/sunlite/logs/\#msgs.log log on
 window new level msgs double off name privados hide logfile ~/.BitchX/sunlite/logs/\#privados.log log on
@@ -138,22 +137,15 @@ if ( [$Partir] == 1 ) {
 	  @ Principal = 1 } } } }
   
   clear
-  xecho -win privados $cparse("$Rojo\Esta es tu ventana de privados ;\)")
-  window goto $Principal
-  if ( [$theme] == [gentoo] ) {
-  wset status status_format1 3,14______________________________________________________________________________________________________________________________________________________________
-  wset status status_format 3,14______________________________________________________________________________________________________________________________________________________________
-  wset privados status_format 3,14______________________________________________________________________________________________________________________________________________________________
-  wset privados status_format1 3,14______________________________________________________________________________________________________________________________________________________________
-  wset privados status_format2 3,14______________________________________________________________________________________________________________________________________________________________ 
-  } {
+  xecho -win privados $cparse("$Rojo\This is your queries window ;\)")
+  window goto $Principal 
   wset status status_format1 4,14______________________________________________________________________________________________________________________________________________________________
   wset status status_format 8,14______________________________________________________________________________________________________________________________________________________________
   wset privados status_format 8,14______________________________________________________________________________________________________________________________________________________________
   wset privados status_format1 4,14______________________________________________________________________________________________________________________________________________________________
-  wset privados status_format2 8,14______________________________________________________________________________________________________________________________________________________________ } }
+  wset privados status_format2 8,14______________________________________________________________________________________________________________________________________________________________ }
 	    
-# Cargamos nuestro mensajito pijo del script.
+# Load our funny script's message.
 #
 eval echo $cparse("$AzulF Sunlite v1.2 for BitchX: $VerdeF[$RojoF Cargado$VerdeF ]")
 eval echo
@@ -174,25 +166,9 @@ eval echo $cparse("$RojoF    XUb;.")
 eval echo $cparse("$RojoF     VYXL,,")
 eval echo $cparse("$RojoF       +3#bc,")
 eval echo $cparse("$RojoF         -lSSL,,")
-eval echo $cparse("$RojoF            ~~~~~") 
+eval echo $cparse("$RojoF            ~~~~~")
 eval echo
 eval echo
-
-#eval echo $cparse("$Gris\...............................................................................")
-#eval echo $cparse("$Gris\.....$RojoF####$Gris\......................................$RojoF###$Gris\.............................")
-#eval echo $cparse("$Gris\....$RojoF#######$Gris\....................... $RojoF###$Gris\.........$RojoF###$Gris\.............................")
-#eval echo $cparse("$Gris\...$RojoF##########$Gris\.....................$RojoF####$Gris\....$RojoF#############$Gris\........................")
-#eval echo $cparse("$Gris\...$RojoF####$Gris\..$RojoF#######$Gris\....$RojoF#####$Gris\........$RojoF######$Gris\...$RojoF#############$Gris\...$RojoF#####$Gris\.......$RojoF#####$Gris\....")
-#eval echo $cparse("$Gris\...$RojoF#############$Gris\...$RojoF#######$Gris\......$RojoF########$Gris\...$RojoF############$Gris\..$RojoF#######$Gris\.....$RojoF#######$Gris\...")
-#eval echo $cparse("$Gris\....$RojoF###########$Gris\.. $RojoF###$Gris\.$RojoF####$Gris\..... $RojoF####$Gris\.$RojoF####$Gris\......$RojoF####$Gris\.... $RojoF#########$Gris\...$RojoF#########$Gris\..")
-#eval echo $cparse("$Gris\......$RojoF########$Gris\...$RojoF########$Gris\......$RojoF#####$Gris\..$RojoF####$Gris\.....$RojoF####$Gris\....$RojoF###########$Gris\.$RojoF###########$Gris\.")
-#eval echo $cparse("$Gris\.......$RojoF######$Gris\....$RojoF######$Gris\........$RojoF####$Gris\....$RojoF####$Gris\....$RojoF####$Gris\....$RojoF###########$Gris\.$RojoF###########$Gris\.")
-#eval echo $cparse("$Gris\......$RojoF######$Gris\.....$RojoF######$Gris\.......$RojoF#####$Gris\.....$RojoF####$Gris\...$RojoF####$Gris\....$RojoF#####$Gris\..$RojoF####$Gris\.$RojoF#####$Gris\..$RojoF####$Gris\.")
-#eval echo $cparse("$Gris\.....$RojoF######$Gris\......$RojoF##########$Gris\...$RojoF####$Gris\.......$RojoF####$Gris\..$RojoF####$Gris\....$RojoF##########$Gris\..$RojoF##########$Gris\..")
-#eval echo $cparse("$Gris\.....$RojoF#####$Gris\.......$RojoF###########$Gris\.$RojoF#####$Gris\........$RojoF####$Gris\.$RojoF####$Gris\.....$RojoF########$Gris\....$RojoF########$Gris\...")
-#eval echo $cparse("$Gris\.....$RojoF####$Gris\.........$RojoF##########$Gris\.$RojoF#####$Gris\........$RojoF####$Gris\.$RojoF####$Gris\......$RojoF######$Gris\......$RojoF######$Gris\....")
-#eval echo $cparse("$Gris\......$RojoF##$Gris\...........$RojoF########$Gris\ . $RojoF####$Gris\.........$RojoF##$Gris\...$RojoF###$Gris\.......$RojoF####$Gris\........$RojoF####$Gris\.....")
-#eval echo $cparse("$Gris\...............................................................................")
 
 @ J = [Sunlite v1.2 for BitchX]
 @ b = [$Blanco[$AzulSunlite for BX$Blanco]

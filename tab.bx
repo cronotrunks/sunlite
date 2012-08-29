@@ -18,10 +18,10 @@
 ################################################################################
 #
 #-------------------------------------------------------------------------------
-# Módulo de Nick Completion
-# Basado en un módulo de axur(bx) by roque
-# Modificado para Luna Script por MarbleMaN
-# Adaptado para Sunlite por {Trunks}
+# Nick Completion module
+# axur(bx) by roque module based on
+# Modified by MarbleMan for Luna Script
+# Adapted by {Trunks} for Sunlite
 #-------------------------------------------------------------------------------
 
 @ c.nickcompm = [%n %n? %n* ?%n ?%n? ?%n* *%n *%n*]
@@ -31,7 +31,7 @@
 alias gettab {
   @ :aa = L
 
-# Si la pila de nicks para uso con tab tiene algún elemento rotamos
+# if fifo nicks for using with tab key has some values, we rotate
 #
   if (!aa || [$word(0 $aa) $word(1 $aa)] == ltab) {
     parsekey erase_line
@@ -44,20 +44,20 @@ alias gettab {
     } elsif (aa == []) {
       xtype -l /msg${[ ]}}
 
-# Al pulsar 'abreviatura:' + tab se producira también el relleno de 
-# caracteres para completar el nick 
+# On pushing 'abbreviation:' + tab, the filling of characteres to complete 
+# the nick is produced too. 
 #
   } elsif (aa =~ [%:*]) {
     @ :bb = _compnick($before(: $aa))
     if (word(0 $bb)) {
       parsekey erase_line
-      xtype -l $word(1 $bb)\: ${[$[1]after(\: $aa)] == [ ] ? right(${_absstrlen($after(\: $aa)) - 1} $after(\: $aa)) : after(\: $aa) }}
+      xtype -l $word(1 $bb)\: ${[$[1]after(\: $aa)] == [ ] ? right(${_absstrlen($after(\: $aa)) - 1} $after(\: $aa)) : after(\: $aa)}}
 
   } elsif (aa =~ [/dcc s% % ?*]) {
     parsekey erase_line
     xtype -l $word(0 $aa) send $word(2 $aa) $_fcomp($word(3 $aa))
 
-# Mostrar ayuda al pulsar '/' + tab
+# Showing help on pushing '/' + tab
   } elsif (aa =~ [/%]) {
     if (aa == [/]) {
       window goto 1
@@ -66,7 +66,7 @@ alias gettab {
     } else {
       parsekey command_completion}
 
-# Se completa el nick a partir de cualquier cadena contenida en él tras pulsar tab
+# From any string within the nick, it is completed after pushing tab key
   } else { 
     @ :bb = word(${#aa - 1} $aa)
     @ :cc = beforew($bb $aa)
@@ -213,7 +213,7 @@ alias _ncomp {
     fe ($dd) ff {
       if (!match($ff $ee) && word(0 $ff)) {
         push ee $ff}}}
-  @ function_return = #ee ## [ ] ## ee}
+  @ function_return = #ee ## [ ] ## ee }
 
 alias _compnick {
   @ :bb = []
