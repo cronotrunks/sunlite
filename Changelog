@@ -1,17 +1,5 @@
 * Sunlite for BitchX v1.2
 
-	- 12/06/02
-
-	  + Incluído nuevo theme gentoo con los colores de esta nueva distro
-	  	y un nuevo logo que sustituye al de debian en el paquete
-		disponible para emergear en los mirrors gentoo próximamente.
-
-	- 30/05/02
-
-	  + Solventados un par de problemas de ordenación de ventanas que
-		tenían algunos usuarios.
-
-
 	- 02/04/02
 
 	  + Se consideran totalmente solventados los bugs de la versión de
@@ -138,6 +126,9 @@
 
 	   + Añadida creación de privado único para todos los bots. Útil sólo 
 	   	para usuarios con la variable WinQuery activada.
+
+	   + Solucionado problema de solapamiento de canales de igual nombre
+		en distintos servidores.
 
 
 	- 24/02/02

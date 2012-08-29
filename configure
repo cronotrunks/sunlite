@@ -20,24 +20,24 @@
 ################################################################################
 #
 echo
-echo -e "Este es el script de configuración para Sunlite for BitchX"
+echo -e "Aquest és l'script de configuració per Sunlite for BitchX"
 echo -e "----------------------------------------------------------"
-echo -e "Si quieres modificar algo de lo que aquí has definido edita el archivo config o reejecuta este script de configuración. Ten en cuenta que si lo reejecutas tendrás que definir todas las opciones de nuevo" 
+echo -e "Si vols modificar alguna cosa de les que aquí has definit edita l'arxiu config o reexecuta aquest script de configuració. Tingues en compte que si el reexecutes hauràs de definir totes les opcions de nou" 
 echo
 
-echo -n "¿Quieres usar multiventana (Triple ventana en pantalla (Status/Privados/Principal)? [S/n] "
+echo -n "Vols utilitzar multifinestra (Triple finestra en pantalla (Status/Privats/Principal)? [S/n] "
 read Partir
 if test "$Partir" == "n" || test "$Partir" == "N"
 then Partir=0
 else Partir=1
 	echo
-	echo "Ordena las ventanas: (1) Arriba (2) Centro (3) Abajo"
-	echo -n "¿Dónde coloco Estado? [1/2/3] [Default=1] "
+	echo "Ordena les finestres: (1) A dalt (2) Centre (3) A baix"
+	echo -n "On col·loco Status? [1/2/3] [Default=1] "
 	read Pos1
 	if ! ( test "$Pos1" == "1" || test "$Pos1" == "2" || test "$Pos1" == "3" ) || test "$Pos1" == "" 
 	  then Pos1=1
 	fi
-    echo -n "¿Dónde coloco Privados? [1/2/3] [Default=2] "
+    echo -n "On col·loco Privats? [1/2/3] [Default=2] "
     read Pos2
     if ! ( test "$Pos2" == "1" || test "$Pos2" == "2" || test "$Pos2" == "3" ) || test "$Pos2" == "" 
       then if test "$Pos1" == "1" || test "$Pos1" == "3" 
@@ -59,14 +59,14 @@ else Partir=1
 fi
 echo
 
-echo -n "Define la ruta donde se encuentran tus archivos música en mp3: [/var/mp3/] "
+echo -n "Defineix la ruta on es troben els teus arxius de música en mp3: [/var/mp3/] "
 read Mp3dir
 if test "$Mp3dir" == ""
 then Mp3dir="/var/mp3/"
 fi
 echo
 
-echo -n "¿Quieres informar a los usuarios del canal la música que oyes en cada momento? [s/N] "
+echo -n "Vols informar als usuaris del canal de la música que escoltes en cada moment? [s/N] "
 read Notif_mp3
 if test "$Notif_mp3" == "s" || test "$Notif_mp3" == "S"
 then Notif_mp3=1
@@ -74,7 +74,7 @@ else Notif_mp3=0
 fi
 echo
 
-echo -n "¿Quieres que se te abra un privado automáticamente cuando alguien te envie un mensaje? [s/N] "
+echo -n "Vols que se't obri un privat automàticament quan algú t'envïi un missatge? [s/N] "
 read WinQuery
 if test "$WinQuery" == "s" || test "$WinQuery" == "S"
 then WinQuery=1
@@ -82,25 +82,22 @@ else WinQuery=0
 fi
 echo
 
-echo -n "¿Quieres usar colores en el script? [s/N] "
+echo -n "Vols usar colors a l'script? [s/N] "
 read Color
 if test "$Color" == "s" || test "$Color" == "S"
 then Color="si"
   echo
-  echo -n "¿Qué tema quieres usar? [(1) Default (2) BaSS Design (3) gentoo ] "
+  echo -n "Quin tema vols usar? [(1) Default (2) BaSS Design] "
   read theme
   if test "$theme" == "bass" || test "$theme" == "BaSS" || test "$theme" == "BaSS Design" || test "$theme" == "bass design" || test "$theme" == "2"
   then theme=bass
-  else if test "$theme" == "gentoo" || test "$theme" == "3"
-  	then theme=gentoo
-	else theme=Default
-	fi
+  else theme=Default
   fi
 else Color="no"
 fi
 echo
 
-echo -n "¿Quieres TimeStamp en mensajes y privados? [s/N] "
+echo -n "Vols TimeStamp als missatges i privats? [s/N] "
 read Hora
 if test "$Hora" == "s" || test "$Hora" == "S"
 then Hora="[\$Magenta\[\$Amarillo\\\$Z\$Magenta\] ]"
@@ -108,15 +105,15 @@ else Hora=""
 fi
 echo
 
-echo -n "Activación de sonido en el script [s/N] "
-read Sonido
+echo -n "Activació del so a l'script [s/N] "
+read So
 if test "$Sonido" == "s" || test "$Sonido" == "S"
 then Sonido=1
 else Sonido=0
 fi
 echo
 
-echo -n "¿Usamos ircha cuando se nos nombre en el canal? [s/N] "
+echo -n "Usem ircha quan diguin el nostre Nick al canal? [s/N] "
 read ircha
 if test "$ircha" == "s" || test "$ircha" == "S"
 then ircha=1
@@ -124,29 +121,29 @@ else ircha=0
 fi
 echo
 
-echo -n "Nick para away on: "
+echo -n "Nick per a away on: "
 read nick_awayOn
 echo
 
-echo -n "Nick para away off: "
+echo -n "Nick per a away off: "
 read nick_awayOff
 echo
 
-echo -n "Mensaje de salida por defecto: [Sunlite v1.2 for BitchX] "
+echo -n "Missatge de sortida per defecte: [Sunlite v1.2 for BitchX] "
 read Msg_quit
 if test "$Msg_quit" == ""
 then Msg_quit="Sunlite v1.2 for BitchX"
 fi
 echo
 
-echo -n "Mensaje de salida de canal por defecto : [Sunlite v1.2 for BitchX] "
+echo -n "Missatge de sortida del canal per defecte : [Sunlite v1.2 for BitchX] "
 read Msg_part
 if test "$Msg_part" == ""
 then Msg_part="Sunlite v1.2 for BitchX"
 fi
 echo
 
-echo -n "¿Preferirías usar como quits mensajes aleatorios de fortune? [s/N]"
+echo -n "Preferirías usar com a quits missatges aleatoris de fortune? [s/N]"
 read fortune
 if test "$fortune" == "s" || test "$fortune" == "S"
 then
@@ -161,19 +158,19 @@ else fortune=0
 fi
 echo
 
-echo -n "¿Activamos autojoin por defecto? [s/N] "
+echo -n "Activem autojoin per defecte? [s/N] "
 read Autojoin
 if test "$Autojoin" == "s" || test "$Autojoin" == "S"
 then 
   Autojoin=1
   echo
-  echo -n "Canales que deseas incluir en el Autojoin "
+  echo -n "Canals que vols incloure a l'Autojoin "
   read Canales_Aj
 else Autojoin=0
 fi
 echo
 
-echo -n "¿Qué tecla prefieres para las Hot-keys? [ctrl/ALT] "
+echo -n "Quina tecla prefereixes per a les Hot-keys? [ctrl/ALT] "
 read hotkey 
 if test "$hotkey" == "ctrl" || test "$hotkey" == "CTRL"
 then hotkey=ctrl
@@ -181,7 +178,7 @@ else hotkey=alt
 fi
 echo
 
-echo -n "¿Deseas ignorar los molestos Ctcp's SOUND de determinados scripts? [s/N] "
+echo -n "Vols ignorar els molestos Ctcp's SOUND de determinats scripts? [s/N] "
 read Ctcp_mp3
 if test "$Ctcp_mp3" == "s" || test "$Ctcp_mp3" == "S"
 then Ctcp_mp3=1
@@ -189,7 +186,7 @@ else Ctcp_mp3=0
 fi
 
 if test -f config 
-then echo -n "Existe un fichero config anterior, ¿sobreescribir? [s/N] "
+then echo -n "Existeix un arxiu config anterior, ¿sobreescriure'l? [s/N] "
   read write
   if test "$write" == "s" || test "$write" == "S"
   then echo -e "@ Partir=$Partir\n@ Pos1=$Pos1\n@ Pos2=$Pos2\n@ Pos3=$Pos3\n@ Mp3dir=[$Mp3dir]\n@ Notif_mp3=$Notif_mp3\n@ WinQuery=$WinQuery\n@ theme=[$theme]\nColor $Color\n@ Hora=$Hora\n@ Sonido=$Sonido\n@ ircha=$ircha\n@ nick_awayOn=[$nick_awayOn]\n@ nick_awayOff=[$nick_awayOff]\n@ Msg_quit=[$Msg_quit]\n@ Msg_part=[$Msg_part]\n@ Autojoin=$Autojoin\n@ Canales_Aj=[$Canales_Aj]\n@ fortune=$fortune\n@ hotkey=[$hotkey]\n@ Ctcp_mp3=$Ctcp_mp3" > config 
@@ -220,6 +217,8 @@ set auto_away on
 set auto_Away_time 1800
 set mircs on
 set beep on
+set STATUS_FORMAT 8,2[3 %T 8][15%*%@%=10%N7%#%A8]%M [10%C%+3%W8] 6%Q %H%B%F 8%S
+set STATUS_FORMAT1 8,2[3 %T 8][15%*%@%=10%N7%#%A8]%M [10%C%+3%W8] 6%Q %H%B%F 8%S
 set STATUS_FORMAT2 8,14Topic 3: 14%-
 set STATUS_FORMAT3 8,14Topic 3: 14%-
 set STATUS_UMODE 8(10+15%#8)
@@ -234,12 +233,5 @@ set STATUS_CHANNEL 7%C
 set INPUT_PROMPT 8,14[4\$C8]7,14 
 set MANGLE_LOGFILES ANSI,COLOR,REVERSE,UNDERLINE,BOLD,BLINK
 " >> config
-
-if test "$theme" == "gentoo" 
-then echo -e "wset STATUS_FORMAT 8,13[ 3%T 8][15%*%@%=10%N7%#%A8]%M [10%C%+3%W8] 6%Q %H%B%F 8%S
-wset STATUS_FORMAT1 8,13[ 3%T 8][15%*%@%=10%N7%#%A8]%M [10%C%+3%W8] 6%Q %H%B%F 8%S" >> config
-else echo -e "wset STATUS_FORMAT 8,2[ 3%T 8][15%*%@%=10%N7%#%A8]%M [10%C%+3%W8] 6%Q %H%B%F 8%S 
-wset STATUS_FORMAT1 8,2[ 3%T 8][15%*%@%=10%N7%#%A8]%M [10%C%+3%W8] 6%Q %H%B%F 8%S" >> config
-fi
 
 # Copyright © 2002 Javier Carranza

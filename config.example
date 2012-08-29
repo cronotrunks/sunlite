@@ -1,47 +1,47 @@
-# Marcamos esta variable a 0 si no queremos tener un pantalla dividida
-# que usamos como status, sino que preferimos tener ventanas 
-# individuales (también existirá el status pero individualmente).
+# Marquem aquesta variable a 0 si no volem tindre una pantalla dividida
+# que utilitzarem com status, sino que preferim tindre finestres 
+# individuals (també existirà l'status però individualment).
 @ Partir = 1
 @ Pos1=1
 @ Pos2=2
 @ Pos3=3
 
-# Definimos nuestra ruta de ficheros de sonido mp3. Podemos marcar la
-# segunda variable a 1 si queremos notificar al canal la música que
-# escuchamos en cada momento.
+# Definim la nostra ruta d'arxius de so mp3. Podem marcar la
+# segona variable a 1 si volem notificar al canal la música que
+# escoltem a cada moment.
 #
 @ Mp3dir = [/var/mp3/]
 @ Notif_mp3 = 0
 
-# Marquemos esta variable a 1 si queremos que cuando una persona nos
-# envíe un mensaje se nos abra automáticamente una nueva ventana de
-# privado exclusiva para ese nick
+# Marquem aquesta variable a 1 si volem que quan una persona ens
+# envïi un missatge sen's obri automàticament una nova finestra de
+# privat exclusiva per aquest nick
 @ WinQuery = 0
 
-# Si queremos colores en nuestro script decomentamos esta línea,
-# o invocamos "/color si" una vez arrancado el script. Tenemos la
-# posibilidad además de optar entre los temas Default o bass (BaSS
+# Si volem colors al nostre script descomentem aquesta linia,
+# o invoquem "/color si" una vegada arrencat l'script. Tenim la
+# posibilitat a més a més d'optar entre els temes Default o bass (BaSS
 # Design).
 #@ theme = [Default]
 #Color si
 
-# Descomentemos esta línea si queremos activar el Time Stamp en todos
-# los mensajes en canales y privados
+# Descomentem aquesta linia si volem activar el Time Stamp a tots
+# els missatges a canals i privats
 #@ Hora = [$Magenta\[$Amarillo\$Z$Magenta\] ]
 
-# Definimos nuestra tecla favorita para su uso con Hot-keys
+# Definim la nostra tecla preferida pel seu us amb Hot-keys
 #
 @ hotkey = [alt]
 
-# Definimos las variables de entorno para una mayor comodidad de uso de 
-# nuestro cliente de IRC.
+# Definim les variables d'entorn per a una major comoditat d'us del 
+# nostre client d'IRC.
 #
-# Marca Sonido a 1 si quieres iniciar BitchX con sonido
-# Marca ircha a 1 si quieres iniciar BitchX con ircha en lugar del cuac
-# Marca Autojoin a 1 si quieres definir uno al iniciar
-# Marca Ctcp_mp3 a 1 si qiueres ignorar los Ctcp's SOUNDS
-# Añade tu nick de away y normal además de un mensaje de salida 
-# por defecto personalizado (no elimines los [] )
+# Marca Sonido a 1 si vols iniciar BitchX amb so
+# Marca ircha a 1 si vols iniciar BitchX amb ircha en lloc del cuac
+# Marca Autojoin a 1 si vols definir un a l'iniciar
+# Marca Ctcp_mp3 a 1 si vols ignorar els Ctcp's SOUNDS
+# Afegeix el teu nick d'away i normal a més a més un missatge de sortida 
+# per defecte personalitzat (no eliminis els [] )
 #
 @ Sonido = 1
 @ ircha = 1
@@ -58,9 +58,9 @@
 set cloak 1
 set usermode +i-ws
 set status_window ^Activa^
-set status_query 8[15Privado: 7%Q8]
+set status_query 8[15Privat: 7%Q8]
 set status_hold --más--
-set status_notify 8[Charlan: %F]
+set status_notify 8[Parlen: %F]
 set flood_protection off
 set deop_on_Deopflood 5
 set deop_on_kickflood 5
@@ -74,8 +74,8 @@ set mircs on
 set beep on
 set STATUS_FORMAT 8,2[3 %T 8][15%*%@%=10%N7%#%A8]%M [10%C%+3%W8] 6%Q %H%B%F 8%S
 set STATUS_FORMAT1 8,2[3 %T 8][15%*%@%=10%N7%#%A8]%M [10%C%+3%W8] 6%Q %H%B%F 8%S
-set STATUS_FORMAT2 8,14Topic 3: 14%-
-set STATUS_FORMAT3 8,14Topic 3: 14%-
+set STATUS_FORMAT2 8,14Tòpic 3: 14%-
+set STATUS_FORMAT3 8,14Tòpic 3: 14%-
 set STATUS_UMODE 8(10+15%#8)
 set STATUS_MODE 8(10+15%+8)
 set STATUS_USERS 8[7O/15%! 7N/15%! 7I/15%! 7V/15%! 7F/15%!8]

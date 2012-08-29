@@ -17,9 +17,9 @@
 #
 ################################################################################
 #
-# Sección de ignores.
+# Secció d'ignores.
 #
-# Bots del Hispano.
+# Bots de l'Hispano.
 IGNORE global!-@-   ALL
 IGNORE shadow!^@^   ALL
 IGNORE noticias!*@* ALL
@@ -31,14 +31,14 @@ IGNORE exito!*@*    ALL
 IGNORE atencion!*@* ALL
 IGNORE noticia!*@*  ALL
 #
-# Nicks ignorados.
+# Nicks ignorats.
 # IGNORE nick1!*@*   ALL
 # IGNORE nick2!*@*   ALL
 
 # Notify particular.
 #
-# Añadir cuantos nicks queramos pero no eliminar NickServ si queremos 
-#   seguir contando con la funcionalidad de autoidentificación para este bot
+# Afegir els nicks que vulguem però no eliminar NickServ si volem 
+#   seguir tenint la funcionalitat d'autoidentificació per a aquest bot
 #
 notify NickServ
  

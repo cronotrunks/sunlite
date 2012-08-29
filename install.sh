@@ -31,66 +31,66 @@ case $1 in
     exit 1;;
   *)
     if test ! -f /usr/bin/bplay 
-      then echo "Deberías instalar bplay para poder disfrutar de las opciones de sonido" 
+      then echo "Hauries d'instalar bplay per poder disfrutar de les opcions de so" 
     fi;
     if test ! -f /usr/bin/mpg123 
-      then echo "Deberías instalar mpg123 para poder disfrutar del uso de un reproductor de mp3 al mismo tiempo que usas el script" 
+      then echo "Hauries d'instalar mpg123 per poder disfrutar de l'us d'un reproductor d'mp3 al mateix temps que uses l'script" 
     fi;
     if test ! -f /usr/bin/gawk 
-      then echo "Deberías instalar gawk para poder disfrutar del uso de las funciones externas que he programado en gawk (por ejemplo la he usado para listar el contenido de los mp3's)" 
+      then echo "Hauries d'instalar gawk per poder disfrutar de l'us de les funcions externes que he programat en gawk (per exemple l'he usat per llistar el contingut dels mp3's)" 
     fi;
     if test ! -f /usr/bin/esms 
-      then echo "Deberías instalar esms para poder disfrutar de la funcionalidad de envío de sms desde BitchX" 
+      then echo "Hauries d'instalar esms per poder disfrutar de la funcionalitat d'enviament de sms desde BitchX" 
     fi;
     if test ! -f /usr/local/bin/lee 
-      then echo "Deberías instalar ircha para poder disfrutar de las funciones de speaking del script"
+      then echo "Hauries d'instalar ircha per poder disfrutar de les funcions de speaking de l'script"
     fi;
     if test ! -f /usr/bin/cdcd 
-      then echo "Deberías instalar cdcd para poder disfrutar de las funciones de reproducción de cd's del script"
+      then echo "Hauries d'instalar cdcd per poder disfrutar de les funcions de reproducció de cd's de l'script"
     fi;
     if test ! -f /usr/games/fortune
-      then echo "Deberías instalar fortune para poder disfrutar de los ctcp's fortunes del script ;)"
+      then echo "Hauries d'instalar fortune per poder disfrutar dels ctcp's fortunes de l'script ;)"
     fi;
     if test ! -f /usr/bin/i2e.sh
-      then echo "Deberías instalar i2e para poder disfrutar de la función de traducción del script"
+      then echo "Hauries d'instalar i2e per poder disfrutar de la funció de traducció de l'script"
     fi;
     if test ! -f /usr/bin/figlet
-      then echo "Deberías instalar figlet para disfrutar de una de las funciones ascii art del script"
+      then echo "Hauries d'instalar figlet per disfrutar d'una de les funcions ascii art de l'script"
     fi;
     if test ! -f /usr/bin/cowsay
-      then echo "Deberías instalar cowsay para disfrutar de una de las funciones ascii art del script"
+      then echo "Hauries d'instalar cowsay per disfrutar d'una de les funcions ascii art de l'script"
     fi;
     if test ! -d ~/.BitchX; then mkdir ~/.BitchX; fi;
     if test ! -d $DIR; then mkdir $DIR; fi;
-    echo -e "\n\nRecuerda leer el README antes de comenzar a usar el script\n";
+    echo -e "\n\nRecorda llegir el README abans de començar a usar l'script\n";
     if test -f ~/.bitchxrc; then cp ~/.bitchxrc ~/.bitchxrc.bak; fi;
     echo "load ~/.BitchX/sunlite/sunlite.bx" > ~/.bitchxrc;
-    echo "Tu antiguo ~/.bitchxrc ha sido salvado como ~/.bitchxrc.bak";
-    echo "Si en algún momento quieres desinstalar el script invoca: \"install.sh uninstall\"";
+    echo "El teu antic ~/.bitchxrc ha estat salvat com ~/.bitchxrc.bak";
+    echo "Si en algún moment vols desinstalar l'script invoca: \"install.sh uninstall\"";
     cp -r . $DIR;
     if test ! -f $DIR/config; then cp config.example $DIR/config; fi;
     rm $DIR/install.sh;
     echo;
     if [ -z "$IRCSERVER" ]
-    then echo "Añade los servidores que quieres tener por defecto para el script";
+    then echo "Afegeix els servidors que vulguis tindre per defecte per l'script";
       read IRCSERVER;
       echo -e "export IRCSERVER=\"$IRCSERVER\"" >> ~/.bashrc;
       export IRCSERVER="$IRCSERVER";
     fi;
     if [ -z "$IRCNICK" ]
-    then echo "Tu nick por defectopara el script ¿será?";
+    then echo "El teu nick per defecte per l'script ¿serà?";
       read IRCNICK;
       echo -e "export IRCNICK=\"$IRCNICK\"" >> ~/.bashrc;
       export IRCNICK="$IRCNICK";
     fi;
     if [ -z "$IRCNAME" ]
-    then echo "¿Y tu Irc Name por defecto?";
+    then echo "¿I el teu Irc Name per defecte?";
       read IRCNAME;
       echo -e "export IRCNAME=\"$IRCNAME\"" >> ~/.bashrc;
       export IRCNAME="$IRCNAME";
     fi;
     if [ -z "$IRCUSER" ]
-    then echo "Y por último tu ident:";
+    then echo "I per últim el teu ident:";
       read IRCUSER;
       echo -e "export IRCUSER=\"$IRCUSER\"" >> ~/.bashrc;
       export IRCUSER="$IRCUSER";
@@ -100,7 +100,7 @@ case $1 in
       export IRCUMODE='-ws';
     fi;
     echo;
-    echo "Para crear el archivo de configuración ejecute el script configure";
+    echo "Per crear l'arxiu de configuració executi l'script configure";
     exit 1;;
 esac
 
