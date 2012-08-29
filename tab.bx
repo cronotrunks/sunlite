@@ -18,10 +18,10 @@
 ################################################################################
 #
 #-------------------------------------------------------------------------------
-# Módulo de Nick Completion
-# Basado en un módulo de axur(bx) by roque
-# Modificado para Luna Script por MarbleMaN
-# Adaptado para Sunlite por {Trunks}
+# Nick kompletionaren modulua  
+# axur(bx) by roqueren modulu batetan oinarrituta
+# MarbleMaNek luna scriptarentzeko berraldatuta 
+# Trunksek Sunlite-rentzako egokitua
 #-------------------------------------------------------------------------------
 
 @ c.nickcompm = [%n %n? %n* ?%n ?%n? ?%n* *%n *%n*]
@@ -31,7 +31,7 @@
 alias gettab {
   @ :aa = L
 
-# Si la pila de nicks para uso con tab tiene algún elemento rotamos
+# tab teklarekin erabiltzeko Nick multzoak elementu bat badu biratu eginen dugu 
 #
   if (!aa || [$word(0 $aa) $word(1 $aa)] == ltab) {
     parsekey erase_line
@@ -44,8 +44,8 @@ alias gettab {
     } elsif (aa == []) {
       xtype -l /msg${[ ]}}
 
-# Al pulsar 'abreviatura:' + tab se producira también el relleno de 
-# caracteres para completar el nick 
+#Nick-aren edozein hizki +tab eginik nick osoa idatziko da  
+#  
 #
   } elsif (aa =~ [%:*]) {
     @ :bb = _compnick($before(: $aa))
@@ -57,7 +57,7 @@ alias gettab {
     parsekey erase_line
     xtype -l $word(0 $aa) send $word(2 $aa) $_fcomp($word(3 $aa))
 
-# Mostrar ayuda al pulsar '/' + tab
+# '/' + tab-eri eman ondoren laguntza ateratzen da.
   } elsif (aa =~ [/%]) {
     if (aa == [/]) {
       window goto 1
@@ -66,7 +66,7 @@ alias gettab {
     } else {
       parsekey command_completion}
 
-# Se completa el nick a partir de cualquier cadena contenida en él tras pulsar tab
+# edozein modutako nick-a osotzen dugu tab teklari eman ondoren.
   } else { 
     @ :bb = word(${#aa - 1} $aa)
     @ :cc = beforew($bb $aa)
@@ -237,3 +237,18 @@ alias nlinefile {
     xecho $cparse("%K[ %w$bb %K]")
     }
 }
+
+
+# Funtzio ez erabiliak 
+alias _nc {
+  if (strlen($0)) {
+    @ :aa = _compnick($0)
+    @ function_return = aa ? word(1 $aa) : [$0]}}
+alias _nickcomp {
+  if (T == C) {
+    @ :aa = onchannel($C)
+    fe ($sar(g/%n/$0/$c.nickcompm)) bb {
+      if (!function_return && (function_return = pattern($bb $aa))) {
+        @ function_return = word(0 $function_return)}}}}
+
+

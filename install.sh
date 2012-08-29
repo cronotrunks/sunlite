@@ -31,66 +31,66 @@ case $1 in
     exit 1;;
   *)
     if test ! -f /usr/bin/bplay 
-      then echo "Deberías instalar bplay para poder disfrutar de las opciones de sonido" 
+      then echo "Soiñuarentzako bplay istalatu beharko zenuke" 
     fi;
     if test ! -f /usr/bin/mpg123 
-      then echo "Deberías instalar mpg123 para poder disfrutar del uso de un reproductor de mp3 al mismo tiempo que usas el script" 
+      then echo "scripta erabiltzen duzun bitartean mp3 reproduktore bat erabiltzeko mpg321 istalatu beharko zenuke" 
     fi;
     if test ! -f /usr/bin/gawk 
-      then echo "Deberías instalar gawk para poder disfrutar del uso de las funciones externas que he programado en gawk (por ejemplo la he usado para listar el contenido de los mp3's)" 
+      then echo "gawk istalatu beharko zenuke kanpoko funtzioak erabil ditzazun(mp3 edukiera listatzeko adibidez)." 
     fi;
     if test ! -f /usr/bin/esms 
-      then echo "Deberías instalar esms para poder disfrutar de la funcionalidad de envío de sms desde BitchX" 
+      then echo "BitchXetik sms bidali ditzazun esms istalatu beharko zenuke" 
     fi;
     if test ! -f /usr/local/bin/lee 
-      then echo "Deberías instalar ircha para poder disfrutar de las funciones de speaking del script"
+      then echo "ircha istalatu beharko zenuke skriptak hitzegin diezazun."
     fi;
     if test ! -f /usr/bin/cdcd 
-      then echo "Deberías instalar cdcd para poder disfrutar de las funciones de reproducción de cd's del script"
+      then echo "skriptaren cd erreproduzio funtzioak erabiltzeko cdcd istalatu beharko zenuke."
     fi;
     if test ! -f /usr/games/fortune
-      then echo "Deberías instalar fortune para poder disfrutar de los ctcp's fortunes del script ;)"
+      then echo "skriptaren ctcp fortuneak erabiltzeko fortune istalatu beharko zenuke."
     fi;
     if test ! -f /usr/bin/i2e.sh
-      then echo "Deberías instalar i2e para poder disfrutar de la función de traducción del script"
+          then echo "i2e istlatu beharko zenuke skriptaren itzulpen funtzioa erabiltzeko."
     fi;
     if test ! -f /usr/bin/figlet
-      then echo "Deberías instalar figlet para disfrutar de una de las funciones ascii art del script"
+      then echo "ascii artea erabiltzeko figleta istalatu beharko zenuke."
     fi;
     if test ! -f /usr/bin/cowsay
-      then echo "Deberías instalar cowsay para disfrutar de una de las funciones ascii art del script"
+      then echo "ascii artearen funtzio bat erabiltzeko cowsay istalatu beharko zenuke."
     fi;
     if test ! -d ~/.BitchX; then mkdir ~/.BitchX; fi;
     if test ! -d $DIR; then mkdir $DIR; fi;
-    echo -e "\n\nRecuerda leer el README antes de comenzar a usar el script\n";
+    echo -e "\n\nScripta erabili baino lehen IRAKURNAZAZU irakurri beharko duzu\n";
     if test -f ~/.bitchxrc; then cp ~/.bitchxrc ~/.bitchxrc.bak; fi;
     echo "load ~/.BitchX/sunlite/sunlite.bx" > ~/.bitchxrc;
-    echo "Tu antiguo ~/.bitchxrc ha sido salvado como ~/.bitchxrc.bak";
-    echo "Si en algún momento quieres desinstalar el script invoca: \"install.sh uninstall\"";
+    echo "Zure ~/.bitchxrc zaharra ~/.bitchxrc.bak bezala gorde da";
+    echo "scripta kendu nahi baduzu egin ezazu: \"install.sh uninstall\"";
     cp -r . $DIR;
     if test ! -f $DIR/config; then cp config.example $DIR/config; fi;
     rm $DIR/install.sh;
     echo;
     if [ -z "$IRCSERVER" ]
-    then echo "Añade los servidores que quieres tener por defecto para el script";
+    then echo "skriptean nahi dituzun serbidoreak gehitzen ditu";
       read IRCSERVER;
       echo -e "export IRCSERVER=\"$IRCSERVER\"" >> ~/.bashrc;
       export IRCSERVER="$IRCSERVER";
     fi;
     if [ -z "$IRCNICK" ]
-    then echo "Tu nick por defectopara el script ¿será?";
+    then echo "zure defektuzko nick-a scriptarentzako?";
       read IRCNICK;
       echo -e "export IRCNICK=\"$IRCNICK\"" >> ~/.bashrc;
       export IRCNICK="$IRCNICK";
     fi;
     if [ -z "$IRCNAME" ]
-    then echo "¿Y tu Irc Name por defecto?";
+    then echo "¿eta zure Irc Name-a ?";
       read IRCNAME;
       echo -e "export IRCNAME=\"$IRCNAME\"" >> ~/.bashrc;
       export IRCNAME="$IRCNAME";
     fi;
     if [ -z "$IRCUSER" ]
-    then echo "Y por último tu ident:";
+    then echo "azkenik, zure ident:";
       read IRCUSER;
       echo -e "export IRCUSER=\"$IRCUSER\"" >> ~/.bashrc;
       export IRCUSER="$IRCUSER";
@@ -100,7 +100,7 @@ case $1 in
       export IRCUMODE='-ws';
     fi;
     echo;
-    echo "Para crear el archivo de configuración ejecute el script configure";
+    echo "configurazio artxiboa sortzeko configure skripta exekutatu";
     exit 1;;
 esac
 

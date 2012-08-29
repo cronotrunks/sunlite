@@ -1,204 +1,159 @@
  Sunlite script for BitchX By {Trunks} 
-   -Con colaboración de L00PB4cK-
+   -L00PB4cK-en laguntzaz--
 
-		( Gracias a |Poldark| por ofrecerse como testeador del
-			script en su fase de desarrollo )
+		( Eskerrak |Poldark|-i testeatzaile bezala aritzeagatik 
+			eskripta oraindik bukatu gabe zegoenean )
 
-   -Agradecimiento especial a los usuarios del canal #barrapunto de opn
-  que se ofrecieron a probar el script :)
-
-   -Mención más especial si cabe merecen Mayoral y BaSS que se han
-  ofrecido también como betatesters del script en desarrollo y están aportando
-  una cantidad de ideas impresionante para el script ;)
-
-   -Siento no haberme acordado antes O:-) También tengo que agradecer a core
-  y kanuso el haber realizado el primer script a partir del cual me picó la 
-  curiosidad y comencé a desarrollar este nuevo Sunlite, que ha adoptado algunas
-  de las funciones que ellos ya tenían implementadas. 
+   - Eskerrak ere opn-eko #barrapunto kanaleekoei skripta frogatu zutelako
   
+   - Aipamenik beroenak Mayoral-i betatester bezala eskaini delako eta 
+   skriptarentzako idei ugari ematen ari delako ;)
+
 ----------------------------------------------------------------------------
 
- Este script se distribuye bajo licencia GPL ( La descripción de todos 
-   los términos de esta licencia está completamente explicada en el 
-   fichero COPYING ). No está traducido al español, puesto que uno de
-   de los puntos de esta licencia es que todo aquel que distribuya un
-   un producto bajo ella debe incluirla sin ningún tipo de variación
-   en su estructura y contenido.
+Skript hau GPL lizentziaz banatzen da ( lizentzi honen terminu guztiak COPYING
+  fitxeroan datozkizue ). Ez dago euskarara itzulita lizentzi honen putu batetan
+  edonork lizentzi honekin produktu bat banatu ez gero ezingo du ezer aldatu 
+  lizentzi honetan, ez estruktura ez edukinik.
 
- Bueno, pasamos a explicar las instrucciones importantes k tiene este
-   script:
+Skript honek dituen istrukzio garrantzizkoenak azaltzera goazkizue: 
+  
 
 
- Limpia ( Alt + l ) - Hace un clear a la ventana y presenta topic del
-   canal más un names al propio canal al instante :)
+ Limpia ( Alt + l ) - Lehio garbiketa bat egiten digu eta topika eta kanalean 
+   dagoen jende guztia azaltzen dizkigu .
 
- WNC ( Tb Join o j  ) - Crea una nueva ventana con un nuevo canal (loguea 
-   automáticamente).
+ WNC ( Tb Join o j  ) - Kanale berri batekin lehio berri bat sortzen digu ( 
+   automatikoki lojeatzen du)
 
- WNS ( Tb Joins o server ) - Crea una nueva ventana para un nuevo servidor a un canal
-   especificado (también loguea automáticamente).
+ WNS ( Tb Joins o server ) - Lehio berri bat egiten du serbidore berri 
+   batetan kanale batetara sartzen bagera ( honek era automatikoki lojeatzen du).
 
- Tban ( Alt + b ) - Banea y patea del canal al nick especificado mostrando
-   como mensaje del salida uno opcional por defecto u otro que se pase
-   como argumento. Consta de una característica adicional muy de moda
-   en los últimos scripts como es el conteo de bans.
+ Tban ( Alt + b ) - Baneatu eta kikeatu egiten du eta honen mezua defektuzkoa 
+   izan daiteke edo eta aukerako bat izan daiteke.Honek era egindako ban guztiak
+   kontatzen dizkigu.
 
- Fban - Limpia todos los bans que tengamos en el canal actual si 
-   existen y tenemos nivel.
+ Fban - Kanalean lebela izan ez gero hemen dauden ban guztiak garbitzen dizkigu. 
+   
+ Autojoin ( Alt + a ) - Guk definituriko kanale guztietan sartu eta kanale 
+   bakoitzeko lehio berri bat irekitzen du, honek era lojeatu egiten du. 
+   
 
- Autojoin ( Alt + a ) - Entra en los canales que tengamos definidos dentro de
-   nuestra lista abriendo una ventana para cada uno de ellos
-   automáticamente y logueando :)
+ Opme ( Alt + o ) - Gauden kanalean arroba ematen digu.
 
- Opme ( Alt + o ) - Nos da arroba en el canal actual.
+ Deopme ( Alt + d ) - Gauden kanalean arroba kentzen digu.
 
- Deopme ( Alt + d ) - Nos quita la arroba en el canal actual.
+ Voiceme ( Alt + v ) - Gauden kanalean +v ematen digu.
 
- Voiceme ( Alt + v ) - Nos da voz en el canal actual.
+ Devoiceme - Gauden kanalean -v egiten digu, hau da kendu egingo digu.
 
- Devoiceme - Nos quita voz en el canal actual.
+ Rejoin ( Alt + j ) - Gauden kanalean sartu eta atera egiten da.
 
- Rejoin ( Alt + j ) - Entra y sale del canal actual.
+ Moderre ( Alt + r ) - join flood erasoaz babesten du gure kanala.
 
- Moderre ( Alt + r ) - Protege nuestro canal contra ataques de joins flood.
+ InfoN - informazio eskaera egiten dio Nick bot-ari nick batez.
 
- InfoN - Petición de información sobre un nick al bot NiCK.
+ InfoCH - Informazio eskaera egiten dio CHan bot-ari kanale batez.
 
- InfoCH - Petición de información sobre un canal al bot CHaN.
+ MemoS - MeMo bot-aren bidez nick bati mezu bat bidaltzen dio.
 
- MemoS - Enviar un mensaje a un nick a través del bot MeMo.
+ MemoD - Datuzko basetik mezua xahutzen du.
 
- MemoD - Borra el mensaje indicado de la base de datos del bot MeMo.
+ MemoR - bidali diguet mezua irakurri egiten du.
 
- MemoR - Leer el mensaje indicado de la base de datos del bot MeMo.
+ MemoL - Bidali diguten azken mezua irakurten du.
 
- MemoL - Leer el último mensaje de la base de datos del bot MeMo.
+ Addlevel - Norbaiti kanale batetan lebela emateko balio du.
 
- Addlevel - Añade un usuario a la base de datos de CHaN sobre el canal actual.
+ Dellevel - Norbaiti kanale batetatik lebela kentzeko balio du.
 
- Dellevel - Elimina un usuario de la base de datos de CHaN sobre el canal 
-   actual.
+ Founder - Kanalearen password-a ipini ez gero kanalaren fundatzaile 
+   bezala identifikatzen zaitu.
 
- Founder - Te identifica como fundador del canal actual si pasas como argumento
-   la clave del canal.
+ NickReg - Gure nick-a errejistratzen dugu ( hispanoko bot-a esan ez gero 
+   gure emaila izango da, opn edo dalnet-ekoa izan ez gero guk pasatako 
+   password-a izango da) .
 
- NickReg - Registramos nuestro nick la cuenta de correo que pasemos como 
-   argumento (caso bots de l hispano) o bajo la clave que indiquemos (caso bots
-   de opn o dalnet).
+ Part (Tb P) - Gaudezen kanaletik aterako gara eta horrela erabiltzen ari 
+   giñen lehioa ere desagertuko da.
 
- Part (Tb P) - Salimos del canal actual eliminando la ventana que estemos 
-   usando.
+ Query (Tb Q) - Lehio berri batetan pribatu bat irekitzen dugu edo pribatua 
+   kentzen dugu eta honekin batera erabilitako lehioa.  pribatuzko lehioa itxitzeko 
+   Hot-jey-a -> Alt + z
 
- Query (Tb Q) - Abrimos un privado en una nueva ventana con una persona en 
-   concreto o cerramos el privado actual eliminado la ventana que estemos 
-   usando. Hot-key para cerrar ventana de privado -> Alt + z
+ QueryS - Beste serbidore batetan aurkitzen den pertsona batekin pribatu bat egitean
+   lehio berri bat irekitzen da.
 
- QueryS - Abrimos un privado en una nueva ventana con una persona en concreto 
-   que se encuentra en otro servidor (no el principal).
+ Nick - Nick-a aldatzen dugu eta automatikoki identifikatu egiten gaitu nick 
+   haugure nick datu basean egon ez gero. 
 
- Nick - Cambiamos de nick y automáticamente nos identificamos si el
-   nick lo tenemos incluído en nuestra base de datos de nicks.
+ 
+ Away - Away bezala jartzen gara eta kanalean norbaitek gu deitu ez gero away 
+   notifikazioa aktibatzen dugu ( notizen bitartez). 
+   
 
- Away - Nos marcamos como away y activamos la notificación de away
-   para quien nos nombre en un canal ( mediante notices ).
+ Conferencia ( Alt + c ) - Gure skriptaren modu erabatekoa ;). Jendez betetako 
+   kanale batetan sartu etajendea joan etorrian badabil aplikatu dezakegu, horrela  
+   garbiago irakur dezakegu kanalean esaten dena. Oso aproposa kanalean konferentziak 
+   badaude.
 
- Conferencia ( Alt + c ) - Modo exclusivo de nuestro script :) Podemos
-   aplicarlo cuando entremos en un canal lleno de personas donde está
-   constantemente entrando y saliendo gente y no podemos leer con claridad
-   lo que se expone en el canal. Muy útil, y su propio nombre lo indica,
-   cuando hay conferencias en canales :)
+ Calculadora - Edozein motatko kalkuluak egiteko balio digu.
+   
+ Snapshot (Alt + s ) - Kanalean gertatzen ari den edozer gauza argazkiratzeko balio 
+   du.
 
- Calculadora - Utilidad que sirve como bien su nombre indica para realizar
-   operaciones de todo tipo ;)
+ Sms - BitchX-etik sms bidaltzeko balio digu horretarako esms programa istalaturik 
+   izan beharko duzu ( debianen -> apt-get install esms).
 
- Snapshot (Alt + s ) - Curiosa utilidad que nos servirá para fotografiar 
-   algunos de los momentos más divertidos en la red.
+ AwayOn - Away bezala jarri eta deopeatu egiten gara.
 
- Sms - Nueva utilidad que nos servirá para enviar sms desde la línea de
-   comandos de BitchX. Necesitarás tener instalado en tu sistema el
-   programa esms (en debian sid -> apt-get install esms)
+ AwayOff - Away-tik itzuli eta berriro opeatu egiten gara.
 
- AwayOn - Nos marcamos como away y nos deopeamos de nuestro canal actual
+ Shell - /shell <password> istrukzioarekin Bx-etaik atera gaitezke eta 
+   bestelakooperazioak egin. Buktau eta gero Bx aurreneko planura ekarriko dugu 
+   scr-bx -p egin eta gero . Hau eginda passworda eskatuko digu.
 
- AwayOff - Nos quitamos la marca de away y nos volvemos a opear en el canal
+ Cowsay y figlet - Hauek ascii artea agiteko istrukzioak dira proba itzazu 
 
- Shell - Con la instrucción /shell <password> podremos salir de BX a la
-   terminal desde la que iniciamos el cliente y hacer las operaciones que
-   necesitemos. Una vez terminado traeremos a primer plano a BX con la
-   instrucción scr-bx -p. Una vez hecho esto se nos pedirá la password que
-   anteriormente definimos.
+ Mp3 - mpg123 bigarren planuan erabiltezko balioko digu. Listak soportazen 
+   ditu presentatu eta guk definitutako direktoriotik nahi digun kantua jotzeko 
+   aginduko diogu ( /mp3 dir path definitu beharko dugu ) adibidez  /mp3 play */*- 
+   lagun-tzarentzako /mp3 help.
 
- Cowsay y figlet - Estas son nuestras instrucciones para el Ascii Art. 
-   Pruébalas ;)
+ Cd - Honek ere musika entzuteko balioko digu Cd formatuan . Zedea lektorean jari 
+   eta /cd list egin eta gero cdbb-tik dauzagun kantuen lista bat agertuko da  
+   laguntzarentzako  /cd help .
+   
+ Color - Gure skriptaren kolorea kendu edo ipiniko digu.
 
- Mp3 - Una instrucción que nos servirá para manejar la aplicación mpg123
-   en segundo plano desde BX ;) Soporta listas, las presenta, y podemos
-   pedir la reproducción de todos los archivos de nuestro directorio
-   (definido mediante /mp3 dir path) con comodines -ej. /mp3 play */*-
-   /mp3 help para más ayuda.
+ Sonido - Gure skriptaren soinua kendu edo ipiniko digu.
 
- Cd - Al igual que la anterior, nos servirá para oír música, pero esta
-   en formato Cd :) Introducimos el cd en el lector, ejecutamos el comando
-   /cd list y desde cddb obtendremos la lista con los titulos para reproducir
-   /cd help para más ayuda.
+ TermX - Konsolan egon ez gero eta url bat bidali nahi izen ez gero Gure 
+   X-etakonabegadorean ikusteko ez dugu papel batetan apuntatu beharko ezta ere 
+   komandu zail bat egin beharko.Istrukzio honekin gun nahi dugun textua X-etan 
+   deugun aurreneko terminal irekira bidaliko dugu.
+   
+ Traducir - Hemendik aurrera ingelez kanaleetan txateatzea errazago izango da.
+   Alias honekin ezagutzen ez duzun hitz hori itzuliko dizu.
 
- Color - Activa o desactiva la función de color de nuestro script.
-
- Sonido - Activa o desactiva la función de sonido de nuestro script.
-
- TermX - Si estamos en consola y queremos enviar una url, por ejemplo, para
-   visitarla con el navegador en X, ya no necesitamos apuntarla en un papel
-   ni elaborar un complicado comando de direccionanmiento. Con esta instrucción
-   enviaremos el texto que queramos  a la primera terminal abierta en X.
-
- Traducir - A partir de ahora chatear en canales de habla inglesa será más
-   fácil. Sólo necesitas invocar a este salias para saber el significado de
-   esa palabra que no recuerdas o la traducción de aquella otra al inglés que
-   nunca supiste.
-
- Reseñar que con la combinación de teclas ( Alt + q ) podemos cambiar 
-   entre la ventana de privados y la ventana principal y además con la
-   combinación ( Alt + w ) avanzamos una ventana y con ( Alt + e )
-   retrocedemos otra. Con ( Alt + z ) podemos cerrar automáticamente
-   una ventana.
+ ( Alt + q ) egitebn baduzu pribatu lehiotik lehio jeneralera igarotzeko aukera 
+   izango duzu ( Alt + w ) lehio bat aurreruntz egiten duzu eta ( Alt + e ) lehio
+   bat atzeruntz egingo duzu. ( Alt + z ) egiten baduzu lehio bat itxiko duzu.
 
 -----------------------------------------------------------------------------
-
- Aparte podemos comentar que este script posee protecciones anti-flood,
-   anti-ctcp's, anti-deops, anti-bans ( para canales en los que tengamos
-   nivel suficiente como para quitarnos los bans ), ...
-
- También contiene tratamientos de formato del texto enviado y recibido 
-   sin ningún tipo de modificación en lo que a datos se refiere, única y 
-   exclusivamente nos limitamos a modificaciones puramente estéticas.
-
- Al conectar al IRC nos identifica automáticamente.
-
- Tiene activo un servicio de eurocalculadora por medio de ctcp's; se
-   activa con el comando "/ctcp nuestro_nick euro cantidad" para pasar
-   euros a pesetas y con el comando "/ctcp nuestro_nick peseta cantidad"
-   para convertir pesetas a euros.
-
- Añadido servicio de fortune mediante ctcp. Se activa con el comando
-   /ctcp nuestro_nick fortune #canal.
-
- Todos los servicios ctcp's tienen protección anti-flood
-
- Adherida una nueva funcionalidad de eventos de sonido (se habilita
-   mediante una variable en el archivo config). Los archivos .wav son en un
-   principio tomados de scripts clasicos de windows aunque ya desarrollaremos
-   nuestros propios efectos en breve. Necesitamos el paquete bplay (usuarios
-   de debian: apt-get install bplay) para oír los sonidos :)
-
- También haremos notar que disponemos de una configuración de colores con la que 
-   podremos obtener un script más estético. Por defecto incluímos el script 
-   sin colores debido a que para muchos usuarios esta característica resulta 
-   un tanto molesta.
-
- Añadida una nueva opción para activar/desactivar Autojoin y TimeStamp, además
-   de una opción para activar la apertura automática de privados en segundo 
-   plano de forma que se crea automáticamente una ventana nueva para cada
-   que nos entra.
+Skript honek anti-flood protezioan ditu:  anti-ctcp, anti-deop, anti-banak ere
+  ( Banak kentzeko lebela izan ez gero noski )
+  
+Formatu eta textuzko tratamentuak ere baditu datuak ordea ez dute inolako 
+  modifikaziorik . Modifikazioak estetikoak dira soilik.
+  
+Hispanora sartu eta gero automatikoki identifikatzen gaitu ( nick:pass bezala 
+  dauden lerroak zuen nick eta pasarekin ipini opzio hau erabili nahi baduzue 
+  config artxiboan).
+  
+CTCP bitartez eurokalkulagailu serbitzu bat du erantsirik komandu hau /ctcp 
+  gure_nick euro kantitatea eginda ateratzen da eurotik pesetetara pasatzeko eta 
+  '/ctcp gure_nick peseta kantitatea' pesetatik eurora pasatzeko.
 
 -----------------------------------------------------------------------------
 

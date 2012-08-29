@@ -17,19 +17,17 @@
 #
 ################################################################################
 #
-# Por fin las utilidades reales del script (aliases para una mayor 
-# comodidad de uso y nuevas funcionalidades para BitchX).
+#Hemen ditugu ezkenik skriptaren funtzioak ( aliasak, dena askoz errazagoa izan 
+#dadin eta BitchX-arentzako funtzionalidade berriak eransteko).
+
+#Aurrenekoz ban skriptba daukagu, honek autoopeatu egiten gaitu ez bagara 
+#operadore kanalen oraindik, skript honek potrozorria deopeatu egiten du baneatu
+# baino lehen,nick eta maskara+ip  baneatzen ditu eta mezuarekin kikeatzen du, 
+#geroxeago berriro deopeatu egiten gaitu lehenagotik ez bagenuen operik. Script
+#hau core & eta kanuedak diseinatu dute.Hemen ematen dizuegu honen kodea X).
 #
-# En primer lugar un ban script que auto-opea si no somos operadores del 
-# canal antes d banear, deopea al usuario en cuestion antes de banearlo, 
-# banea a nick y mascara + ip, y kickea con mensaje. Posteriormente nos 
-# deopea de nuevo si no teniamos op anteriormente :) Este ban script ha 
-# sido diseñado a partir de una idea original de core & kanueda de la que
-# damos el código a continuación del nuestro comentado :)
-#
-# Aparte tenemos un "menú" de baneo para nuestro ban script bindeado a 
-# la combinación de teclas Alt-b muy pijito :) ¡ No os quejaréis ! xD
-#
+#Honetaz aparte gure skript bindeatuarentzako ban menu bat dugu.
+#Honen tekla konbinazioa Alt-b da :) ¡ ez zarete kexatuko! XDD
 alias tban {
   @ pringao = [$0]
   @ mensaje = [$1-]
@@ -68,9 +66,9 @@ if ( [$hotkey] == [ctrl] ) {
 } elsif ( [$hotkey] == [alt] ) {
   bind META1-b parse_command tban_input }
 
-# Este es el ban script original de core & kanueda.
+# Hau da core & kanuedaren skript orijinala.
 #
-## Función intermedia, *NO Invocar*
+## Bitarteko funtzioa *ez ikutu*
 ##
 #alias alaputakalle {
 #  mode $C +bbb $0*!*@* *!$1@* *!*@$2
@@ -78,10 +76,10 @@ if ( [$hotkey] == [ctrl] ) {
 #  ignore $0 all
 #}
 #
-## Utilidad para OPs - /arpeo nick razón
-## Nos da OP (si no lo tenemos ya), kickea, banea (nick + ident + ip)
-## e ignora a cualquier brasas que se esté raiando.. xD
-## Despues nos vuelve a quitar el OP.. (umm.. manias de core.. xD)
+## Operrentzako etekina - /arpeo nick arrazoia
+## OP ematen digu, kikeatu, baneatu (nick+ ident + ip)
+## eta potroak ikutzen ari zaizkizun edozein ezikusi egiten du XDDD.
+## Geroxeago OP kentzen digu ( coresitoren keriak XDDD )
 ##
 #alias arpeo {
 # @ kapullo_nick = [$0]
@@ -104,8 +102,8 @@ if ( [$hotkey] == [ctrl] ) {
 # }
 #}
 
-# Una forma abreviada y cómoda de cambiarse el nick sin tener que añadir
-# la password :)
+# Passwordarra erantsi gabe nick-a  aldatzeko modu eroso bat XD 
+# 
 #
 alias nick {
 #  if ( match(hispano $reverse($mid(4 7 $reverse($servername($winserv()))))) >= 1 ) {
@@ -114,11 +112,9 @@ alias nick {
     identifica $0 } 
 #}
 
-# Estos son un par de aliases para mayor comodidad a la hora de 
-# interactuar con los bots del IRC-Hispano. También es idea original de
-# core & kanueda. He retocado un poco el código para el soporte de bots
-# multiservidor
-#
+# Hipanoko bot-ekin errazago ibiltzeko bi alias dira hauek. Ideia hau ere core &
+# kanuedarena da. Nik kodea apur bat ikutu dut multiserbidore bot-ak erabiltzeko
+# 
 alias infoN {
   if ( match(hispano $reverse($mid(4 7 $reverse($servername($winserv()))))) >= 1) {
     m NiCK info $0
@@ -155,7 +151,7 @@ alias memoL {
   } {
     m MemoServ list } }
 
-# Y estos añadidos por mí ;)
+# Eta hauek nigatik eginak dira ;)
 #
 alias addlevel {
   if ( match(hispano $reverse($mid(4 7 $reverse($servername($winserv()))))) >= 1) {
@@ -181,27 +177,24 @@ alias nickreg {
   } {
     m NickServ register $0 } }
 
-# Definimos un alias a autojoin para acceder a los canales que más nos
-# gustan de la red
+# Gehien atsegin zaizkigun kanaleetan sartzeko alias bat definitzen dugu. 
+# 
 #
 alias autojoin {
     @ Joined = 1
-    sleep 3
-    j $word(0 $Canales_Aj)
-    sleep .5
-    for ( @ total = 1, total < numwords($Canales_Aj), @ total++) { j $word($total $Canales_Aj) } 
-    window swap 1}
-#    usleep .5
-#    clear
-#    j $word(0 $Canales_Aj) }
+    sleep 3 
+    for ( @ i = 1, i < numwords($Canales_Aj), @ i++) { j $word($i $Canales_Aj) } 
+    usleep .5
+    clear
+    j $word(0 $Canales_Aj) }
 if ( [$hotkey] == [ctrl] ) {
   bind ^a parse_command autojoin
 } elsif ( [$hotkey] == [alt] ) {
   bind META1-a parse_command autojoin }
 
-# Este es otro de nuestros añadidos de utilidad para BitchX. Nos limpia
-# la ventana y nos presenta el Topic del canal seguido de los usuarios q
-# "habitan" el mismo xD (Hot-key -> Alt + l).
+# Hau BitchX-arentzako beste etekin bat da.Gure lehioa garbitzen digu eta Topika 
+# erakusten digu eta ondoren zein jende dagoen kanalean erakutsi XD (Hot-key ->
+# Alt + l).
 #
 alias limpia {
   clear
@@ -213,8 +206,8 @@ if ( [$hotkey] == [ctrl] ) {
 } elsif ( [$hotkey] == [alt] ) {
   bind META1-l parse_command limpia }
 
-# Nos marcamos como away y activamos la notificación de away para quien
-# nos nombre ( mediante notices )
+# Away bezala jartzen gara eta izendatzen gaituenenetzako away notifikazioa 
+# aktibatzen dugu ( noticen bitartez ).
 #
 alias away {
   if ( [$Away] != 1 ) {
@@ -228,7 +221,7 @@ alias away {
     //away 
     @ Away = 0 } }
 
-# Aquí tenemos una buena utilidad que nos sirve de calculadora ;)
+# Hemen kalkulagailu bezala erabiltzeko etekin bat dugu.
 #
 alias calculadora {
   input "$cparse("%RInserte operación: ")" {
@@ -236,8 +229,8 @@ alias calculadora {
       exec echo "El resultado de la operación $0 es"
       exec echo "scale=3\;$0" | bc } } }
 
-# Una manera rápida de conseguir arroba en los canales en los que
-# estamos registrados (Hot-key -> Alt + o).
+# Erregistratuta gauden kanaleetan arroba erraz lortzeko era erraza bat. 
+# (Hot-key -> Alt + o).
 #
 alias opme {
   if ( mid(0 1 $winnam($winnum())) == [#] ) {
@@ -250,7 +243,7 @@ if ( [$hotkey] == [ctrl] ) {
 } elsif ( [$hotkey] == [alt] ) {
   bind META1-o parse_command opme }
   
-# Nos deopeamos en el canal en el q nos encontremos (Hot-key -> Alt +d).
+# Aurkitzen garen kanalen deopatu egiten gara (Hot-key -> Alt +d).
 #
 alias deopme {
   if ( mid(0 1 $winnam($winnum())) == [#] ) {
@@ -260,8 +253,8 @@ if ( [$hotkey] == [ctrl] ) {
 } elsif ( [$hotkey] == [alt] ) {
   bind META1-d parse_command deopme }
   
-# Nos damos voz en un canal y nos quitamos nuestra arrobita si somos
-# operadores del canal (Hot-key -> Alt +  v).
+# +v bezala ipintzen gara eta @ kentzen kanaleko operadoreak bagara
+# (Hot-key -> Alt +  v).
 #
 alias voiceme {
   if ( mid(0 1 $winnam($winnum())) == [#] ) {
@@ -271,13 +264,13 @@ if ( [$hotkey] == [ctrl] ) {
 } elsif ( [$hotkey] == [alt] ) {
   bind META1-v parse_command voiceme }
     
-# Nos quitamos la voz en el canal en el que nos encontremos.
+# +v kentzen dugu  aurkitzen garen kanalean.
 #
 alias devoiceme {
   if ( mid(0 1 $winnam($winnum())) == [#] ) {
     devoice $N } }
 
-# Ponemos el canal en Modo +R (para ataques por flood de joins & parts).
+# Kanalean modu +r jartzen dugu ( flood eraso eta joins & part-entzako).
 #
 alias moderre {
   if ( mid(0 1 $winnam($winnum())) == [#] ) {
@@ -287,37 +280,32 @@ if ( [$hotkey] == [ctrl] ) {
 } elsif ( [$hotkey] == [alt] ) {
   bind META1-r parse_command moderre }
 
-# Salimos del canal actual y eliminamos la ventana que estemos usando.
-# para ese canal
-#
+#Kanaletik ateratzen gara eta kanal honetan erabiltzen ari ginen lehioa  
+# garbitu egiten dugu.
 alias part {
-  @ total = ([$total] -1)
   if ( ( winnum() == 1 ) || ( winnum() == 2 ) ) {
     window goto $Principal }
   if ( [$0] != "" ) {
     //part $C $0
   } {
     //part $C $Msg_quit }
-  if ( ( winnum() == 11 ) || ( ( winnum() == 12 ) && ( [$Partir] == 1 ) ) || ( winnum() == 1 ) ) { 
-    window name Cierrame log off
-    clear 
+  if ( winnum() != 1 ) { 
+    window kill 
   } {
-    if ( mid(0 1 $winnam($winnum())) == [#] ) {
-      window kill
-    } {
-      query } }
+    window name Cierrame log off
+    clear }
   if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/cierraw.wav 2> /dev/null }
   if ( [$partir] == 1 ) {
     window hide_others
     usleep .5
-    window swap $Pos3 
+    window swap $Principal
     usleep .5
     window show $Pos2
     window show $Pos1
     recolocar } }
 alias p part
 
-# Salimos y entramos al canal actual (vaya cosa cutre que me marcao)
+# Gaudezen kanaletik sartu eta atera egiten gara.
 # (Hot-Key -> Alt + j).
 alias rejoin {
   if ( ( winnum() == 1 ) || ( winnum() == 2 ) ) {
@@ -336,10 +324,10 @@ on ^timer "%:**" {
     //join $Canal
     @ Canal = "" } }
 
-# Copiamos a un archivo el contenido mostrado por pantalla. Se requiere
-# estar usando framebuffer y tener permiso de lectura sobre el dispositivo
-# /dev/fb0 (Hot-Key -> Alt + s). Para ver la snapshot `bzip2 -d 
-# BitchX.jpg.bz2; cp BitchX.jpg /dev/fb0; bzip2 BitchX.jpg`
+# Artxibu batera pantallan ateratzen ari dena kopiaten dugu.Framebufferra
+# ipinita eduki beharko duzu eta /dev/fb0 irakurtzeko permisua jarrita eduki
+# beharko duzu (Hot-Key -> Alt + s). Snapshot-a ikusteko  'bzip2 -d 
+# BitchX.jpg.bz2; cp BitchX.jpg /dev/fb0; bzip2 BitchX.jpg
 #
 alias snapshot {
   @ snap = ([$snap] +1)
@@ -351,11 +339,11 @@ if ( [$hotkey] == [ctrl] ) {
 } elsif ( [$hotkey] == [alt] ) {
   bind META1-s parse_command snapshot }
     
-# Creamos una nueva ventana.
-# WNS -> Nueva ventana para canal de nuevo servidor
-# WNC -> Nueva ventana para canal de servidor actual
-# Query -> Nueva ventana para privado en servidor actual
-# Querys -> Nueva ventana para privado en nuevo servidor
+# Lehio berri bat sortzen dugu.
+# WNS -> Servidore berri batentzako lehio berri bat.
+# WNC -> Lehio berri bat gaudezen serbidorearentzako.
+# Query -> Pribatuarenzako lehio berri bat gaudezen serbidorearentzat
+# Querys -> Pribatuarenzako lehio berri ba serbidore berriarentzako.
 #
 alias WNS { 
   if ( ( ( winnum() == 1 ) || ( winnum() == 2 ) ) && ( [$partir] == 1 ) ) {
@@ -368,7 +356,7 @@ alias server wns
 alias WNC {
   if ( ( ( winnum() == 1 ) || ( winnum() == 2 ) ) && ( [$partir] == 1 ) ) {
     window goto $Principal }
-  if ( mid(0 1 $0) == [#] ) {
+  if ( mid(1 1 $0) == [#] ) {
     @ knal = [$0]
   } {
     @ knal = [#$0] }
@@ -377,7 +365,6 @@ alias WNC {
   } elsif ( winnam($winnum()) == [Cierrame] ) {
     clear
     //join $knal
-    @ total = ([$total] +1)
     window name $knal logfile ~/.BitchX/sunlite/logs/\#$mid(1 40 $knal)\.$servername($winserv()).log log on
   } {
     window new hide swap last name $knal channel $knal double on logfile ~/.BitchX/sunlite/logs/\#$mid(1 40 $knal)\.$servername($winserv()).log log on 
@@ -395,7 +382,6 @@ alias query {
       window new query $1 name $1 hide 
     } { 
       //query $1
-      @ total = ([$total] +1)
       clear
       window name $1 }
     if ( [$partir] == 1 ) recolocar 
@@ -422,7 +408,6 @@ alias query {
       window new query $0 name $0 hide swap last 
     } {
       //query $0 
-      @ total = ([$total] +1)
       clear
       window name $0 }
     if ( [$partir] == 1 ) recolocar
@@ -447,26 +432,22 @@ alias query {
   } elsif ( ( winnum($0) != [-1] ) && ( [$0] != [] ) ) { 
     window swap $0 
   } {
-    if ( mid(0 1 $winnam($winnum())) == [#] ) {
-      part
+    //query
+    @ $winnam($winnum()) = 0
+    if ( winnum() != 1 ) {
+      window kill
     } {
-      //query
-      @ total = ([$total] -1)
-      @ $winnam($winnum()) = 0
-      if ( ( winnum() == 11 ) || ( ( winnum() == 12 ) && ( [$Partir] == 1) ) || ( winnum() == 1 ) )  {
-        window name Cierrame log off
-        clear 
-      } {
-        window kill }
-      if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/cierraw.wav 2> /dev/null }
-      if ( [$partir] == 1 ) {
-        window hide_others
-        usleep .5
-        window swap $Pos3 
-        usleep .5
-        window show $Pos2
-        window show $Pos1
-        recolocar } } } }
+      window name Cierrame log off
+      clear }
+    if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/cierraw.wav 2> /dev/null }
+    if ( [$partir] == 1 ) {
+      window hide_others
+      usleep .5
+      window swap $Principal
+      usleep .5
+      window show $Pos2
+      window show $Pos1
+      recolocar } } }
 alias q query
 if ( [$hotkey] == [ctrl] ) {
   bind ^z parse_command query
@@ -478,17 +459,16 @@ alias querys {
     window goto $Principal }
   @ knal = [$0]
   window new server $0 hide swap last name $1 query $1 logfile ~/.BitchX/sunlite/logs/$1.log log on
-  @ total = ([$total] +1)
   if ( [$partir] == 1 ) recolocar
   if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/abrew.wav 2> /dev/null } }
 
-# Bueno, este bind nos sirve para irnos a la ultima ventana ;)
+#Bind honek azken lehiora joateko balio digu. 
 if ( [$hotkey] == [ctrl] ) {
   bind ^u SWAP_LAST_WINDOW
 } elsif ( [$hotkey] == [alt] ) {
   bind META1-u SWAP_LAST_WINDOW }
     
-# Limpiamos los bans que tengamos en el canal actual si es que existen.
+# Kanalen ban-ak egon ez gero garbitu egiten ditugu.
 #
 alias fban { 
   if (![$P] && [$C]) {
@@ -498,7 +478,7 @@ alias fban {
   } {
     mode $C -bbbb $N!*@* *!$my_ident@* *!*@$my_ip *!$my_ident@$my_ip } }
 
-# Modo conferencia :)
+# Konferenzti modua ;)
 #
 alias Conferencia {
   if ( [$Conferencia] == 1 ) {
@@ -512,8 +492,8 @@ if ( [$hotkey] == [ctrl] ) {
 } elsif ( [$hotkey] == [alt] ) {
   bind META1-c parse_command Conferencia }
     
-# Una utilidad que nos servirá para enviar sms desde nuestra línea de
-# comandos de BitchX
+# BitchX-etik sms bidaltzeko balio digu.
+# 
 #
 alias sms {
   if (( [$0] == "" ) || ( [$1] == "" )) {
@@ -522,9 +502,8 @@ alias sms {
   } {
     exec echo $2- | esms -s $0 $1 } }
 
-# Esta función nos servirá de acceso rápido a aquella ventana en la que nuestro 
-# nick ha sido nombrado 
-#
+# Funtzio honek izendatu gaituzten kanalean sarbide azkarra lortzeko balioko 
+# digu.
 alias cambio_ventana {
   if ( ( ( winnum() == 1 ) || ( winnum() == 2 ) ) && ( [$Partir] == 1 ) ) {
     window goto $Principal }
@@ -535,20 +514,18 @@ if ( [$hotkey] == [ctrl] ) {
   bind ^x parse_command cambio_ventana
 } elsif ( [$hotkey] == [alt] ) {
   bind META1-x parse_command cambio_ventana }
-    
-# Con la instrucción /shell <password> mantendremos BX en segundo plano mientras
-# hacemos alguna operación que queramos hacer en la shell. Nos puede servir también
-# en momentos de urgencia en los que tenemos que dejar el teclado libre y no queremos
-# que alguien lea lo que estamos hablando ;) Para volver a BX tendremos que teclear
-# en la shell 'scr-bx -p' y a continuación indicaremos la pass que definimos 
-# anteriormente 
-#
+
+# /shell <password> ipinita BX bigarren planuan edukiko dugu beste gauza bat  
+# egiten dugun bitartean.Inork guk idatzitakoa irakur ez dezan ordenagailua 
+# aske utzi behar dugunerako ere balio du ;) BitchX-era bueltatzeko 'scr-bx -p'
+# ipini beharko dugu eta ondoren passworra.
+
 alias shell {
   if ( [$0] != [] ) detach $0 }
 
-# Bueno, para los amantes de los dibujitos, a los que pocos nos gustan, ya que esto es
-# un script les incluimos unos aliases para hacer figuras ascii. Eso sí, necesitas tener
-# instalados los paquetes cowsay y figlet.
+# Marrazkitxoak atsegin dituztenei eginiko skript-a da hau, skript honi alias
+# batzuk ipini dizkiogu ascii figuratxoak egin ditzazun ( cowsay eta figlet )
+# istalaturik eduki beharko dituzu.
 #
 alias cowsay {
   switch ( $0 ) {
@@ -573,27 +550,28 @@ alias figlet {
     ( * ) {
       xecho -win status Modo de uso: /figlet {normal|banner|mini|italic|script|block|bubble} texto } } }
 	  
-# Utilizamos el mpg123 como reproductor de mp3 en nuestro BitchX ;) Los comandos para
-# usar el reproductor son: 
-#
-#   /mp3 list 		-Lista el contenido de mp3 del directorio que hemos definido
-#			como Mp3dir.
-#   /mp3 play RefNum|file	-Reproduce el archivo de sonido especificado.
-#   /mp3 stop		-Irrumpe el proceso de reproducción.
-#   /mp3 dir ruta	-Señala una nueva ruta para seleccionar los archivos de
-#			sonido.
+# mpg123 erabiliko dugu mp3 entzuteko gure BitchX-ean ;) Komanduak hauetxek 
+# dira: 
+#  
+#   /mp3 list - Mp3 edukina erakusten digu ( horretarako Mp3dir bat sortu 
+#   beharko dugu).
+#			
+#   /mp3 play RefNum|file	- Guk ipinitako abestia berregiten du.
+#   /mp3 stop		- Berregite prozesua bukatzen du.
+#   /mp3 dir ruta	- Abestiak beste toki batetik hartzeko balio du.
+#			
 #
 alias mp3 {
   switch ( $0 ) {
     ( list ) {
-      exec ls -1 -F "$Mp3dir" | gawk '{print "[" , NR, "]", $0}'
+      exec ls -1 -F $Mp3dir | gawk '{print "[" , NR, "]", $0}'
       xecho -win status $cparse("$Blanco\Para reproducir: $AzulF\/mp3 play Refnum|Nombre_archivo") }
     ( play ) {
       @ RefNum = [$1]
       if ( [$1] == "" )  {
         xecho -win status $cparse("$Blanco\Indica un titulo para tocar, ¿no? :)")
       } elsif ( isdigit($1) ) {
-        exec mpg123 "$Mp3dir/`ls -1 \"$Mp3dir\"/ | head -n $RefNum | tail -n 1`" 2> /dev/null
+        exec mpg123 "$Mp3dir/`ls -1 $Mp3dir/ | head -n $RefNum | tail -n 1`" 2> /dev/null
         if ( [$Notif_mp3] == 1 ) {
 	    exec -o  echo "Mmm... Toi escuchando `ls -1 $Mp3dir/ | head -n $RefNum | tail -n 1`" }
       } elsif ( [$1] == [\*] ) { 
@@ -614,13 +592,12 @@ alias mp3 {
     ( * ) {
       xecho -win status $cparse("$Blanco\Modo de uso: $AzulF\/mp3 {list|play|stop|dir}") } } }
 
-# Utilizamos el cdcd como reproductor de cd's en nuestro BitchX ;) Los comandos para
-# usar el reproductor son:
-#
-#   /cd list           -Lista el contenido de pistas del Cd.
-#   /cd play RefNum    -Reproduce la pista especificada.
-#   /cd stop           -Irrumpe el proceso de reproducción.
-#   /cd refresh        -Refresca la lista de reproducción.
+# Gure BitchX-ean zedeak entzuteko cdcd erabiliko dugu, erabiltzeko komanduak
+# hauxek dira:
+#   /cd list           - Zedean dauden pistak erakusten dizkigu
+#   /cd play RefNum    - Nahi dugun pista berregiten digu.
+#   /cd stop           - Berregite prozesua bukatzen du.
+#   /cd refresh        - Pisten lista berresortzen du.
 #
 alias cd {
   switch ( $0 ) {
@@ -644,14 +621,14 @@ alias cd {
     ( * ) { 
       xecho -win status $cparse("$Blanco\Modo de uso: $Azulf\/cd {list|play|stop|refresh}") } } }
 
-# Definimos un nuevo versión para el script onde añadimos la reseña del script
-# a la de BitchX
+# Version berria ipintzen diogu gure BitchX-ari, hau da gure skriptaren aipamena# ipintzen diogu. 
+# 
 #
 alias version {
   //version
   echo $cparse("$RojoF-$Blanco:$RojoF-") $J }
 
-# Colorines para nuestro BitchX
+# Gure BitchX-arentzako kolore berriak.
 #
 alias color {
   if ( ( [$0] == [si] ) || ( [$0] == [sí] ) || ( [$VerdeF] == [] ) ) {
@@ -664,21 +641,6 @@ alias color {
       @ Verde = [%g]
       @ RojoF = [%r]
       @ Rojo = [%r]
-      @ AzulF = [%B]
-      @ Gris = [%w]
-      @ Naranja = [%b]
-      @ CyanF = [%C]
-      @ Cyan = [%c]
-      set mircs on
-    } elsif ( [$theme] == [gentoo] ) {
-      @ VerdeF = [%g]
-      @ Blanco = [%c]
-      @ Amarillo = [%B]
-      @ Magenta = [%G]
-      @ Violeta = [%c]
-      @ Verde = [%g]
-      @ RojoF = [%m]
-      @ Rojo = [%m]
       @ AzulF = [%B]
       @ Gris = [%w]
       @ Naranja = [%b]
@@ -724,9 +686,9 @@ alias sonido {
     set beep off
     @ Sonido = 0 } }
 
-# Código generado por L00PB4cK y modificado por {Trunks}
+# L00PB4cK-ek aginiko kodea eta Trunks-ek berriztatua.
 #
-# Identificación de nick desde un archivo con passwords encriptadas
+# Nick identifikazioa password enkriptatuak dituen artxibu batetik.
 #
 alias identifica { 
   if ( [$0] != "" ) {
@@ -773,7 +735,7 @@ alias identifica {
         if ( close($fileid) == 1) {
           xecho -win status $cparse("$Verde\Error Cerrando el fichero") }
         if ( [$find] == 1 ) {
-          xecho -win status $cparse("$Verde\El nick $1 ya está incluído en la base de datos bajo la red $3")
+           xecho -win status $cparse("$Verde\El nick $1 ya está incluído en la base de datos bajo la red $3")
         } {
           @ fileid = [$open(~/.BitchX/sunlite/passwd.bx W)]
           @ temp2 = [$NNick] ## [ ] ## [$passid] ## [ ] ## [$servername($winserv())]
@@ -786,9 +748,9 @@ alias identifica {
           if ( close($fileid) == 1) {
             xecho -win status $cparse("$Verde\Error cerrando fichero") } } } } } } }
 
-# Un nuevo comando para alternar nuestro nick al marcarnos como away
-# Idea original de |Poldark| He modificado un poco su desarrollo original más
-# que nada aprovachando aliases ya diseñados en el script.
+# Gure nick-a aldatzeko away bezala jartzen garenerako.|Poldark|-en ideia  
+# orijinala. 
+#  
 alias awayon {
   nick $nick_awayOn
   deopme
@@ -802,7 +764,7 @@ alias awayoff {
   if ( [$0] != "" ) {
     me $0- } }
 
-# Mensaje de salida personalizado para el script
+# Irc-tik ateratzen garenerako skriptaren quit pertsonalizatua.
 #
 alias quit {
   if ( [$0] == "" ) {
@@ -810,20 +772,18 @@ alias quit {
   } {
     //quit $0- } }
 
-# Este alias nos servirá para mandar una cadena a alguna terminal de X ;) Muy útil 
-# cuando no sencontramos en una tty y necesitamos llevar una url a un navegador
-# por ejemplo ;)
-#
-# - Gracias a Poldark por su idea ;) -
+# Alias honekin tty batetan aurkitzen garenean eta X-etara edozer gauz bidali
+# nahi dugunerako oso aproposa, adibidez url bat nabegagailu batetar bidali nahi
+# dugunean
+##  - Eskerrak Poldark-eri bere ideiarengatik--
 #
 alias termX {
   exec echo '$0-' > /dev/`ps u | grep pts | head -n1 | gawk '{print $7}'` }
 
-# Vamos a añadir un traductor para aquellas veces que nos da por chatear en canales
-# extranjeros y no nos acrodamos del significado exacto de la palabrita en cuestión ;)
-#
-# Modo de uso: /traducir [inglés|ingles|english|español|spanish] palabra ( Sin argumento
-# traduce por defecto del inglés al español )
+# Kanpotar kanaleetan txateatzeko alias bat erantsi diogu, alias honek ezagutzen
+# ez ditugun hitzak itzuliko dizkigu
+# nola erabili: /traducir [inglés|ingles|english|español|spanish] palabra ( Sin argumento
+#Inglesetik erdara itzultzen du XD 
 #
 alias traducir {
   if ( [$0] == "" ) {
@@ -836,9 +796,9 @@ alias traducir {
     exec i2e.sh -e $0 } }
 alias translate traducir
 
-# Este alias te servirá para poner todas tus ventanas en orden si en algún
-# momento ves que el script falla y se te descoloca todo tu sistema de
-# ventanucos
+# Alias honekin lehio guztiak bere ordenean jarriko dizkizu skriptak edozein 
+# mometutan hutsegiten badizu 
+# 
 #
 alias recolocar {
   switch ( $Pos1 ) {
@@ -885,9 +845,9 @@ alias recolocar {
           window size 5
           window goto 1 } } } } }
 
-# Aquí van un par de hot-keys: Para movernos por las ventanas si usamos la función
-# de ventanas partidas, y dos más para navegar a izquierda y derecha por las 
-# ventanas ;)
+# Hemen dijoazkizue pare bat hot-key: Lehiotatik mugitzeko funtzio ebakia 
+# erabiltzen badugu eta beste pare bat ezker eskubira mugitzeko ;)  
+#  
 #
 if ( [$hotkey] == [alt] ) {
   bind META1-q NEXT_WINDOW

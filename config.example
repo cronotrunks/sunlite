@@ -1,40 +1,39 @@
-# Marcamos esta variable a 0 si no queremos tener un pantalla dividida
-# que usamos como status, sino que preferimos tener ventanas 
-# individuales (también existirá el status pero individualmente).
+# Bariable hau 0 bezala hutziko dugu ez badugu nahi status bezala erabiliko  
+# den lehioa zatituta eduki,hau da, nahiago baditugu lehio indibidualak eduki. 
+# ( status lehioa ere edukiko dugu baina indibidualki).
 @ Partir = 1
 @ Pos1=1
 @ Pos2=2
 @ Pos3=3
 
-# Definimos nuestra ruta de ficheros de sonido mp3. Podemos marcar la
-# segunda variable a 1 si queremos notificar al canal la música que
-# escuchamos en cada momento.
+# Gure mp3-eko karpeta non dagoen adierazten dugu. Bigarren bariablea 1 bezala 
+# jartzen badugu kanalean zer musika entzuten hari garen adieraziko diegu beste 
+# jendeei.
 #
 @ Mp3dir = [/var/mp3/]
 @ Notif_mp3 = 0
 
-# Marquemos esta variable a 1 si queremos que cuando una persona nos
-# envíe un mensaje se nos abra automáticamente una nueva ventana de
-# privado exclusiva para ese nick
+# Bariable hau 1 bezala jarriko dugu pertsona batez mezu bat bidaltzean digunean
+# automatikoki nick horrentzako lehio bat irekitzeko.
+# 
 @ WinQuery = 0
 
-# Si queremos colores en nuestro script decomentamos esta línea,
-# o invocamos "/color si" una vez arrancado el script. Tenemos la
-# posibilidad además de optar entre los temas Default o bass (BaSS
-# Design).
+# Skriptean koloreak nahi baditugu lerro hau deskomentatuko dugu edo "/color si"
+# egingo dugu skripta hasi bezain laster. Skriptari bi theme jartzeko ere aukera# izango dugu Default edo bass (BaSS Design).
+# 
 #@ theme = [Default]
 #Color si
 
-# Descomentemos esta línea si queremos activar el Time Stamp en todos
-# los mensajes en canales y privados
+# Lerro hau deskomentatuko dugu Time Stamp jarri nahi badugu kanale eta pribatu
+# guztietan.
 #@ Hora = [$Magenta\[$Amarillo\$Z$Magenta\] ]
 
-# Definimos nuestra tecla favorita para su uso con Hot-keys
+# Hot-keys bezala erabiltzeko gure tekla gogokoena definituko dugu.
 #
 @ hotkey = [alt]
 
-# Definimos las variables de entorno para una mayor comodidad de uso de 
-# nuestro cliente de IRC.
+# Entornoaren bariableak definituko ditugu gure skripta erosoago egin dezagun. 
+# 
 #
 # Marca Sonido a 1 si quieres iniciar BitchX con sonido
 # Marca ircha a 1 si quieres iniciar BitchX con ircha en lugar del cuac
@@ -71,7 +70,6 @@ set auto_join_on_invite on
 set auto_away on
 set auto_Away_time 1800
 set mircs on
-set beep on
 set STATUS_FORMAT 8,2[3 %T 8][15%*%@%=10%N7%#%A8]%M [10%C%+3%W8] 6%Q %H%B%F 8%S
 set STATUS_FORMAT1 8,2[3 %T 8][15%*%@%=10%N7%#%A8]%M [10%C%+3%W8] 6%Q %H%B%F 8%S
 set STATUS_FORMAT2 8,14Topic 3: 14%-

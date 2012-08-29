@@ -17,9 +17,9 @@
 #
 ################################################################################
 #
-# Sección de ignores.
+# Ignore sekzioa 
 #
-# Bots del Hispano.
+# Hispanoko Botak
 IGNORE global!-@-   ALL
 IGNORE shadow!^@^   ALL
 IGNORE noticias!*@* ALL
@@ -31,14 +31,14 @@ IGNORE exito!*@*    ALL
 IGNORE atencion!*@* ALL
 IGNORE noticia!*@*  ALL
 #
-# Nicks ignorados.
+# Nick ignoratuak.
 # IGNORE nick1!*@*   ALL
 # IGNORE nick2!*@*   ALL
 
-# Notify particular.
+# Notify partikularra.
 #
-# Añadir cuantos nicks queramos pero no eliminar NickServ si queremos 
-#   seguir contando con la funcionalidad de autoidentificación para este bot
+# Nhai ditugun Nick guztiak sar ditzazkegu baina Nickserv-a ezabatu 
+# gabe bestela#bot honen funtzionalidade guztiak galduko ditugu eta.
 #
 notify NickServ
  

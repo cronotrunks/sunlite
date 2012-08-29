@@ -17,7 +17,7 @@
 #
 ################################################################################
 #
-# Al conectar reproducimos un alegre sonido si los tenemos activados
+# Aktibaturik badugu kanalean sartzean soiñu polit bat entzungo dugu 
 #
 on ^connect "*" {
   userhost $N -cmd {
@@ -27,21 +27,20 @@ on ^connect "*" {
   sleep 2 
   if ( ( [$Autojoin] == 1 ) && ( [$Joined] != 1 ) ) autojoin }
 
-# Ante la petición de identificación por parte del bot NiCK pasamos a 
-# identificarnos
+# NICK bot-ak identifikatzeko eskatzen digunean identifikatu egiten gara  
+# 
 #
 on ^msg "NiCK*IDENTIFY" { 
   identifica }
 
-# Modificamos la presentación de los mensajes de entrada privados.
+# 
 #
 on ^msg "*" { 
   @ Nick_tmp = [$0] ## [       ]
   if ( ([$($0)] != 1) && ([$WinQuery] == 1) && ( winnum() != 1 ) ) {
-    if ( ( [$0] == [CHaN] ) || ( [$0] == [NiCK] ) || ( [$0] == [MeMo] ) || ( [$0] == [NickServ] ) || ( [$0] == [ChanServ] ) || ( [$0] == [MemoServ] ) || ( [$0] == [agenda] ) ) {
+    if ( ( [$0] == [CHaN] ) || ( [$0] == [NiCk] ) || ( [$0] == [MeMo] ) || ( [$0] == [NickServ] ) || ( [$0] == [ChanServ] ) || ( [$0] == [MemoServ] ) || ( [$0] == [agenda] ) ) {
       query _Bots_Redes_
-      window number 13
-      xecho -win privados Privado abierto para bots en la ventana 13 (Alt + u) 
+      xecho -win privados Privado abierto para bots en la ventana $winnum(_Bots_Redes_) (Alt + u) 
     } {
       query hide $0 
       xecho -win privados Privado abierto con $0 en la ventana $winnum($0) (Alt + u) } }
@@ -49,7 +48,7 @@ on ^msg "*" {
     xecho -win $winnum($0) $cparse("$Hora$VerdeF\[$Blanco$mid(0 8 $Nick_tmp)$VerdeF]") $1-
   } elsif ( ( [$0] == [CHaN] ) || ( [$0] == [NiCk] ) || ( [$0] == [MeMo] ) || ( [$0] == [NickServ] ) || ( [$0] == [ChanServ] ) || ( [$0] == [MemoServ] ) || ( [$0] == [agenda] ) ) {
     if ( [$WinQuery] == 1 ) {
-      xecho -win 13 $cparse("$Hora$VerdeF\[$Blanco$0$VerdeF]") $1-
+      xecho -win $winnum(_Bots_Redes_) $cparse("$Hora$VerdeF\[$Blanco$0$VerdeF]") $1-
     } {
       xecho -win status $cparse("$Hora$VerdeF\[$Blanco$0$VerdeF]") $1- }
   } {
@@ -58,7 +57,7 @@ on ^msg "*" {
     beep }
   $addtabkey($0) }
 
-# Modificamos la presentación de los mensajes de envío por privado.
+# Pribatuen sarrera mezuaren presentazioa aldaltzen dugu
 #
 on ^send_msg "*" { 
   @ Nick_tmp = [$N] ## [       ]
@@ -67,9 +66,8 @@ on ^send_msg "*" {
   } {
     xecho -win privados $cparse("$Hora$AzulF<$RojoF$N$Cyan -> $Blanco$0$AzulF>") $1- }}
 
-# Modificamos la presentación (traducción incluída) de los mensajes 
-# del entorno de BitchX (cambios de nick, notices, cambios de modos, 
-# joins parts, quits, ...).
+# BitchX-aren presentazioa aldatu egiten dugu ( itzulpena eta guzti ), nick  
+# aldaketak, notice-ak, quit-ak.... 
 #
 on ^nickname "*" { 
   if ([$1] == N) {
@@ -87,8 +85,7 @@ on ^notice "*" {
   if ( ([$($0)] != 1) && ([$WinQuery] == 1) && ( winnum() != 1 ) ) {
     if ( ( [$0] == [CHaN] ) || ( [$0] == [NiCk] ) || ( [$0] == [MeMo] ) || ( [$0] == [NickServ] ) || ( [$0] == [ChanServ] ) || ( [$0] == [MemoServ] ) || ( [$0] == [agenda] ) ) {
       query _Bots_Redes_
-      window number 13
-      xecho -win privados Privado abierto para bots en la ventana 13 (Alt + u)
+      xecho -win privados Privado abierto para bots en la ventana $winnum(_Bots_Redes_) (Alt + u)
     } }
 #{
 #      query hide $0
@@ -97,7 +94,7 @@ on ^notice "*" {
     xecho -win privados $cparse("$Verde+++$AzulF\[$RojoF$0$AzulF]") $1-
   } elsif ( ( [$0] == [CHaN] ) || ( [$0] == [NiCk] ) || ( [$0] == [MeMo] ) || ( [$0] == [NickServ] ) || ( [$0] == [ChanServ] ) || ( [$0] == [MemoServ] ) || ( [$0] == [agenda] ) ) {
     if ( [$WinQuery] == 1 ) {
-      xecho -win 13 $cparse("$Verde+++$AzulF\[$RojoF$0$AzulF]") $1-
+      xecho -win $winnum(_Bots_Redes_) $cparse("$Verde+++$AzulF\[$RojoF$0$AzulF]") $1-
     } {
       xecho -win status $cparse("$Verde+++$AzulF\[$RojoF$0$AzulF]") $1- }
   } {
@@ -108,8 +105,8 @@ on ^notice "*" {
 
 on ^mode "*" {
   @ pringao = [$0]
-# Descomentar esta línea si preferimos eliminar los cambios de modo en el modo
-# conferencia: ( descomentar también la última llave de este evento -línea 92- )
+# Konferentzi moduan moduak kendu nahi baditugu deskomenta ezazu lerro hau
+# ( deskomentatu ere azken giltza ebentu honetatik -lerro 92- ) 
 #
 # if ( [$Conferencia] == 0 && [$Conf_canal] != [$1] ) {
   if ( [$3] == N ) {
@@ -129,9 +126,9 @@ on ^mode "*" {
          } {
            m ChanServ op $1 $N }
 #
-# /* Descomentar si se quiere hacer un deop por decreto aunque el nick
-#      destino tenga mas nivel q nosotros (se produce en cuanto
-#      adquirimos la arroba) */
+# /* Deskomenatu ezazu deop bat egin nahi baduzu nahiz eta beste nick-ak guk 
+#     baino lebel haundiagoa izan ( guk arroba hartzean lortuko da hau )  */ 
+#      
 #
 #	 on -mode 'CHaN $C +o $N' {
 #           if ( [$pringao] != [CHaN] && ($Rojomatch($pringao $chops($1)) => 1)) {
@@ -146,14 +143,11 @@ on ^mode "*" {
 # }
 
 on ^action "*" {
-   switch ( $1 ) {
-      ( $N ) { 
-        if ([$($0)] == 1) { 
-	  xecho -win $winnum($1) $cparse("$Verde* $AzulF$0 $CyanF$2-") 
-        } {
-	  xecho -win privados $cparse("$Verde* $AzulF$0 $CyanF$2-") } }
-      ( $C ) { xecho -win $winnum($1) $cparse("$Verde* $AzulF$0 $CyanF$2-") }
-      ( * )  { xecho $cparse("$Verde* $AzulF$0$Amarillo/$RojoF$1 $CyanF$2-") } } } 
+  switch ( $1 ) {
+    ( $N ) { echo $cparse("$Verde* $AzulF$0 $CyanF$2-") }
+    ( $C ) { echo $cparse("$Verde* $AzulF$0 $CyanF$2-") }
+    ( * )  { echo $cparse("$Verde* $AzulF$0$Amarillo/$RojoF$1 $CyanF$2-") } } }
+
 
 on ^join "*" {
   if ( [$Conf_canal] != [$1] ) {
@@ -176,9 +170,9 @@ on ^channel_signoff "*" {
     echo $cparse("$Verde-:-$Amarillo Cierra $AzulF$1 $Blanco\(")$2-$cparse("$Blanco\)") } }
 
 on ^topic "*" {
-  echo $cparse("$Verde-:-$Amarillo Asunto $Blanco\($1\): $AzulF$0 fija") $2- }
+  echo $cparse("$Verde-:-$Amarillo Tópico $Blanco\($1\): $AzulF$0 fija") $2- }
 
-# Aquí llega nuestro nick completion.
+# Hemen datorkigu gure nick kompletiona
 #
 on ^send_public "*" { 
 #  if ( ! ([$C] == [#debian] || [$C] == [#linux] || [$C] == [#debian_ayuda]) ) {
@@ -225,7 +219,7 @@ on ^public "*" {
 	    xecho -win privados $cparse("$Magenta\[$Z]$AzulF Te nombraron! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x para ir a $Amarillo$Nick_en_canal $Blanco\)")
 	  } {
             xecho -win status $cparse("$Magenta\[$Z]$AzulF Te nombraron! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x para ir a $Amarillo$Nick_en_canal $Blanco\)") }
-	} elsif ( [$hotkey] == [ctrl] ) {
+	} ( [$hotkey] == [ctrl] ) {
           if ( [$WinQuery] == 1 ) {
             xecho -win privados $cparse("$Magenta\[$Z]$AzulF Te nombraron! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x para ir a $Amarillo$Nick_en_canal $Blanco\)")
           } {
@@ -259,7 +253,7 @@ on ^public "*" {
 	      xecho -win privados $cparse("$Magenta\[$Z]$AzulF Te nombraron! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x para ir a $Amarillo$Nick_en_canal $Blanco\)")
 	    } {
               xecho -win status $cparse("$Magenta\[$Z]$AzulF Te nombraron! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse("$Blanco\($AzulF Alt+x para ir a $Amarillo$Nick_en_canal $Blanco\)") }
-	  } elsif ( [$hotkey] == [ctrl] ) {
+	  } ( [$hotkey] == [ctrl] ) {
             if ( [$WinQuery] == 1 ) {
 	      xecho -win privados $cparse("$Magenta\[$Z]$AzulF Te nombraron! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x para ir a $Amarillo$Nick_en_canal $Blanco\)")
 	    } {
@@ -287,7 +281,7 @@ on ^public "*" {
               xecho -win privados $cparse("$Magenta\[$Z]$AzulF Te nombraron! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x para ir a $Amarillo$Nick_en_canal $Blanco\)")
             } {
               xecho -win status $cparse("$Magenta\[$Z] $AzulF Te nombraron! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x para ir a $Amarillo$Nick_en_canal $Blanco\)") }
-	  } elsif ( [$hotkey] == [ctrl] ) {
+	  } ( [$hotkey] == [ctrl] ) {
 	    if ( [$WinQuery] == 1 ) {
               xecho -win privados $cparse("$Magenta\[$Z]$AzulF Te nombraron! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x para ir a $Amarillo$Nick_en_canal $Blanco\)")
             } {
@@ -300,8 +294,8 @@ on ^public "*" {
 #    exec i2e.sh friend | head -n 2 | tail -n 1 | gawk '{print $3}' } }
 }
 
-# Modificamos los mensajes de kicks y nos defendemos cuando se efectuen
-# kicks a nuestro nick
+# Gure kick mezuak aldatu egiten ditugu eta gure nick-ari kick-ak egitean 
+# defendatu egiten gara
 #
 on ^kick "*" {
   if ( [$0] == N ) {
@@ -322,8 +316,9 @@ on ^kick "*" {
   } {
     echo $cparse("$VerdeF*** $AzulF$0$RojoF ha sido expulsado en $Amarillo$2$RojoF por $AzulF$1 $Blanco\($3-\)") } }
 
-# Notificaciones del script cuando entra o sale del irc alguno de nuestros amigos
-# incluídos en la lista notify
+# Skriptaren notifikazioak gure lagun bat sartu edo atera egiten denean, horre-
+# tarako gure notify listan behar du izan.
+
 #
 on ^notify_signon "*" {
   switch ( $0 ) {
@@ -336,19 +331,19 @@ on ^notify_signoff "*" {
   if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/notify-off.wav 2> /dev/null } 
   xecho -win status $cparse("$RojoF-$Blanco:$RojoF-$VerdeF Sale$Gris del Irc $RojoF$0!$1") a las $Z }
 
-# Vamos a montarnos un entorno más amigable para los fanáticos del dcc en dal.net
-# Crearemos así una ventana exclusiva para dcc's chat y colocaremos cada mensajito en su lugar
-#
+# Dal.net-ean dcc-ak gustoko ditzuten lagunentzat doakie erosotazun hau 
+# dcc chat-ak egiteko lehio bat sortuko zaie eta mezu bakoitza bere lekuan 
+# jarriko zatzaie.
 on ^dcc_chat "*" {
   if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/dcc-chat.wav 2> /dev/null }
   xecho -win privados $cparse("$RojoF-$Blanco:$RojoF-$VerdeF Dcc chat ofrecido por $RojoF$0") $1- }
 
 on ^dcc_connect "*" {
   if ([$($0)] == 1) {
-    xecho -win $winnum($0) $cparse("$VerdeF*** $RojoF\Conexión DCC $1 con $Blanco$0[$AzulF$2:$3$Blanco] $RojoF\establecida")
+    xecho -win $winnum($0) $cparse("$VerdeF*** $RojoF\Conexión DCC $1 con $Blanco$0[$AzulF$2:$3$Blanco] $RojoF\estabecida")
     if ( [$1] == [send] ) xecho -win $winnum($0) $cparse("$VerdeF*** $RojoF\Transfiriendo $AzulF$4 $Blanco\($AzulF$5 bytes$Blanco\)")
   } {
-    xecho -win status $cparse("$VerdeF*** $RojoF\Conexión DCC $1 con $Blanco$0[$AzulF$2:$3$Blanco] $RojoF\establecida")
+    xecho -win status $cparse("$VerdeF*** $RojoF\Conexión DCC $1 con $Blanco$0[$AzulF$2:$3$Blanco] $RojoF\estabecida")
     if ( [$1] == [send] ) xecho -win status $cparse("$VerdeF*** $RojoF\Transfiriendo $AzulF$4 $Blanco\($AzulF$5 bytes$Blanco\)")
     if ( [$1] == [chat] ) query $0 } }
 
@@ -376,8 +371,8 @@ on ^dcc_request "*" {
     xecho -win privados $cparse("$VerdeF*** $RojoF\Petición DCC $1 por $Blanco$0!$userhost() $AzulF[$Amarillo$3:$4$AzulF]")
     if ( [$1] == [send] ) xecho -win privados $cparse("$VerdeF*** $RojoF\Archivo ofrecido: $AzulF$4 $Blanco\($AzulF$5 bytes$Blanco\)") } }
 
-# Nuestra eurocalculadora personal y pública gracias a los ctcp's (con protección
-# anti-flood)
+# Gure eurokalkulagailu mundiala da hau XD ctcp-en didez egina ( anti-flood babe
+# sarekin egiña)
 #
 on ^ctcp '% $N EURO *' {
   @ Flood = ([$Flood] +1)
@@ -405,7 +400,7 @@ on ^ctcp '% $N VERSION *' {
 on ^ctcp '% $N FORTUNE' {
   @ Flood = ([$Flood] +1)
   if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/ctcp.wav 2> /dev/null }
-  if ( ( [$Flood] <= 5 ) && ( [$0] == [$N] ) ) {
+  if ( [$Flood] <= 5 ) {
     notice $N CTCP FORTUNE de $0
     window swap $3
     exec -o /usr/games/fortune } }

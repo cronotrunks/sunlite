@@ -1,153 +1,123 @@
 * Sunlite for BitchX v1.2
 
-	- 12/06/02
-
-	  + Incluído nuevo theme gentoo con los colores de esta nueva distro
-	  	y un nuevo logo que sustituye al de debian en el paquete
-		disponible para emergear en los mirrors gentoo próximamente.
-
-	- 30/05/02
-
-	  + Solventados un par de problemas de ordenación de ventanas que
-		tenían algunos usuarios.
-
-
 	- 02/04/02
 
-	  + Se consideran totalmente solventados los bugs de la versión de
-		desarrollo 1.1 y por tanto, se libera la versión 1.2.
-
-	  + La funcionalidad window manager es ya completamente estable (sin
-	  	ningún tipo de problemas).
+	  + 1.1 bertsioak zekartzan arazoak konpondu eta gero 1.2 
+		bertsioa askatzen da. 
+		
+	  + Window manager funtzionalitatea guztiz egonkorra da ( 
+	  	inongo arazorik gabe  ).
 
 
 * Sunlite for BitchX v1.1
 
 	- 31/03/02
 
-	  + Parcheado bug grave relacionado con el bind para la tecla alt.
-
-	  + Posibilidad de ignorar los molestos ctcp's SOUND que suelen hacer
-	  	determinados scripts por defecto.
-
+	  + Bindarekin ( alt teklarentzako) erlazioa duen bug-a 
+	  	jadanik konponduta.
+	
+	  + Windowseko skript askoek egiten duten ctcp sound-a ez 
+	  	jasateko  posibilitatea.
 
 	- 30/03/02
 
-	  + Añadida fecha de última sesión al iniciar los privados y presentar
-	  	últimas líneas del privado anterior.
-	  
+	  + Gehitu dira azkenengo sesioaren data pribatuak hasi baino 
+		lehen eta aurreko pribatuaren azkenengo lerroak aurkezteko.  
 
 	- 29/03/02
 
-	   + Implementado nuevo alias para ascii art basado en figlet.
+	  + Figletez oinarrituriko ascci art alias berria erantsi diougu.
 
-	   + Funcionalidad total en opción de ordenar las ventanas a libre
-	   	elección.
+	  + Scriptaren lehioak guk nahi dugun bezala ipintzeko futzionalitate 
+		osoa.
 
+	  + ( Default, "BaSS Design", none), Skin berria .
 	
-	- 28/03/02
-
-	   + Gestor de temas (Default, "BaSS Design", none).
-
-	   + Mejoras de apariencia a petición de BaSS.
-
-	   + Inclusión de un par de nuevas Hot-keys como son las teclas Home y
-	   	End (Inicio y Fin) que a partir de ahora tendrán su función
-		standard (principio y fin de línea). ¿Quién dijo que se cambiaran?
-		;) .
-
-	   + Posibilidad de usar la función de autojoin en el momento en que
-	   	consideremos oportuno (no es necesario invocarlo al conectar).
-
-	   + Bastantes bugs solucionados.
-	   
+	  + Itsura hobekuntzak egin dira BaSS-en gomedioz.
+	
+	  + Bi hot key erantsi ditugu ( Home eta End ). Hemendik aurrera bere 
+		funtzioa beteko dute, textu hasiera eta bukaera.
+		
+	  + Autojoina nahi dugunean erabiltzeko posibilitatea izango dugu 
+		( konektatzen garenean ez da beharrezkoa izango burutzea)
+		
+	  + Bug ugari konpondu dira.
 
 	- 27/03/02
 	
-	   + Añadida posibilidad de usar la tecla Ctrl como alternativa al Alt
-	   	en Hot-keys y evitar así comederos de cabeza para configurar las
-		teclas de método abreviado en las terminales X.
-	
-	   + Pequeños bugs solucionados
+	  + Orain alt tekla erabili beharrean Alt tekla erabiliko da 
+	  	Hot-keys-ean horrela X terminalak ez ditugu taxutu beharko.
+		
+	  + Bug txikiak konpondu dira.
 
 	- 26/03/02
 
-	   + Adaptado desde lunascript para sunlite hemos incluído un fichero
-	   	modificado de eventos para que nuestros nicks completions sean mas
-		intuitivos. Ahora no tendremos que añadir los caracteres
-		alfanuméricos de los nicks, sino que escribimos el nombre y
-		pulsamos tab y los carácteres alfanuméricos saldrán
-		automáticamente.
+	  + Gure nik kompletionak errazagoak izan daitezen lunascripteko 
+	  	ebentu fitxero bat hartu eta sunlitera egokitu dugu.Orain 
+		ez ditugu karakter alfanumerikoak ipini beharko, izena soilik 
+		ipinita eta tab teklari eman orduko karakter alfanumerikoak 
+		aterako dira.
+		
+	  + Bug txikia konpondu dira.
 
-	   + Pequeños bugs solucionados.
-
-   
 	- 25/03/02
-	
-	   + A partir de ahora tendremos en pantalla el servidor al que
-	   	estamos conectados. No necesitaremos hacernos un whois para
-		averiguarlo.
 
+	  + Hemendik aurrera zein serbidoretan gauden jakiteko ez dugu whois 
+	  	bat egin beharko pantallan azalduko bait da.
 
 	- 20/03/02
-
-	   + Posibilidad de ordenar las ventanas a libre elección en la opción
-	   	multiventana (Beta).
-
-	   + Más estética en la presentación de ventanas (líneas de división más
-	   	estilizadas).
-
-	   + Posibilidad de ignorar peticiones molestas ctcp`s sound.
-
+	
+	  + Skriptaren lehioak guk nahi ditugun bezala jartzeko posibilitatea.
+	  
+	  + Lehioen presentazioetan estetika hobeagotu dugu. 
+	  
+	  + Ctcp sound eskaerak  alde batera uzteko posibilitatea.
+	  
 
 * Sunlite for BitchX v1.0
 
 	- 13/03/02
-
-	   + Posibilidad de incluir como quits mensajes aleatorios de fortune.
-
+  
+	  + Fortuneko quit mezu aleatorioak jartzeko posibilitatea.
 
 	- 12/03/02
-
-	   + Solucionados un par de bugs relacionados con los nombres de las 
-	   	ventanas y un mensaje de error en los envíos dcc.
-
-	   + Comprobación de canal como ventana actual antes de realizar opme's, 
-	   	deopme's, voiceme's o similar.
-
+	  
+	  + Lehioen izenetan eta dcc-etako errore mezuetan zeuden bi bug 
+	  	jadanik konponduta.
+		
+	  + Opme deopme voiceme eta horrelakoak egin aurretik lehio jadaneko 
+	  	kanale egiaztapena.
 
 	- 03/03/02
 
-	   + Añadido un nuevo alias traductor ( Ya podemos chatear sin problemas
-		en los canales ingleses. Si no entendemos una palabra invocamos
-		al alias y listo ;) ).
+	  + Alias itzultzaile bat erantsita ( ingles kanaletan sartu eta ez 
+	  	badugu tutik ere ulertzen, alias honekin ez dugu arazorik 
+		izango).
 
-	   + Añadida opción de personalización de mensajes de parts en canales
-		por defecto.
-
+	  + Kanaleetako part mezuen pertsonalizazioa defektuz gehitua.
 
 	- 26/02/02
-
-	   + Solucionado bug provocado por rejoin en ##canal tras un pateo.
-
+	
+	  + Kik baten ondoren kanale batetan egiten dugun rejoinaren bug-a 
+	  	jadanik konponduta.
 
 	- 25/02/02
-
-	   + Finalizado nuevo diseño para entorno de envíos y conversaciones 
- 		dcc's/dcc chat.
-
-	   + Añadida creación de privado único para todos los bots. Útil sólo 
-	   	para usuarios con la variable WinQuery activada.
-
+	
+	  + Dcc/dcc chatentazako diseñu berria bukatuta.
+	  
+	  + Bot guztiak pribatu bakar batetan sar daitezen posibilitatea, 
+	  	winquery bariablea dutenentazko bakarrik balio du.
+		
+	  + Izen berdin baina serbidore desberdinetan zegoen gainketa arazoa
+		konponduta.
 
 	- 24/02/02
-
-	   + Presentación de las últimas líneas del log al abrir un privado.
-
-	   + Solucionado problema de duplicación de mensajes de notify ( script
-		primitivos de BitchX ).
-
+	
+	  + Pribatu bat irekitzerakoan azken log pusketaren presentazioa.
+	  
+	  + Notify mesuaren bikoizketaren arazoa jadanik konponduta.
 
 	- 23/02/02
 
- 	   + Liberada la versión 1.0 del script.
+	  + Scriptaren 1.0 bertsioa askatuta.
+ 
