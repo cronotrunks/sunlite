@@ -40,16 +40,15 @@ on ^msg "*" {
   if ( ([$($0)] != 1) && ([$WinQuery] == 1) && ( winnum() != 1 ) ) {
     if ( ( [$0] == [CHaN] ) || ( [$0] == [NiCK] ) || ( [$0] == [MeMo] ) || ( [$0] == [NickServ] ) || ( [$0] == [ChanServ] ) || ( [$0] == [MemoServ] ) || ( [$0] == [agenda] ) ) {
       query _Bots_Redes_
-      window number 13
-      xecho -win privados Privado abierto para bots en la ventana 13 (Alt + u) 
+      xecho -win privados Query aperto per i bots nella finestra $winnum(_Bots_Redes_) (Alt + u) 
     } {
       query hide $0 
-      xecho -win privados Privado abierto con $0 en la ventana $winnum($0) (Alt + u) } }
+      xecho -win privados Query aperto con $0 nella finestra $winnum($0) (Alt + u) } }
   if ([$($0)] == 1) {
     xecho -win $winnum($0) $cparse("$Hora$VerdeF\[$Blanco$mid(0 8 $Nick_tmp)$VerdeF]") $1-
   } elsif ( ( [$0] == [CHaN] ) || ( [$0] == [NiCk] ) || ( [$0] == [MeMo] ) || ( [$0] == [NickServ] ) || ( [$0] == [ChanServ] ) || ( [$0] == [MemoServ] ) || ( [$0] == [agenda] ) ) {
     if ( [$WinQuery] == 1 ) {
-      xecho -win 13 $cparse("$Hora$VerdeF\[$Blanco$0$VerdeF]") $1-
+      xecho -win $winnum(_Bots_Redes_) $cparse("$Hora$VerdeF\[$Blanco$0$VerdeF]") $1-
     } {
       xecho -win status $cparse("$Hora$VerdeF\[$Blanco$0$VerdeF]") $1- }
   } {
@@ -73,9 +72,9 @@ on ^send_msg "*" {
 #
 on ^nickname "*" { 
   if ([$1] == N) {
-    echo $cparse("$Verde***$RojoF has cambiado tu nick$Blanco : $AzulF$1")
+    echo $cparse("$Verde***$RojoF  Il tuo nickname$Blanco : $AzulF$1")
   } {
-    echo $cparse("$Verde***$AzulF $0$RojoF es ahora $AzulF$1") } }
+    echo $cparse("$Verde***$AzulF $0$RojoF ora è $AzulF$1") } }
 
 on ^public_notice "*" { 
   echo $cparse("$Verde+++$AzulF\[$RojoF$0:$1$AzulF]") $2- }
@@ -87,8 +86,7 @@ on ^notice "*" {
   if ( ([$($0)] != 1) && ([$WinQuery] == 1) && ( winnum() != 1 ) ) {
     if ( ( [$0] == [CHaN] ) || ( [$0] == [NiCk] ) || ( [$0] == [MeMo] ) || ( [$0] == [NickServ] ) || ( [$0] == [ChanServ] ) || ( [$0] == [MemoServ] ) || ( [$0] == [agenda] ) ) {
       query _Bots_Redes_
-      window number 13
-      xecho -win privados Privado abierto para bots en la ventana 13 (Alt + u)
+      xecho -win privados Query aperto per i bots nella finestra $winnum(_Bots_Redes_) (Alt + u)
     } }
 #{
 #      query hide $0
@@ -97,7 +95,7 @@ on ^notice "*" {
     xecho -win privados $cparse("$Verde+++$AzulF\[$RojoF$0$AzulF]") $1-
   } elsif ( ( [$0] == [CHaN] ) || ( [$0] == [NiCk] ) || ( [$0] == [MeMo] ) || ( [$0] == [NickServ] ) || ( [$0] == [ChanServ] ) || ( [$0] == [MemoServ] ) || ( [$0] == [agenda] ) ) {
     if ( [$WinQuery] == 1 ) {
-      xecho -win 13 $cparse("$Verde+++$AzulF\[$RojoF$0$AzulF]") $1-
+      xecho -win $winnum(_Bots_Redes_) $cparse("$Verde+++$AzulF\[$RojoF$0$AzulF]") $1-
     } {
       xecho -win status $cparse("$Verde+++$AzulF\[$RojoF$0$AzulF]") $1- }
   } {
@@ -115,9 +113,9 @@ on ^mode "*" {
   if ( [$3] == N ) {
      if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/op.wav 2> /dev/null }
      if ( [$0] == N ) {
-       echo $cparse("$Verde***$RojoF Modo de usuario cambiado a : $Rojo$2-") 
+       echo $cparse("$Verde***$RojoF Mode di utente cambiato a : $Rojo$2-") 
      } {
-       echo $cparse("$Verde*** $AzulF$0$Amarillo/$AzulF$1$RojoF cambia tu modo a : $Rojo$2-")
+       echo $cparse("$Verde*** $AzulF$0$Amarillo/$AzulF$1$RojoF cambia il tuo mode a : $Rojo$2-")
        if ( [$2] == [-o] ) {
 	 if ( ([$pringao] != [CHaN]) && ([$pringao] != [ChanServ]) ) { 
            if ( match(hispano $reverse($mid(4 7 $reverse($servername($winserv()))))) >= 1) { 
@@ -142,38 +140,35 @@ on ^mode "*" {
 	 tban $pringao
 	 } }
   } {
-     echo $cparse("$Verde*** $AzulF$0$Amarillo/$AzulF$1$RojoF cambia a modo : $Rojo$2-") } }
+     echo $cparse("$Verde*** $AzulF$0$Amarillo/$AzulF$1$RojoF cambia a mode : $Rojo$2-") } }
 # }
 
 on ^action "*" {
-   switch ( $1 ) {
-      ( $N ) { 
-        if ([$($0)] == 1) { 
-	  xecho -win $winnum($1) $cparse("$Verde* $AzulF$0 $CyanF$2-") 
-        } {
-	  xecho -win privados $cparse("$Verde* $AzulF$0 $CyanF$2-") } }
-      ( $C ) { xecho -win $winnum($1) $cparse("$Verde* $AzulF$0 $CyanF$2-") }
-      ( * )  { xecho $cparse("$Verde* $AzulF$0$Amarillo/$RojoF$1 $CyanF$2-") } } } 
+  switch ( $1 ) {
+    ( $N ) { echo $cparse("$Verde* $AzulF$0 $CyanF$2-") }
+    ( $C ) { echo $cparse("$Verde* $AzulF$0 $CyanF$2-") }
+    ( * )  { echo $cparse("$Verde* $AzulF$0$Amarillo/$RojoF$1 $CyanF$2-") } } }
+
 
 on ^join "*" {
   if ( [$Conf_canal] != [$1] ) {
     if ( [$0] == N ) {
       if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/join.wav 2> /dev/null }
-      echo $cparse("$Verde***$Amarillo Entrando en $Naranja$1")
+      echo $cparse("$Verde***$Amarillo Entrando in $Naranja$1")
     } {
-      echo $cparse("$Verde*** $AzulF$0$Amarillo entra en $Naranja$1") } } }
+      echo $cparse("$Verde*** $AzulF$0$Amarillo entra in $Naranja$1") } } }
 
 on ^leave "*" {
   if ( [$Conf_canal] != [$1] ) {
     if ( [$0] == N ) {
       if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/part.wav 2> /dev/null }
-      xecho -win status $cparse("$Verde***$Amarillo Saliste de $Naranja$1 $Blanco($2-)")
+      xecho -win status $cparse("$Verde***$Amarillo sei uscito di $Naranja$1 $Blanco($2-)")
     } {
-      echo $cparse("$Verde*** $AzulF$0$Amarillo sale de $Naranja$1 $Blanco($2-)") } } }
+      echo $cparse("$Verde*** $AzulF$0$Amarillo è uscito di $Naranja$1 $Blanco($2-)") } } }
 
 on ^channel_signoff "*" {
   if ( [$Conferencia] == 0  ) {
-    echo $cparse("$Verde-:-$Amarillo Cierra $AzulF$1 $Blanco\(")$2-$cparse("$Blanco\)") } }
+    echo $cparse("$Verde-:-$Amarillo Esce $AzulF$1 $Blanco\(")$2-$cparse("$Blanco\)") } }
 
 on ^topic "*" {
   echo $cparse("$Verde-:-$Amarillo Asunto $Blanco\($1\): $AzulF$0 fija") $2- }
@@ -213,7 +208,7 @@ on ^public "*" {
         if ( [$ircha] == 0 ) {
           exec bplay ~/.BitchX/sunlite/sonidos/cuac.wav 2> /dev/null 
         } {
-          exec lee "Te nombraron en $Nick_en_canal. $0 dice $2-" }
+          exec lee "Ti hanno chiamato in $Nick_en_canal. $0 e dice $2-" }
       } {
         beep }
       if ( [$Away] == 1 ) {
@@ -222,19 +217,19 @@ on ^public "*" {
       if ( winvisible($Nick_en_canal) != 1 ) {
         if ( [$hotkey] == [alt] ) {
 	  if ( [$WinQuery] == 1 ) {
-	    xecho -win privados $cparse("$Magenta\[$Z]$AzulF Te nombraron! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x para ir a $Amarillo$Nick_en_canal $Blanco\)")
+	    xecho -win privados $cparse("$Magenta\[$Z]$AzulF Ti chiamavano! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x per vedere $Amarillo$Nick_en_canal $Blanco\)")
 	  } {
-            xecho -win status $cparse("$Magenta\[$Z]$AzulF Te nombraron! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x para ir a $Amarillo$Nick_en_canal $Blanco\)") }
+            xecho -win status $cparse("$Magenta\[$Z]$AzulF Ti chiamavano! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x per vedere $Amarillo$Nick_en_canal $Blanco\)") }
 	} elsif ( [$hotkey] == [ctrl] ) {
           if ( [$WinQuery] == 1 ) {
-            xecho -win privados $cparse("$Magenta\[$Z]$AzulF Te nombraron! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x para ir a $Amarillo$Nick_en_canal $Blanco\)")
+            xecho -win privados $cparse("$Magenta\[$Z]$AzulF Ti chiamavano! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x per vedere $Amarillo$Nick_en_canal $Blanco\)")
           } {
-            xecho -win status $cparse("$Magenta\[$Z]$AzulF Te nombraron! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Ctrl+x para ir a $Amarillo$Nick_en_canal $Blanco\)") } }
+            xecho -win status $cparse("$Magenta\[$Z]$AzulF Ti chiamavano! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Ctrl+x per vedere $Amarillo$Nick_en_canal $Blanco\)") } }
 	if ( ( [$Sonido] == 1 ) && ( [$C] != [$Nick_en_canal] ) ) {
           if ( [$ircha] == 0 ) {
             exec bplay ~/.BitchX/sunlite/sonidos/cuac.wav 2> /dev/null
           } {
-            exec lee "Te nombraron en $Nick_en_canal. $0 dice $2-" } }
+            exec lee "Ti chiamavano in $Nick_en_canal. $0 dice $2-" } }
       } {
         @ Nick_en_canal = "" }
     } {
@@ -247,7 +242,7 @@ on ^public "*" {
           if ( [$ircha] == 0 ) {
             exec bplay ~/.BitchX/sunlite/sonidos/cuac.wav 2> /dev/null 
           } {
-            exec lee "Te nombraron en $Nick_en_canal. $0 dice $2-" }
+            exec lee "ti chiamavano in $Nick_en_canal. $0 dice $2-" }
         } {
           beep }
         if ( [$Away] == 1 ) {
@@ -256,14 +251,14 @@ on ^public "*" {
         if ( winvisible($Nick_en_canal) != 1) {
 	  if ( [$hotkey] == [alt] ) {
             if ( [$WinQuery] == 1 ) {
-	      xecho -win privados $cparse("$Magenta\[$Z]$AzulF Te nombraron! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x para ir a $Amarillo$Nick_en_canal $Blanco\)")
+	      xecho -win privados $cparse("$Magenta\[$Z]$AzulF Ti chiamavano! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x per vedere $Amarillo$Nick_en_canal $Blanco\)")
 	    } {
-              xecho -win status $cparse("$Magenta\[$Z]$AzulF Te nombraron! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse("$Blanco\($AzulF Alt+x para ir a $Amarillo$Nick_en_canal $Blanco\)") }
+              xecho -win status $cparse("$Magenta\[$Z]$AzulF Ti chiamavano! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse("$Blanco\($AzulF Alt+x per vedere $Amarillo$Nick_en_canal $Blanco\)") }
 	  } elsif ( [$hotkey] == [ctrl] ) {
             if ( [$WinQuery] == 1 ) {
-	      xecho -win privados $cparse("$Magenta\[$Z]$AzulF Te nombraron! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x para ir a $Amarillo$Nick_en_canal $Blanco\)")
+	      xecho -win privados $cparse("$Magenta\[$Z]$AzulF Ti chiamavano! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x per vedere $Amarillo$Nick_en_canal $Blanco\)")
 	    } {
-	      xecho -win status $cparse("$Magenta\[$Z]$AzulF Te nombraron! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Ctrl+x para ir a $Amarillo$Nick_en_canal $Blanco\)") } }
+	      xecho -win status $cparse("$Magenta\[$Z]$AzulF Ti chiamavano! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Ctrl+x per vedere $Amarillo$Nick_en_canal $Blanco\)") } }
         } {
           @ Nick_en_Canal = "" }     
       } {
@@ -275,7 +270,7 @@ on ^public "*" {
           if ( [$ircha] == 0 ) {
             exec bplay ~/.BitchX/sunlite/sonidos/cuac.wav 2> /dev/null 
           } {
-            exec lee "Te nombraron en $Nick_en_canal. $0 dice: $2-" }
+            exec lee "Ti chiamavano in $Nick_en_canal. $0 dice: $2-" }
         } {
           beep }
         if ( [$Away] == 1 ) {
@@ -284,14 +279,14 @@ on ^public "*" {
         if ( winvisible($Nick_en_canal) != 1 ) {
 	  if ( [$hotkey] == [alt] ) {
 	    if ( [$WinQuery] == 1 ) {
-              xecho -win privados $cparse("$Magenta\[$Z]$AzulF Te nombraron! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x para ir a $Amarillo$Nick_en_canal $Blanco\)")
+              xecho -win privados $cparse("$Magenta\[$Z]$AzulF Ti chiamavono! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x per andare a $Amarillo$Nick_en_canal $Blanco\)")
             } {
-              xecho -win status $cparse("$Magenta\[$Z] $AzulF Te nombraron! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x para ir a $Amarillo$Nick_en_canal $Blanco\)") }
+              xecho -win status $cparse("$Magenta\[$Z] $AzulF Ti chiamavono! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x per andare a $Amarillo$Nick_en_canal $Blanco\)") }
 	  } elsif ( [$hotkey] == [ctrl] ) {
 	    if ( [$WinQuery] == 1 ) {
-              xecho -win privados $cparse("$Magenta\[$Z]$AzulF Te nombraron! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x para ir a $Amarillo$Nick_en_canal $Blanco\)")
+              xecho -win privados $cparse("$Magenta\[$Z]$AzulF Ti chiamavono! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Alt+x per andare a $Amarillo$Nick_en_canal $Blanco\)")
             } {
-              xecho -win status $cparse("$Magenta\[$Z]$AzulF Te nombraron! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Ctrl+x para ir a $Amarillo$Nick_en_canal $Blanco\)") } }
+              xecho -win status $cparse("$Magenta\[$Z]$AzulF Ti chiamavono! : $Blanco/$Amarillo$Nick_en_canal$Blanco/$VerdeF$0$Blanco/") $2- $cparse(" $Blanco\($AzulF Ctrl+x per vedere $Amarillo$Nick_en_canal $Blanco\)") } }
         } {
           @ Nick_en_canal = "" }
       } {
@@ -320,7 +315,7 @@ on ^kick "*" {
     on ^join "$Canal" {
       mode $Canal -bbbb $N!*@* *!$my_ident@* *!*@$my_ip *!$my_ident@$my_ip }
   } {
-    echo $cparse("$VerdeF*** $AzulF$0$RojoF ha sido expulsado en $Amarillo$2$RojoF por $AzulF$1 $Blanco\($3-\)") } }
+    echo $cparse("$VerdeF*** $AzulF$0$RojoF è espulsato in $Amarillo$2$RojoF per $AzulF$1 $Blanco\($3-\)") } }
 
 # Notificaciones del script cuando entra o sale del irc alguno de nuestros amigos
 # incluídos en la lista notify
@@ -330,37 +325,37 @@ on ^notify_signon "*" {
 # Si está NickServ en el Irc nos identificamos ;)
     ( NickServ ) { identifica } }
   if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/notify-on.wav 2> /dev/null } 
-  xecho -win status $cparse("$RojoF-$Blanco:$RojoF-$VerdeF Entra$Gris en el Irc: $RojoF$0!$1") a las $Z }
+  xecho -win status $cparse("$RojoF-$Blanco:$RojoF-$VerdeF Entra$Gris nell'Irc: $RojoF$0!$1") alle $Z }
 
 on ^notify_signoff "*" {
   if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/notify-off.wav 2> /dev/null } 
-  xecho -win status $cparse("$RojoF-$Blanco:$RojoF-$VerdeF Sale$Gris del Irc $RojoF$0!$1") a las $Z }
+  xecho -win status $cparse("$RojoF-$Blanco:$RojoF-$VerdeF Sale$Gris dell'Irc $RojoF$0!$1") alle $Z }
 
 # Vamos a montarnos un entorno más amigable para los fanáticos del dcc en dal.net
 # Crearemos así una ventana exclusiva para dcc's chat y colocaremos cada mensajito en su lugar
 #
 on ^dcc_chat "*" {
   if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/dcc-chat.wav 2> /dev/null }
-  xecho -win privados $cparse("$RojoF-$Blanco:$RojoF-$VerdeF Dcc chat ofrecido por $RojoF$0") $1- }
+  xecho -win privados $cparse("$RojoF-$Blanco:$RojoF-$VerdeF Dcc chat offerto per $RojoF$0") $1- }
 
 on ^dcc_connect "*" {
   if ([$($0)] == 1) {
-    xecho -win $winnum($0) $cparse("$VerdeF*** $RojoF\Conexión DCC $1 con $Blanco$0[$AzulF$2:$3$Blanco] $RojoF\establecida")
-    if ( [$1] == [send] ) xecho -win $winnum($0) $cparse("$VerdeF*** $RojoF\Transfiriendo $AzulF$4 $Blanco\($AzulF$5 bytes$Blanco\)")
+    xecho -win $winnum($0) $cparse("$VerdeF*** $RojoF\Conessione DCC $1 con $Blanco$0[$AzulF$2:$3$Blanco] $RojoF\stabilita")
+    if ( [$1] == [send] ) xecho -win $winnum($0) $cparse("$VerdeF*** $RojoF\scaricando $AzulF$4 $Blanco\($AzulF$5 bytes$Blanco\)")
   } {
-    xecho -win status $cparse("$VerdeF*** $RojoF\Conexión DCC $1 con $Blanco$0[$AzulF$2:$3$Blanco] $RojoF\establecida")
-    if ( [$1] == [send] ) xecho -win status $cparse("$VerdeF*** $RojoF\Transfiriendo $AzulF$4 $Blanco\($AzulF$5 bytes$Blanco\)")
+    xecho -win status $cparse("$VerdeF*** $RojoF\Conessione DCC $1 con $Blanco$0[$AzulF$2:$3$Blanco] $RojoF\stabilita")
+    if ( [$1] == [send] ) xecho -win status $cparse("$VerdeF*** $RojoF\scariando $AzulF$4 $Blanco\($AzulF$5 bytes$Blanco\)")
     if ( [$1] == [chat] ) query $0 } }
 
 on ^dcc_lost "*" {
   if ([$($0)] == 1) {
-    xecho -win $winnum($0) $cparse("$VerdeF*** $RojoF\Acabada la conexión DCC con $Blanco$0 $AzulF[$1] [: $1- :]")
+    xecho -win $winnum($0) $cparse("$VerdeF*** $RojoF\Finita la conessione DCC con $Blanco$0 $AzulF[$1] [: $1- :]")
   } {
-    xecho -win status $cparse("$VerdeF*** $RojoF\Acabada la conexión DCC con $Blanco$0 $AzulF[$1] [: $1- :]") } }
+    xecho -win status $cparse("$VerdeF*** $RojoF\Finita la conessione DCC con $Blanco$0 $AzulF[$1] [: $1- :]") } }
 
 on ^dcc_offer "*" {
   if ( mid(0 1 $0) == [#] ) {
-    xecho -win status $cparse("$VerdeF*** $RojoF\No me seas cateto, envía el dcc a una persona, no a un canal completo") 
+    xecho -win status $cparse("$VerdeF*** $RojoF\Non sei schemo, non puoi enviare niente a un channel") 
   } {
     if ([$($0)] == 1) {
       xecho -win $winnum($0) $cparse("$Hora$Verde[$Rojo\dcc$Verde\($Blanco$1$Verde\)] $AzulF<$RojoF$N$Cyan -> $Blanco$0$AzulF>")
@@ -370,21 +365,23 @@ on ^dcc_offer "*" {
 on ^dcc_request "*" {
   if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/dcc-request.wav 2> /dev/null }
   if ([$($0)] == 1) {
-    xecho -win $winnum($0) $cparse("$VerdeF*** $RojoF\Petición DCC $1 por $Blanco$0!$userhost() $AzulF[$Amarillo$3:$4$AzulF]")
-    if ( [$1] == [send] ) xecho -win $winnum($0) $cparse("$VerdeF*** $RojoF\Archivo ofrecido: $AzulF$4 $Blanco\($AzulF$5 bytes$Blanco\)")
+    xecho -win $winnum($0) $cparse("$VerdeF*** $RojoF\Petizione DCC $1 per $Blanco$0!$userhost() $AzulF[$Amarillo$3:$4$AzulF]")
+    if ( [$1] == [send] ) xecho -win $winnum($0) $cparse("$VerdeF*** $RojoF\File offerto: $AzulF$4 $Blanco\($AzulF$5 bytes$Blanco\)")
   } {
-    xecho -win privados $cparse("$VerdeF*** $RojoF\Petición DCC $1 por $Blanco$0!$userhost() $AzulF[$Amarillo$3:$4$AzulF]")
-    if ( [$1] == [send] ) xecho -win privados $cparse("$VerdeF*** $RojoF\Archivo ofrecido: $AzulF$4 $Blanco\($AzulF$5 bytes$Blanco\)") } }
+    xecho -win privados $cparse("$VerdeF*** $RojoF\Petizione DCC $1 per $Blanco$0!$userhost() $AzulF[$Amarillo$3:$4$AzulF]")
+    if ( [$1] == [send] ) xecho -win privados $cparse("$VerdeF*** $RojoF\File offerto: $AzulF$4 $Blanco\($AzulF$5 bytes$Blanco\)") } }
 
 # Nuestra eurocalculadora personal y pública gracias a los ctcp's (con protección
 # anti-flood)
 #
+# quanto sono un'euro in lire?
+
 on ^ctcp '% $N EURO *' {
   @ Flood = ([$Flood] +1)
   if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/ctcp.wav 2> /dev/null }
   if ( [$Flood] <= 5 ) {
     @ Ptas = [$3-] * 166.386
-    notice $N CTCP EURO de $0
+    notice $N CTCP EURO da $0
     eval notice $0 $3- Euros = $Ptas ptas } }
 
 on ^ctcp '% $N PESETA *' {
@@ -392,21 +389,21 @@ on ^ctcp '% $N PESETA *' {
   if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/ctcp.wav 2> /dev/null }
   if ( [$Flood] <= 5 ) {
     @ Euro = [$3-] / 166.386
-    notice $N CTCP PESETA de $0
+    notice $N CTCP PESETA da $0
     eval notice $0 $3- ptas = $Euro Euros } }
 
 on ^ctcp '% $N VERSION *' {
   @ Flood = ([$Flood] +1)
   if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/ctcp.wav 2> /dev/null }
   if ( [$Flood] <= 5 ) {
-    notice $N CTCP VERSION de $0
+    notice $N CTCP VERSION da $0
     notice $0 $J } }
 
 on ^ctcp '% $N FORTUNE' {
   @ Flood = ([$Flood] +1)
   if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/ctcp.wav 2> /dev/null }
   if ( ( [$Flood] <= 5 ) && ( [$0] == [$N] ) ) {
-    notice $N CTCP FORTUNE de $0
+    notice $N CTCP FORTUNE da $0
     window swap $3
     exec -o /usr/games/fortune } }
 

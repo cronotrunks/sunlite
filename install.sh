@@ -1,6 +1,6 @@
 #!/bin/sh
 # LINUX install.sh made by {Trunks}
-#
+# 
 #
 #    This file is part of Sunlite for BitchX.
 #
@@ -31,66 +31,66 @@ case $1 in
     exit 1;;
   *)
     if test ! -f /usr/bin/bplay 
-      then echo "Deberías instalar bplay para poder disfrutar de las opciones de sonido" 
+      then echo "Installa bplay per usare gli opzioni di suono" 
     fi;
     if test ! -f /usr/bin/mpg123 
-      then echo "Deberías instalar mpg123 para poder disfrutar del uso de un reproductor de mp3 al mismo tiempo que usas el script" 
+      then echo "Installa mpg123 per usare il player di mp3 mentre usi lo script" 
     fi;
     if test ! -f /usr/bin/gawk 
-      then echo "Deberías instalar gawk para poder disfrutar del uso de las funciones externas que he programado en gawk (por ejemplo la he usado para listar el contenido de los mp3's)" 
+      then echo "Installa gawk per usare le funzione esterni che ho programmatto in gawk (per esempio per listare el contenuto dei tuoi mp3's)" 
     fi;
     if test ! -f /usr/bin/esms 
-      then echo "Deberías instalar esms para poder disfrutar de la funcionalidad de envío de sms desde BitchX" 
+      then echo "Installa esms per enviare sms" 
     fi;
     if test ! -f /usr/local/bin/lee 
-      then echo "Deberías instalar ircha para poder disfrutar de las funciones de speaking del script"
+      then echo "Installa ircha per usare le funzione di speaking dello script"
     fi;
     if test ! -f /usr/bin/cdcd 
-      then echo "Deberías instalar cdcd para poder disfrutar de las funciones de reproducción de cd's del script"
+      then echo "Installa cdcd per usare le funzione di riproduzione di cd's nello script"
     fi;
     if test ! -f /usr/games/fortune
-      then echo "Deberías instalar fortune para poder disfrutar de los ctcp's fortunes del script ;)"
+      then echo "Installa fortune per usare le funzione di ctcp's fortunes dello script ;)"
     fi;
     if test ! -f /usr/bin/i2e.sh
-      then echo "Deberías instalar i2e para poder disfrutar de la función de traducción del script"
+      then echo "Installa i2e per usare le funzione di traduzione dello script"
     fi;
     if test ! -f /usr/bin/figlet
-      then echo "Deberías instalar figlet para disfrutar de una de las funciones ascii art del script"
+      then echo "Installa figlet per usare una di le funzione ascii art dello script"
     fi;
     if test ! -f /usr/bin/cowsay
-      then echo "Deberías instalar cowsay para disfrutar de una de las funciones ascii art del script"
+      then echo "Installa cowsay per usare una di le funzione ascii art dello script"
     fi;
     if test ! -d ~/.BitchX; then mkdir ~/.BitchX; fi;
     if test ! -d $DIR; then mkdir $DIR; fi;
-    echo -e "\n\nRecuerda leer el README antes de comenzar a usar el script\n";
+    echo -e "\n\nRicorda da leggere il README prima da usare lo script\n";
     if test -f ~/.bitchxrc; then cp ~/.bitchxrc ~/.bitchxrc.bak; fi;
     echo "load ~/.BitchX/sunlite/sunlite.bx" > ~/.bitchxrc;
-    echo "Tu antiguo ~/.bitchxrc ha sido salvado como ~/.bitchxrc.bak";
-    echo "Si en algún momento quieres desinstalar el script invoca: \"install.sh uninstall\"";
+    echo "Adesso il tuo antiquo ~/.bitchxrc é ~/.bitchxrc.bak";
+    echo "Se vuoi desinstallare lo script: \"install.sh uninstall\"";
     cp -r . $DIR;
     if test ! -f $DIR/config; then cp config.example $DIR/config; fi;
     rm $DIR/install.sh;
     echo;
     if [ -z "$IRCSERVER" ]
-    then echo "Añade los servidores que quieres tener por defecto para el script";
+    then echo "Servers che vuoi usare per default";
       read IRCSERVER;
       echo -e "export IRCSERVER=\"$IRCSERVER\"" >> ~/.bashrc;
       export IRCSERVER="$IRCSERVER";
     fi;
     if [ -z "$IRCNICK" ]
-    then echo "Tu nick por defectopara el script ¿será?";
+    then echo "Il tuo nick per default:";
       read IRCNICK;
       echo -e "export IRCNICK=\"$IRCNICK\"" >> ~/.bashrc;
       export IRCNICK="$IRCNICK";
     fi;
     if [ -z "$IRCNAME" ]
-    then echo "¿Y tu Irc Name por defecto?";
+    then echo "il tuo Irc Name per default?";
       read IRCNAME;
       echo -e "export IRCNAME=\"$IRCNAME\"" >> ~/.bashrc;
       export IRCNAME="$IRCNAME";
     fi;
     if [ -z "$IRCUSER" ]
-    then echo "Y por último tu ident:";
+    then echo "e tuo ident:";
       read IRCUSER;
       echo -e "export IRCUSER=\"$IRCUSER\"" >> ~/.bashrc;
       export IRCUSER="$IRCUSER";
@@ -100,7 +100,7 @@ case $1 in
       export IRCUMODE='-ws';
     fi;
     echo;
-    echo "Para crear el archivo de configuración ejecute el script configure";
+    echo "Per creare il file di configurazione dello script di nuovo esecuti: configure";
     exit 1;;
 esac
 

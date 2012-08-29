@@ -1,0 +1,59 @@
+@ Partir=1
+@ Pos1=1
+@ Pos2=2
+@ Pos3=3
+@ Mp3dir=[/var/mp3/]
+@ Notif_mp3=0
+@ WinQuery=0
+@ theme=[]
+Color no
+@ Hora=
+@ Sonido=0
+@ ircha=0
+@ nick_awayOn=[Pableras]
+@ nick_awayOff=[Pableaway]
+@ Msg_quit=[Sunlite v1.2 for BitchX]
+@ Msg_part=[Sunlite v1.2 for BitchX]
+@ Autojoin=0
+@ Canales_Aj=[]
+@ fortune=0
+@ hotkey=[alt]
+@ Ctcp_mp3=0
+
+@ Conferencia = 0
+@ snap = 0
+
+set cloak 1
+set usermode +i-ws
+set status_window ^Attiva^
+set status_query 8[15Query: 7%Q8]
+set status_hold --più--
+set status_notify 8[Parlano: %F]
+set realname orion
+set flood_protection off
+set deop_on_Deopflood 5
+set deop_on_kickflood 5
+set dcc_autoresume on
+set dcc_autoget off
+set clock_24hour on
+set auto_join_on_invite on
+set auto_away on
+set auto_Away_time 1800
+set mircs on
+set beep on
+set STATUS_FORMAT 8,2[3 %T 8][15%*%@%=10%N7%#%A8]%M [10%C%+3%W8] 6%Q %H%B%F 8%S
+set STATUS_FORMAT1 8,2[3 %T 8][15%*%@%=10%N7%#%A8]%M [10%C%+3%W8] 6%Q %H%B%F 8%S
+set STATUS_FORMAT2 8,14Topic 3: 14%-
+set STATUS_FORMAT3 8,14Topic 3: 14%-
+set STATUS_UMODE 8(10+15%#8)
+set STATUS_MODE 8(10+15%+8)
+set STATUS_USERS 8[7O/15%! 7N/15%! 7I/15%! 7V/15%! 7F/15%!8]
+set STATUS_OPER_KILLS 8[4nk/15%K 4ok/15%K8]
+set STATUS_MSGCOUNT 7Aw8[15%^8]
+set STATUS_MAIL 8[7Mail: 15%M8]
+set STATUS_LAG 8[7Lag 15%L8]
+set STATUS_HOLD_LINES 8(15%B8)
+set STATUS_CHANNEL 7%C
+set INPUT_PROMPT 8,14[4$C8]7,14 
+set MANGLE_LOGFILES ANSI,COLOR,REVERSE,UNDERLINE,BOLD,BLINK
+

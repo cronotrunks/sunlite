@@ -1,90 +1,66 @@
  Sunlite script for BitchX By {Trunks} 
-   -Con colaboración de L00PB4cK-
+   - Collaborazione speziale di L00PB4cK-
 
-		( Gracias a |Poldark| por ofrecerse como testeador del
-			script en su fase de desarrollo )
+		( Grazie mille a |Poldark| per essere il tester
+			dello script nella fase di development )
 
-   -Agradecimiento especial a los usuarios del canal #barrapunto de opn
-  que se ofrecieron a probar el script :)
+   - Ringraziamento speziale ai utenti del channel #barrapunto di opn
+  che hanno probato il mio script :)
 
-   -Mención más especial si cabe merecen Mayoral y BaSS que se han
-  ofrecido también como betatesters del script en desarrollo y están aportando
-  una cantidad de ideas impresionante para el script ;)
+   - Anche a Mayoral e BaSS per essere betatesters dello script
+  in development e per darmi moltissimi idei ;)
 
-   -Siento no haberme acordado antes O:-) También tengo que agradecer a core
-  y kanuso el haber realizado el primer script a partir del cual me picó la 
-  curiosidad y comencé a desarrollar este nuevo Sunlite, que ha adoptado algunas
-  de las funciones que ellos ya tenían implementadas. 
-  
 ----------------------------------------------------------------------------
 
- Este script se distribuye bajo licencia GPL ( La descripción de todos 
-   los términos de esta licencia está completamente explicada en el 
-   fichero COPYING ). No está traducido al español, puesto que uno de
-   de los puntos de esta licencia es que todo aquel que distribuya un
-   un producto bajo ella debe incluirla sin ningún tipo de variación
-   en su estructura y contenido.
+ Questo script si distribuye con licenza GPL, per piu' informazione legge il file COPYING.
 
- Bueno, pasamos a explicar las instrucciones importantes k tiene este
-   script:
+ Adesso spiego i piu' importanti funzioni del mio script:
 
+ Pulire ( Alt + l ) - Fa un clear alla finestra e mostra il topic e un names del channel :) 
 
- Limpia ( Alt + l ) - Hace un clear a la ventana y presenta topic del
-   canal más un names al propio canal al instante :)
+ WNC ( Tb Join o j  ) - Apre una nuova finestra con un nuovo channel (fa un file di log).
 
- WNC ( Tb Join o j  ) - Crea una nueva ventana con un nuevo canal (loguea 
-   automáticamente).
+ WNS ( Tb Joins o server ) - Apre una nuova finestra per un nuovo server a un channel
+   specificato (anche fa un file di log).
 
- WNS ( Tb Joins o server ) - Crea una nueva ventana para un nuevo servidor a un canal
-   especificado (también loguea automáticamente).
+ Tban ( Alt + b ) - Banna e kicka del tuo channel attuale al nick specificato mostrando come menssagio di uscita uno opzionale per default o qualcosa che da come argomento. C'è una opzione adizionale di raccontare quanti ban hai fatto.
 
- Tban ( Alt + b ) - Banea y patea del canal al nick especificado mostrando
-   como mensaje del salida uno opcional por defecto u otro que se pase
-   como argumento. Consta de una característica adicional muy de moda
-   en los últimos scripts como es el conteo de bans.
+ Fban - Cancella tutti i ban che abiamo fatto nel tuo channel attuale sempre che esistono quello e abiamo level per fare questo.
 
- Fban - Limpia todos los bans que tengamos en el canal actual si 
-   existen y tenemos nivel.
+ Autojoin ( Alt + a ) - Si Apre una finestra per ogni channel che hai definito nella tua lista automaticamente e fa file di log :)
 
- Autojoin ( Alt + a ) - Entra en los canales que tengamos definidos dentro de
-   nuestra lista abriendo una ventana para cada uno de ellos
-   automáticamente y logueando :)
+ Opme ( Alt + o ) - Ti da OP nel tuo channel attuale.
 
- Opme ( Alt + o ) - Nos da arroba en el canal actual.
+ Deopme ( Alt + d ) -  Ti togli la OP nel tuo channel attuale.
 
- Deopme ( Alt + d ) - Nos quita la arroba en el canal actual.
+ Voiceme ( Alt + v ) - Ti da VOICE nel tuo channel.
 
- Voiceme ( Alt + v ) - Nos da voz en el canal actual.
+ Devoiceme - Ti togli la VOICE nel tuo channel attuale.
 
- Devoiceme - Nos quita voz en el canal actual.
+ Rejoin ( Alt + j ) - Entra e esce del tuo channel attuale.
 
- Rejoin ( Alt + j ) - Entra y sale del canal actual.
+ Moderre ( Alt + r ) - Protese il tuo channel channel contro joins flood 
+ atacks.
 
- Moderre ( Alt + r ) - Protege nuestro canal contra ataques de joins flood.
+ InfoN - Chiede informazione verso un nick al bot NiCK.
 
- InfoN - Petición de información sobre un nick al bot NiCK.
+ InfoCH - Chiede informazione verso un channel al bot CHaN.
 
- InfoCH - Petición de información sobre un canal al bot CHaN.
+ MemoS - Envia un menssagio a un nick usando il bot MeMo.
 
- MemoS - Enviar un mensaje a un nick a través del bot MeMo.
+ MemoD - Cancella il messagio che vuoi della base di dati del bot MeMo.
 
- MemoD - Borra el mensaje indicado de la base de datos del bot MeMo.
+ MemoR - Legge il messagio che vuoi della base di dati del bot MeMo.
 
- MemoR - Leer el mensaje indicado de la base de datos del bot MeMo.
+ MemoL - Legge l'ultimo messagio della base de dati del bot MeMo.
 
- MemoL - Leer el último mensaje de la base de datos del bot MeMo.
+ Addlevel - Aggiunge un utente nella base de dati di CHaN nel tuo channel attuale.
 
- Addlevel - Añade un usuario a la base de datos de CHaN sobre el canal actual.
+ Dellevel - Cancella un utente della base de dati de CHaN nel tuo channel attuale.
 
- Dellevel - Elimina un usuario de la base de datos de CHaN sobre el canal 
-   actual.
+ Founder - Ti identifica come il fundatore del tuo channel attuale, come argomento si da la password.
 
- Founder - Te identifica como fundador del canal actual si pasas como argumento
-   la clave del canal.
-
- NickReg - Registramos nuestro nick la cuenta de correo que pasemos como 
-   argumento (caso bots de l hispano) o bajo la clave que indiquemos (caso bots
-   de opn o dalnet).
+ NickReg - Registramos nuestro nick la cuenta de correo que pasemos como argumento (caso bots de l hispano) o bajo la clave que indiquemos (caso bots de opn o dalnet).
 
  Part (Tb P) - Salimos del canal actual eliminando la ventana que estemos 
    usando.
@@ -206,7 +182,7 @@
 
   Disclaimer
 
-  THIS PROGRAM CARRIES NO WARRANTY, EXPRESSED OR IMPLIED. THE USER ASSUMES ALL RISKS,
+  THIS DATABASE CARRIES NO WARRANTY, EXPRESSED OR IMPLIED. THE USER ASSUMES ALL RISKS,
   KNOWN OR UNKNOWN, DIRECT OR INDIRECT, WHICH INVOLVE THIS DATABASE IN ANY WAY. IN
   PARTICULAR, THE LICENSOR OF THE DATABASE DOES NOT TAKE ANY COMMITMENT IN VIEW OF
   ANY POSSIBLE THIRD PARTY RIGHTS.

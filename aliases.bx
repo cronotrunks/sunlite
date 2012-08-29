@@ -54,15 +54,15 @@ alias tban {
 alias tban_input {
   @ Ban = ([$Ban] +1)
   exec echo "@ Ban = $Ban" > ~/.BitchX/sunlite/.bans
-  input "$cparse("%RNick a banear: ")" {
+  input "$cparse("%RNick a bannare: ")" {
     if ( [$0] != "" ) {
       if (rmatch($0 $onchannel($C)) >= 1) {
         @ pringao = [$0]
-        input "$cparse("%RMensaje de kickeo: ")" {
+        input "$cparse("%RMenssagio di kick: ")" {
           if ( [$0] != "" ) {
             tban $pringao $0- <nº $Ban>
           } {
-            tban $pringao A casita... <nº $Ban> } } } } } }
+            tban $pringao vai a letto... <nº $Ban> } } } } } }
 if ( [$hotkey] == [ctrl] ) {
   bind ^b parse_command tban_input
 } elsif ( [$hotkey] == [alt] ) {
@@ -156,6 +156,7 @@ alias memoL {
     m MemoServ list } }
 
 # Y estos añadidos por mí ;)
+# e questo aggiunto per me ;)
 #
 alias addlevel {
   if ( match(hispano $reverse($mid(4 7 $reverse($servername($winserv()))))) >= 1) {
@@ -186,14 +187,11 @@ alias nickreg {
 #
 alias autojoin {
     @ Joined = 1
-    sleep 3
-    j $word(0 $Canales_Aj)
-    sleep .5
-    for ( @ total = 1, total < numwords($Canales_Aj), @ total++) { j $word($total $Canales_Aj) } 
-    window swap 1}
-#    usleep .5
-#    clear
-#    j $word(0 $Canales_Aj) }
+    sleep 3 
+    for ( @ i = 1, i < numwords($Canales_Aj), @ i++) { j $word($i $Canales_Aj) } 
+    usleep .5
+    clear
+    j $word(0 $Canales_Aj) }
 if ( [$hotkey] == [ctrl] ) {
   bind ^a parse_command autojoin
 } elsif ( [$hotkey] == [alt] ) {
@@ -221,7 +219,7 @@ alias away {
     if ( [$0] != "" ) {
       @ Away_msg = [$0-]
     } {
-      @ Away_msg = [No toi...] }
+      @ Away_msg = [è uscito fuori...] }
     @ Away = 1 
     //away -all $Away_msg   
   } {
@@ -231,9 +229,9 @@ alias away {
 # Aquí tenemos una buena utilidad que nos sirve de calculadora ;)
 #
 alias calculadora {
-  input "$cparse("%RInserte operación: ")" {
+  input "$cparse("%RScrive operazione: ")" {
     if ( [$0] != "" ) {
-      exec echo "El resultado de la operación $0 es"
+      exec echo "Il risultato dell'operazione $0 è"
       exec echo "scale=3\;$0" | bc } } }
 
 # Una manera rápida de conseguir arroba en los canales en los que
@@ -291,7 +289,6 @@ if ( [$hotkey] == [ctrl] ) {
 # para ese canal
 #
 alias part {
-  @ total = ([$total] -1)
   if ( ( winnum() == 1 ) || ( winnum() == 2 ) ) {
     window goto $Principal }
   if ( [$0] != "" ) {
@@ -302,10 +299,7 @@ alias part {
     window name Cierrame log off
     clear 
   } {
-    if ( mid(0 1 $winnam($winnum())) == [#] ) {
-      window kill
-    } {
-      query } }
+    window kill }
   if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/cierraw.wav 2> /dev/null }
   if ( [$partir] == 1 ) {
     window hide_others
@@ -377,7 +371,6 @@ alias WNC {
   } elsif ( winnam($winnum()) == [Cierrame] ) {
     clear
     //join $knal
-    @ total = ([$total] +1)
     window name $knal logfile ~/.BitchX/sunlite/logs/\#$mid(1 40 $knal)\.$servername($winserv()).log log on
   } {
     window new hide swap last name $knal channel $knal double on logfile ~/.BitchX/sunlite/logs/\#$mid(1 40 $knal)\.$servername($winserv()).log log on 
@@ -395,7 +388,6 @@ alias query {
       window new query $1 name $1 hide 
     } { 
       //query $1
-      @ total = ([$total] +1)
       clear
       window name $1 }
     if ( [$partir] == 1 ) recolocar 
@@ -405,7 +397,7 @@ alias query {
       while ( ! ( eof($fileid) == 1 ) ) {
         @ temp = [$read($fileid)]
         @ lineas = ([$lineas] + 1]) }
-      if ( close($fileid) == -1 ) xecho -win status $cparse("$Blanco¡¡¡ ERROR !!!$Verde cerrando fichero")
+      if ( close($fileid) == -1 ) xecho -win status $cparse("$Blanco¡¡¡ ERRORE !!!$Verde chiudando file")
       @ fileid = [$open(~/.BitchX/sunlite/logs/$1.log R)]
       while ( ! ( eof($fileid) == 1 ) ) {
         @ lineas = ([$lineas] - 1])
@@ -413,8 +405,8 @@ alias query {
         if ( [$lineas] <= 30 ) xecho -win $winnum($1) $cparse("$temp") 
 	if ( [$lineas] == 30 ) {
 	  echo
-	  exec echo "Última sesión abierta `cat /home/trunks/.BitchX/sunlite/logs/trunks.log | grep \"IRC log started\" | tail -n 1 | gawk '{ print $4 \" \" $6 \" \" $5 \" \" $8 \" a las \" $7}'`" } }
-      if ( close($fileid) == -1 ) xecho -win status $cparse("$Blanco¡¡¡ ERRROR !!!$Verde cerrando fichero") }
+	  exec echo "ultima sesione aperta `cat /home/trunks/.BitchX/sunlite/logs/trunks.log | grep \"IRC log started\" | tail -n 1 | gawk '{ print $4 \" \" $6 \" \" $5 \" \" $8 \" alle \" $7}'`" } }
+      if ( close($fileid) == -1 ) xecho -win status $cparse("$Blanco¡¡¡ ERRORE !!!$Verde chiudando file") }
     window logfile ~/.BitchX/sunlite/logs/$1.log log on
   } elsif ( ( [$0] != "" ) && ( [$0] != [hide] ) && ( winnum($0) == [-1] ) ) {
     @ knal = [$0]
@@ -422,7 +414,6 @@ alias query {
       window new query $0 name $0 hide swap last 
     } {
       //query $0 
-      @ total = ([$total] +1)
       clear
       window name $0 }
     if ( [$partir] == 1 ) recolocar
@@ -433,7 +424,7 @@ alias query {
       while ( ! ( eof($fileid) == 1 ) ) {
         @ temp = [$read($fileid)]
         @ lineas = ([$lineas] + 1]) }
-      if ( close($fileid) == -1 ) xecho -win status $cparse("$Blanco¡¡¡ ERROR !!!$Verde cerrando fichero")
+      if ( close($fileid) == -1 ) xecho -win status $cparse("$Blanco¡¡¡ ERRORE !!!$Verde chiudando file")
       @ fileid = [$open(~/.BitchX/sunlite/logs/$0.log R)]
       while ( ! ( eof($fileid) == 1 ) ) {
         @ lineas = ([$lineas] - 1])
@@ -441,8 +432,8 @@ alias query {
         if ( [$lineas] <= 30 ) xecho -win $winnum($0) $cparse("$temp") 
 	if ( [$lineas] == 30 ) {
 	  echo
-	  exec echo "Última sesión abierta `cat /home/trunks/.BitchX/sunlite/logs/trunks.log | grep \"IRC log started\" | tail -n 1 | gawk '{ print $4 \" \" $6 \" \" $5 \" \" $8 \" a las \" $7}'`" } }
-      if ( close($fileid) == -1 ) excho -win status $cparse("$Blanco¡¡¡ ERROR !!! cerrando fichero") }
+	  exec echo "ultima sesione aperta `cat /home/trunks/.BitchX/sunlite/logs/trunks.log | grep \"IRC log started\" | tail -n 1 | gawk '{ print $4 \" \" $6 \" \" $5 \" \" $8 \" alle \" $7}'`" } }
+      if ( close($fileid) == -1 ) excho -win status $cparse("$Blanco¡¡¡ ERROR !!! chiudando file") }
     window logfile ~/.BitchX/sunlite/logs/$0.log log on
   } elsif ( ( winnum($0) != [-1] ) && ( [$0] != [] ) ) { 
     window swap $0 
@@ -451,7 +442,6 @@ alias query {
       part
     } {
       //query
-      @ total = ([$total] -1)
       @ $winnam($winnum()) = 0
       if ( ( winnum() == 11 ) || ( ( winnum() == 12 ) && ( [$Partir] == 1) ) || ( winnum() == 1 ) )  {
         window name Cierrame log off
@@ -478,7 +468,6 @@ alias querys {
     window goto $Principal }
   @ knal = [$0]
   window new server $0 hide swap last name $1 query $1 logfile ~/.BitchX/sunlite/logs/$1.log log on
-  @ total = ([$total] +1)
   if ( [$partir] == 1 ) recolocar
   if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/abrew.wav 2> /dev/null } }
 
@@ -517,7 +506,7 @@ if ( [$hotkey] == [ctrl] ) {
 #
 alias sms {
   if (( [$0] == "" ) || ( [$1] == "" )) {
-    xecho -win status $cparse("Modo de uso: /sms gateway nombre texto")
+    xecho -win status $cparse("uso: /sms gateway nome testo")
     xecho -win status $cparse("Gateways soportados por esms: navegalia y movistar")
   } {
     exec echo $2- | esms -s $0 $1 } }
@@ -670,21 +659,6 @@ alias color {
       @ CyanF = [%C]
       @ Cyan = [%c]
       set mircs on
-    } elsif ( [$theme] == [gentoo] ) {
-      @ VerdeF = [%g]
-      @ Blanco = [%c]
-      @ Amarillo = [%B]
-      @ Magenta = [%G]
-      @ Violeta = [%c]
-      @ Verde = [%g]
-      @ RojoF = [%m]
-      @ Rojo = [%m]
-      @ AzulF = [%B]
-      @ Gris = [%w]
-      @ Naranja = [%b]
-      @ CyanF = [%C]
-      @ Cyan = [%c]
-      set mircs on
     } {
       @ VerdeF = [%G]
       @ Verde = [%g]
@@ -756,9 +730,9 @@ alias identifica {
           msg nickserv@services.dal.net identify $passid
           @ findid = 1 } } }
     if ( close($fileid) == -1) {
-      xecho -win status $cparse("$Blanco!!!$RojoF ERROR $Blanco!!!$Verde cerrando base de datos") }
+      xecho -win status $cparse("$Blanco!!!$RojoF ERROR $Blanco!!!$Verde chiudando basi di dati") }
     if ([$findid] == 0) {
-      input "$cparse("%RIntroduzca clave para $NNick: ")" {
+      input "$cparse("%RPassword per $NNick: ")" {
         if ( [$0] != "" ) {
           @ passid = [$0]
         @ fileid = [$open(~/.BitchX/sunlite/passwd.bx R)]
@@ -771,20 +745,20 @@ alias identifica {
             if ( ( servername($winserv()) == match($net $reverse($mid(4 7 $reverse($servername($winserv()))))) || servername($winserv()) == match($net $reverse($mid(4 3 $reverse($servername($winserv()))))) || servername($winserv()) == match($net $reverse($mid(4 12 $reverse($servername($winserv()))))))) {
               @ find = 1 } } }
         if ( close($fileid) == 1) {
-          xecho -win status $cparse("$Verde\Error Cerrando el fichero") }
+          xecho -win status $cparse("$Verde\Error Chiudando il file") }
         if ( [$find] == 1 ) {
-          xecho -win status $cparse("$Verde\El nick $1 ya está incluído en la base de datos bajo la red $3")
+          xecho -win status $cparse("$Verde\Il nick $1 già è nella base di dati nella net $3")
         } {
           @ fileid = [$open(~/.BitchX/sunlite/passwd.bx W)]
           @ temp2 = [$NNick] ## [ ] ## [$passid] ## [ ] ## [$servername($winserv())]
           @ encoded = [$encode($temp2)]
           if ( write($fileid $encoded) == -1) {
-            xecho -win status $cparse("$Verde\Escribiendo en el fichero")
+            xecho -win status $cparse("$Verde\Scrivendo nel file")
           } {
-            xecho -win status $cparse("$Verde\Datos escritos correctamente en el fichero") 
+            xecho -win status $cparse("$Verde\Dati scriti correttamente nel file") 
             identifica $NNick }
           if ( close($fileid) == 1) {
-            xecho -win status $cparse("$Verde\Error cerrando fichero") } } } } } } }
+            xecho -win status $cparse("$Verde\Error chiudando il file") } } } } } } }
 
 # Un nuevo comando para alternar nuestro nick al marcarnos como away
 # Idea original de |Poldark| He modificado un poco su desarrollo original más
