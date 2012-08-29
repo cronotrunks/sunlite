@@ -102,11 +102,11 @@ alias _xcomp {
   } elsif ([$0] > 1) {
     @ :aa = _prefix($1-)
 #    if (time() - complist < 5) {
-#      xecho -b $c1($0) encontrados$(hblk):
+#      xecho -b $c1($0) atopados$(hblk):
       nline $1-
 #      @ complist = []
 #    } else {
-#      xecho -b $c1($0) matches $(hblk)\($(cl) <TAB> de nuevo para listar $(hblk)\)
+#      xecho -b $c1($0) matches $(hblk)\($(cl) <TAB> de novo para listar $(hblk)\)
 #      @ complist = time()
 #    }
     @ function_return = aa ? aa :
@@ -119,17 +119,17 @@ alias _fcomp {
   @ :cc = _prefix($glob($0\*))
   if (!cc && [$0]) {
     @ cc = [$0]
-    xecho -b $cc\: No existe es archivo/directorio
+    xecho -b $cc\: Non existe ese ficheiro/directorio
   } elsif (cc != glob($0\*) && [$0]) {
     if (time() - fcomplist < 6) {
-      xecho -b $c1($#glob($0\*)) encontrados$(hblk):$(cl)
+      xecho -b $c1($#glob($0\*)) atopados$(hblk):$(cl)
       @ :ee = []
       fe ($glob($0\*)) dd {
         push ee ${dd !~ [\*/\*] ? dd : right(1 $dd) == [/] ? hblu ## sar(þ/þ$(hblk)/$(cl)þ$after(-2 / $dd)) : after(-1 / $dd)}}
       nlinefile $ee
       @ fcomplist = []
     } else {
-      xecho -b $c1($#glob($0\*)) matches $(hblk)\($(cl) <TAB> de nuevo para listar $(hblk)\)
+      xecho -b $c1($#glob($0\*)) aparicións $(hblk)\($(cl) <TAB> de novo para listar $(hblk)\)
       @ fcomplist = time()
     }
   } elsif (right(1 $cc) != [/] && cc != [$0]) {
@@ -237,3 +237,18 @@ alias nlinefile {
     xecho $cparse("%K[ %w$bb %K]")
     }
 }
+
+
+# Funciones no usadas
+alias _nc {
+  if (strlen($0)) {
+    @ :aa = _compnick($0)
+    @ function_return = aa ? word(1 $aa) : [$0]}}
+alias _nickcomp {
+  if (T == C) {
+    @ :aa = onchannel($C)
+    fe ($sar(g/%n/$0/$c.nickcompm)) bb {
+      if (!function_return && (function_return = pattern($bb $aa))) {
+        @ function_return = word(0 $function_return)}}}}
+
+

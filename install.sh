@@ -37,7 +37,7 @@ case $1 in
       then echo "Deberías instalar mpg123 para poder disfrutar del uso de un reproductor de mp3 al mismo tiempo que usas el script" 
     fi;
     if test ! -f /usr/bin/gawk 
-      then echo "Deberías instalar gawk para poder disfrutar del uso de las funciones externas que he programado en gawk (por ejemplo la he usado para listar el contenido de los mp3's)" 
+      then echo "Deberías instalar gawk para poder disfrutar del uso de las funciones externas que he programado en gawk (por ejemplo la he usado para listar el contenido de los mp3's" 
     fi;
     if test ! -f /usr/bin/esms 
       then echo "Deberías instalar esms para poder disfrutar de la funcionalidad de envío de sms desde BitchX" 
@@ -78,7 +78,7 @@ case $1 in
       export IRCSERVER="$IRCSERVER";
     fi;
     if [ -z "$IRCNICK" ]
-    then echo "Tu nick por defectopara el script ¿será?";
+    then echo "Tu nick por defecto para el script ¿será?";
       read IRCNICK;
       echo -e "export IRCNICK=\"$IRCNICK\"" >> ~/.bashrc;
       export IRCNICK="$IRCNICK";

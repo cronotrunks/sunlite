@@ -20,7 +20,7 @@
 # Por fin las utilidades reales del script (aliases para una mayor 
 # comodidad de uso y nuevas funcionalidades para BitchX).
 #
-# En primer lugar un ban script que auto-opea si no somos operadores del 
+# En primer lugar un ban script k auto-opea si no somos operadores del 
 # canal antes d banear, deopea al usuario en cuestion antes de banearlo, 
 # banea a nick y mascara + ip, y kickea con mensaje. Posteriormente nos 
 # deopea de nuevo si no teniamos op anteriormente :) Este ban script ha 
@@ -58,11 +58,11 @@ alias tban_input {
     if ( [$0] != "" ) {
       if (rmatch($0 $onchannel($C)) >= 1) {
         @ pringao = [$0]
-        input "$cparse("%RMensaje de kickeo: ")" {
+        input "$cparse("%RMensaxe de kickeo: ")" {
           if ( [$0] != "" ) {
             tban $pringao $0- <nº $Ban>
           } {
-            tban $pringao A casita... <nº $Ban> } } } } } }
+            tban $pringao Á casa... <nº $Ban> } } } } } }
 if ( [$hotkey] == [ctrl] ) {
   bind ^b parse_command tban_input
 } elsif ( [$hotkey] == [alt] ) {
@@ -186,14 +186,11 @@ alias nickreg {
 #
 alias autojoin {
     @ Joined = 1
-    sleep 3
-    j $word(0 $Canales_Aj)
-    sleep .5
-    for ( @ total = 1, total < numwords($Canales_Aj), @ total++) { j $word($total $Canales_Aj) } 
-    window swap 1}
-#    usleep .5
-#    clear
-#    j $word(0 $Canales_Aj) }
+    sleep 3 
+    for ( @ i = 1, i < numwords($Canales_Aj), @ i++) { j $word($i $Canales_Aj) } 
+    usleep .5
+    clear
+    j $word(0 $Canales_Aj) }
 if ( [$hotkey] == [ctrl] ) {
   bind ^a parse_command autojoin
 } elsif ( [$hotkey] == [alt] ) {
@@ -221,7 +218,7 @@ alias away {
     if ( [$0] != "" ) {
       @ Away_msg = [$0-]
     } {
-      @ Away_msg = [No toi...] }
+      @ Away_msg = [Non estou...] }
     @ Away = 1 
     //away -all $Away_msg   
   } {
@@ -231,9 +228,9 @@ alias away {
 # Aquí tenemos una buena utilidad que nos sirve de calculadora ;)
 #
 alias calculadora {
-  input "$cparse("%RInserte operación: ")" {
+  input "$cparse("%RInsira operación: ")" {
     if ( [$0] != "" ) {
-      exec echo "El resultado de la operación $0 es"
+      exec echo "O resultado da operación $0 é"
       exec echo "scale=3\;$0" | bc } } }
 
 # Una manera rápida de conseguir arroba en los canales en los que
@@ -289,9 +286,7 @@ if ( [$hotkey] == [ctrl] ) {
 
 # Salimos del canal actual y eliminamos la ventana que estemos usando.
 # para ese canal
-#
 alias part {
-  @ total = ([$total] -1)
   if ( ( winnum() == 1 ) || ( winnum() == 2 ) ) {
     window goto $Principal }
   if ( [$0] != "" ) {
@@ -299,13 +294,10 @@ alias part {
   } {
     //part $C $Msg_quit }
   if ( ( winnum() == 11 ) || ( ( winnum() == 12 ) && ( [$Partir] == 1 ) ) || ( winnum() == 1 ) ) { 
-    window name Cierrame log off
+    window name Pechame log off
     clear 
   } {
-    if ( mid(0 1 $winnam($winnum())) == [#] ) {
-      window kill
-    } {
-      query } }
+    window kill }
   if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/cierraw.wav 2> /dev/null }
   if ( [$partir] == 1 ) {
     window hide_others
@@ -317,7 +309,7 @@ alias part {
     recolocar } }
 alias p part
 
-# Salimos y entramos al canal actual (vaya cosa cutre que me marcao)
+# Entramoss y salimos del canal actual (vaya cosa cutre que me marcao)
 # (Hot-Key -> Alt + j).
 alias rejoin {
   if ( ( winnum() == 1 ) || ( winnum() == 2 ) ) {
@@ -338,8 +330,8 @@ on ^timer "%:**" {
 
 # Copiamos a un archivo el contenido mostrado por pantalla. Se requiere
 # estar usando framebuffer y tener permiso de lectura sobre el dispositivo
-# /dev/fb0 (Hot-Key -> Alt + s). Para ver la snapshot `bzip2 -d 
-# BitchX.jpg.bz2; cp BitchX.jpg /dev/fb0; bzip2 BitchX.jpg`
+# /dev/fb0 (Hot-Key -> Alt + s). Para ver la snapshot 'bzip2 -d 
+# BitchX.jpg.bz2; cp BitchX.jpg /dev/fb0; bzip2 BitchX.jpg
 #
 alias snapshot {
   @ snap = ([$snap] +1)
@@ -360,7 +352,7 @@ if ( [$hotkey] == [ctrl] ) {
 alias WNS { 
   if ( ( ( winnum() == 1 ) || ( winnum() == 2 ) ) && ( [$partir] == 1 ) ) {
     window goto $Principal }
-  window new server $0 hide swap last name Cierrame double on
+  window new server $0 hide swap last name Pechame double on
   if ( [$partir] == 1 ) recolocar }
 alias joins wns
 alias server wns
@@ -374,10 +366,9 @@ alias WNC {
     @ knal = [#$0] }
   if ( winnum($knal) != [-1] ) {
       window swap $knal
-  } elsif ( winnam($winnum()) == [Cierrame] ) {
+  } elsif ( winnam($winnum()) == [Pechame] ) {
     clear
     //join $knal
-    @ total = ([$total] +1)
     window name $knal logfile ~/.BitchX/sunlite/logs/\#$mid(1 40 $knal)\.$servername($winserv()).log log on
   } {
     window new hide swap last name $knal channel $knal double on logfile ~/.BitchX/sunlite/logs/\#$mid(1 40 $knal)\.$servername($winserv()).log log on 
@@ -391,11 +382,10 @@ alias query {
     window goto $Principal }
   if ( ( [$0] == [hide] ) && ( winnum($1) == [-1] ) ) {
     @ knal = [$C]
-    if ( winnam($winnum()) != [Cierrame] ) { 
+    if ( winnam($winnum()) != [Pechame] ) { 
       window new query $1 name $1 hide 
     } { 
       //query $1
-      @ total = ([$total] +1)
       clear
       window name $1 }
     if ( [$partir] == 1 ) recolocar 
@@ -405,7 +395,7 @@ alias query {
       while ( ! ( eof($fileid) == 1 ) ) {
         @ temp = [$read($fileid)]
         @ lineas = ([$lineas] + 1]) }
-      if ( close($fileid) == -1 ) xecho -win status $cparse("$Blanco¡¡¡ ERROR !!!$Verde cerrando fichero")
+      if ( close($fileid) == -1 ) xecho -win status $cparse("$Blanco¡¡¡ ERRO !!!$Verde pechando ficheiro")
       @ fileid = [$open(~/.BitchX/sunlite/logs/$1.log R)]
       while ( ! ( eof($fileid) == 1 ) ) {
         @ lineas = ([$lineas] - 1])
@@ -413,16 +403,15 @@ alias query {
         if ( [$lineas] <= 30 ) xecho -win $winnum($1) $cparse("$temp") 
 	if ( [$lineas] == 30 ) {
 	  echo
-	  exec echo "Última sesión abierta `cat /home/trunks/.BitchX/sunlite/logs/trunks.log | grep \"IRC log started\" | tail -n 1 | gawk '{ print $4 \" \" $6 \" \" $5 \" \" $8 \" a las \" $7}'`" } }
-      if ( close($fileid) == -1 ) xecho -win status $cparse("$Blanco¡¡¡ ERRROR !!!$Verde cerrando fichero") }
+	  exec echo "Última sesión aberta `cat /home/trunks/.BitchX/sunlite/logs/trunks.log | grep \"IRC log started\" | tail -n 1 | gawk '{ print $4 \" \" $6 \" \" $5 \" \" $8 \" ás \" $7}'`" } }
+      if ( close($fileid) == -1 ) xecho -win status $cparse("$Blanco¡¡¡ ERRO !!!$Verde pechando ficheiro") }
     window logfile ~/.BitchX/sunlite/logs/$1.log log on
   } elsif ( ( [$0] != "" ) && ( [$0] != [hide] ) && ( winnum($0) == [-1] ) ) {
     @ knal = [$0]
-    if ( winnam($winnum()) != [Cierrame] ) {
+    if ( winnam($winnum()) != [Pechame] ) {
       window new query $0 name $0 hide swap last 
     } {
       //query $0 
-      @ total = ([$total] +1)
       clear
       window name $0 }
     if ( [$partir] == 1 ) recolocar
@@ -433,7 +422,7 @@ alias query {
       while ( ! ( eof($fileid) == 1 ) ) {
         @ temp = [$read($fileid)]
         @ lineas = ([$lineas] + 1]) }
-      if ( close($fileid) == -1 ) xecho -win status $cparse("$Blanco¡¡¡ ERROR !!!$Verde cerrando fichero")
+      if ( close($fileid) == -1 ) xecho -win status $cparse("$Blanco¡¡¡ ERRO !!!$Verde pechando ficheiro")
       @ fileid = [$open(~/.BitchX/sunlite/logs/$0.log R)]
       while ( ! ( eof($fileid) == 1 ) ) {
         @ lineas = ([$lineas] - 1])
@@ -441,20 +430,19 @@ alias query {
         if ( [$lineas] <= 30 ) xecho -win $winnum($0) $cparse("$temp") 
 	if ( [$lineas] == 30 ) {
 	  echo
-	  exec echo "Última sesión abierta `cat /home/trunks/.BitchX/sunlite/logs/trunks.log | grep \"IRC log started\" | tail -n 1 | gawk '{ print $4 \" \" $6 \" \" $5 \" \" $8 \" a las \" $7}'`" } }
-      if ( close($fileid) == -1 ) excho -win status $cparse("$Blanco¡¡¡ ERROR !!! cerrando fichero") }
+	  exec echo "Última sesión aberta `cat /home/trunks/.BitchX/sunlite/logs/trunks.log | grep \"IRC log started\" | tail -n 1 | gawk '{ print $4 \" \" $6 \" \" $5 \" \" $8 \" ás \" $7}'`" } }
+      if ( close($fileid) == -1 ) excho -win status $cparse("$Blanco¡¡¡ ERRO !!! pechando ficheiro") }
     window logfile ~/.BitchX/sunlite/logs/$0.log log on
   } elsif ( ( winnum($0) != [-1] ) && ( [$0] != [] ) ) { 
     window swap $0 
   } {
-    if ( mid(0 1 $winnam($winnum())) == [#] ) {
+    if ( mid(1 1 $winnam($winnum())) == [#] ) {
       part
     } {
       //query
-      @ total = ([$total] -1)
       @ $winnam($winnum()) = 0
-      if ( ( winnum() == 11 ) || ( ( winnum() == 12 ) && ( [$Partir] == 1) ) || ( winnum() == 1 ) )  {
-        window name Cierrame log off
+      if ( ( winnum() == 11 ) || ( ( winnum() == 12 ) && ( [$Partir] == 1 ) ) || ( winnum() == 1 ) ) {
+        window name Pechame log off
         clear 
       } {
         window kill }
@@ -478,11 +466,10 @@ alias querys {
     window goto $Principal }
   @ knal = [$0]
   window new server $0 hide swap last name $1 query $1 logfile ~/.BitchX/sunlite/logs/$1.log log on
-  @ total = ([$total] +1)
   if ( [$partir] == 1 ) recolocar
   if ( [$Sonido] == 1 ) { exec bplay ~/.BitchX/sunlite/sonidos/abrew.wav 2> /dev/null } }
 
-# Bueno, este bind nos sirve para irnos a la ultima ventana ;)
+# Bueno, este bind no sirve para irnos a la ultima ventana ;)
 if ( [$hotkey] == [ctrl] ) {
   bind ^u SWAP_LAST_WINDOW
 } elsif ( [$hotkey] == [alt] ) {
@@ -517,8 +504,8 @@ if ( [$hotkey] == [ctrl] ) {
 #
 alias sms {
   if (( [$0] == "" ) || ( [$1] == "" )) {
-    xecho -win status $cparse("Modo de uso: /sms gateway nombre texto")
-    xecho -win status $cparse("Gateways soportados por esms: navegalia y movistar")
+    xecho -win status $cparse("Modo de emprego: /sms gateway nombre texto")
+    xecho -win status $cparse("Gateways soportados por esms: navegalia e movistar")
   } {
     exec echo $2- | esms -s $0 $1 } }
 
@@ -537,7 +524,7 @@ if ( [$hotkey] == [ctrl] ) {
   bind META1-x parse_command cambio_ventana }
     
 # Con la instrucción /shell <password> mantendremos BX en segundo plano mientras
-# hacemos alguna operación que queramos hacer en la shell. Nos puede servir también
+# hacemos alguna operación que queramos hacer en la shell. Nos puede servir tb
 # en momentos de urgencia en los que tenemos que dejar el teclado libre y no queremos
 # que alguien lea lo que estamos hablando ;) Para volver a BX tendremos que teclear
 # en la shell 'scr-bx -p' y a continuación indicaremos la pass que definimos 
@@ -558,7 +545,7 @@ alias cowsay {
     ( burla ) { exec -o cowsay -d $1- }
     ( susto ) { exec -o cowsay -w $1- }
     ( * ) {
-      xecho -win status Modo de uso: /cowsay {normal|burla|tux|susto} texto } } }
+      xecho -win status Modo de emprego: /cowsay {normal|burla|tux|susto} texto } } }
 
 alias figlet {
   switch ( $0 ) {
@@ -571,7 +558,7 @@ alias figlet {
     ( bubble ) { exec -o figlet -f bubble $1- }
     ( digital ) { exec -o figlet -f digital $1- }
     ( * ) {
-      xecho -win status Modo de uso: /figlet {normal|banner|mini|italic|script|block|bubble} texto } } }
+      xecho -win status Modo de emprego: /figlet {normal|banner|mini|italic|script|block|bubble} texto } } }
 	  
 # Utilizamos el mpg123 como reproductor de mp3 en nuestro BitchX ;) Los comandos para
 # usar el reproductor son: 
@@ -586,16 +573,16 @@ alias figlet {
 alias mp3 {
   switch ( $0 ) {
     ( list ) {
-      exec ls -1 -F "$Mp3dir" | gawk '{print "[" , NR, "]", $0}'
-      xecho -win status $cparse("$Blanco\Para reproducir: $AzulF\/mp3 play Refnum|Nombre_archivo") }
+      exec ls -1 -F $Mp3dir | gawk '{print "[" , NR, "]", $0}'
+      xecho -win status $cparse("$Blanco\Para reproducir: $AzulF\/mp3 play Refnum|Nome_ficheiro") }
     ( play ) {
       @ RefNum = [$1]
       if ( [$1] == "" )  {
-        xecho -win status $cparse("$Blanco\Indica un titulo para tocar, ¿no? :)")
+        xecho -win status $cparse("$Blanco\Indica un titulo para tocar, ¿non? :)")
       } elsif ( isdigit($1) ) {
-        exec mpg123 "$Mp3dir/`ls -1 \"$Mp3dir\"/ | head -n $RefNum | tail -n 1`" 2> /dev/null
+        exec mpg123 "$Mp3dir/`ls -1 $Mp3dir/ | head -n $RefNum | tail -n 1`" 2> /dev/null
         if ( [$Notif_mp3] == 1 ) {
-	    exec -o  echo "Mmm... Toi escuchando `ls -1 $Mp3dir/ | head -n $RefNum | tail -n 1`" }
+	    exec -o  echo "Mmm... Estou escoitando `ls -1 $Mp3dir/ | head -n $RefNum | tail -n 1`" }
       } elsif ( [$1] == [\*] ) { 
         exec mpg123 $Mp3dir/\* 2> /dev/null
       } elsif ( [$1] == [\*/\*] ) {
@@ -603,16 +590,16 @@ alias mp3 {
       } {
         exec mpg123 "$Mp3dir/$RefNum" 2> /dev/null
         if ( [$Notif_mp3] == 1 ) {
-	  exec -o  echo "Mmm... Toi escuchando `ls -1 $Mp3dir/ | grep $RefNum`" } } }
+	  exec -o  echo "Mmm... Estou escoitando `ls -1 $Mp3dir/ | grep $RefNum`" } } }
     ( stop ) {
       exec killall mpg123 2> /dev/null }
     ( dir ) {
       if ( [$1-] != "" ) {
         @ Mp3dir = [$1-]
       } {
-        xecho -win status $cparse("$Blanco\El directorio de mp3's es [$Mp3dir]. Si quieres cambiarlo teclea: $AzulF\/mp3 dir path") } }
+        xecho -win status $cparse("$Blanco\O directorio de mp3's é [$Mp3dir]. Se queres cambialo escribe: $AzulF\/mp3 dir path") } }
     ( * ) {
-      xecho -win status $cparse("$Blanco\Modo de uso: $AzulF\/mp3 {list|play|stop|dir}") } } }
+      xecho -win status $cparse("$Blanco\Modo de emprego: $AzulF\/mp3 {list|play|stop|dir}") } } }
 
 # Utilizamos el cdcd como reproductor de cd's en nuestro BitchX ;) Los comandos para
 # usar el reproductor son:
@@ -632,17 +619,17 @@ alias cd {
         exec cdcd play $RefNum
         @ RefNum = ([$RefNum] + 6)
         if ( [$Notif_mp3] == 1 ) {
-          exec -o echo "Mmm... Toi escuchando `cdcd tracks | grep \"Album artist\" | cut -c 17-`: `cdcd tracks | head -n $RefNum | tail -n 1 | cut -c 21-`" }       
+          exec -o echo "Mmm... Estou escoitando `cdcd tracks | grep \"Album artist\" | cut -c 17-`: `cdcd tracks | head -n $RefNum | tail -n 1 | cut -c 21-`" }       
       } elsif ( [$RefNum] == [\*] ) {
         exec cdcd rndplay 
       } {
-        xecho -win status $cparse("$Blanco\Modo de uso: $Azulf\/cd {list|play RefNum|stop|refresh}") } }
+        xecho -win status $cparse("$Blanco\Modo de emprego: $Azulf\/cd {list|play RefNum|stop|refresh}") } }
     ( stop ) { 
       exec cdcd stop }
     ( refresh ) { 
       exec cdcd refresh }
     ( * ) { 
-      xecho -win status $cparse("$Blanco\Modo de uso: $Azulf\/cd {list|play|stop|refresh}") } } }
+      xecho -win status $cparse("$Blanco\Modo de emprego: $Azulf\/cd {list|play|stop|refresh}") } } }
 
 # Definimos un nuevo versión para el script onde añadimos la reseña del script
 # a la de BitchX
@@ -651,7 +638,7 @@ alias version {
   //version
   echo $cparse("$RojoF-$Blanco:$RojoF-") $J }
 
-# Colorines para nuestro BitchX
+# Colorines pa nuestro BitchX
 #
 alias color {
   if ( ( [$0] == [si] ) || ( [$0] == [sí] ) || ( [$VerdeF] == [] ) ) {
@@ -664,21 +651,6 @@ alias color {
       @ Verde = [%g]
       @ RojoF = [%r]
       @ Rojo = [%r]
-      @ AzulF = [%B]
-      @ Gris = [%w]
-      @ Naranja = [%b]
-      @ CyanF = [%C]
-      @ Cyan = [%c]
-      set mircs on
-    } elsif ( [$theme] == [gentoo] ) {
-      @ VerdeF = [%g]
-      @ Blanco = [%c]
-      @ Amarillo = [%B]
-      @ Magenta = [%G]
-      @ Violeta = [%c]
-      @ Verde = [%g]
-      @ RojoF = [%m]
-      @ Rojo = [%m]
       @ AzulF = [%B]
       @ Gris = [%w]
       @ Naranja = [%b]
@@ -756,9 +728,9 @@ alias identifica {
           msg nickserv@services.dal.net identify $passid
           @ findid = 1 } } }
     if ( close($fileid) == -1) {
-      xecho -win status $cparse("$Blanco!!!$RojoF ERROR $Blanco!!!$Verde cerrando base de datos") }
+      xecho -win status $cparse("$Blanco!!!$RojoF ERRO $Blanco!!!$Verde pechando base de datos") }
     if ([$findid] == 0) {
-      input "$cparse("%RIntroduzca clave para $NNick: ")" {
+      input "$cparse("%RIntroduza a clave para $NNick: ")" {
         if ( [$0] != "" ) {
           @ passid = [$0]
         @ fileid = [$open(~/.BitchX/sunlite/passwd.bx R)]
@@ -771,24 +743,24 @@ alias identifica {
             if ( ( servername($winserv()) == match($net $reverse($mid(4 7 $reverse($servername($winserv()))))) || servername($winserv()) == match($net $reverse($mid(4 3 $reverse($servername($winserv()))))) || servername($winserv()) == match($net $reverse($mid(4 12 $reverse($servername($winserv()))))))) {
               @ find = 1 } } }
         if ( close($fileid) == 1) {
-          xecho -win status $cparse("$Verde\Error Cerrando el fichero") }
+          xecho -win status $cparse("$Verde\Erro Pechando o ficheiro") }
         if ( [$find] == 1 ) {
-          xecho -win status $cparse("$Verde\El nick $1 ya está incluído en la base de datos bajo la red $3")
+           xecho -win status $cparse("$Verde\O nick $1 xa está incluído na base de datos baixo a rede $3")
         } {
           @ fileid = [$open(~/.BitchX/sunlite/passwd.bx W)]
           @ temp2 = [$NNick] ## [ ] ## [$passid] ## [ ] ## [$servername($winserv())]
           @ encoded = [$encode($temp2)]
           if ( write($fileid $encoded) == -1) {
-            xecho -win status $cparse("$Verde\Escribiendo en el fichero")
+            xecho -win status $cparse("$Verde\Escribindo no ficheiro")
           } {
-            xecho -win status $cparse("$Verde\Datos escritos correctamente en el fichero") 
+            xecho -win status $cparse("$Verde\Datos escritos correctamente no ficheiro") 
             identifica $NNick }
           if ( close($fileid) == 1) {
-            xecho -win status $cparse("$Verde\Error cerrando fichero") } } } } } } }
+            xecho -win status $cparse("$Verde\Erro pechando ficheiro") } } } } } } }
 
 # Un nuevo comando para alternar nuestro nick al marcarnos como away
-# Idea original de |Poldark| He modificado un poco su desarrollo original más
-# que nada aprovachando aliases ya diseñados en el script.
+#  Idea original de |Poldark| He modificado un poco su desarrollo original más
+#  que nada aprovachando aliases ya diseñados en el script.
 alias awayon {
   nick $nick_awayOn
   deopme
@@ -811,10 +783,10 @@ alias quit {
     //quit $0- } }
 
 # Este alias nos servirá para mandar una cadena a alguna terminal de X ;) Muy útil 
-# cuando no sencontramos en una tty y necesitamos llevar una url a un navegador
-# por ejemplo ;)
+#  cuando no sencontramos en una tty y necesitamos llevar una url a un navegador
+#  por ejemplo ;)
 #
-# - Gracias a Poldark por su idea ;) -
+#  - Gracias a Poldark por su idea ;) -
 #
 alias termX {
   exec echo '$0-' > /dev/`ps u | grep pts | head -n1 | gawk '{print $7}'` }
@@ -827,7 +799,7 @@ alias termX {
 #
 alias traducir {
   if ( [$0] == "" ) {
-    xecho -win status $cparse("$Blanco\Modo de uso: $AzulF/traducir [ingles|inglés|english|español|spanish] palabra \( Por defecto traducirá al castellano una palabra en inglés \)")
+    xecho -win status $cparse("$Blanco\Modo de emprego: $AzulF/traducir [ingles|inglés|english|español|spanish] palabra \( Por defecto traducirá ao castelán unha palabra en inglés \)")
   } elsif ( ( [$0] == [inglés] ) || ( [$0] == [ingles] ) || ( [$0] == [english] ) ) { 
     exec i2e.sh -re $1
   } elsif ( ( [$0] == [español] ) || ( [$0] == [spanish] ) ) {
@@ -836,7 +808,7 @@ alias traducir {
     exec i2e.sh -e $0 } }
 alias translate traducir
 
-# Este alias te servirá para poner todas tus ventanas en orden si en algún
+# Este alias te servirá para poer todas tus ventanas en orden si en algún
 # momento ves que el script falla y se te descoloca todo tu sistema de
 # ventanucos
 #
@@ -886,8 +858,8 @@ alias recolocar {
           window goto 1 } } } } }
 
 # Aquí van un par de hot-keys: Para movernos por las ventanas si usamos la función
-# de ventanas partidas, y dos más para navegar a izquierda y derecha por las 
-# ventanas ;)
+#  de ventanas partidas, y dos más para navegar a izquierda y derecha por las 
+#  ventanas ;)
 #
 if ( [$hotkey] == [alt] ) {
   bind META1-q NEXT_WINDOW

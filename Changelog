@@ -1,24 +1,12 @@
 * Sunlite for BitchX v1.2
 
-	- 12/06/02
-
-	  + Incluído nuevo theme gentoo con los colores de esta nueva distro
-	  	y un nuevo logo que sustituye al de debian en el paquete
-		disponible para emergear en los mirrors gentoo próximamente.
-
-	- 30/05/02
-
-	  + Solventados un par de problemas de ordenación de ventanas que
-		tenían algunos usuarios.
-
-
 	- 02/04/02
 
 	  + Se consideran totalmente solventados los bugs de la versión de
-		desarrollo 1.1 y por tanto, se libera la versión 1.2.
+	  desarrollo 1.1 y por tanto, se libera la versión 1.2.
 
 	  + La funcionalidad window manager es ya completamente estable (sin
-	  	ningún tipo de problemas).
+	  ningún tipo de problemas).
 
 
 * Sunlite for BitchX v1.1
@@ -28,13 +16,13 @@
 	  + Parcheado bug grave relacionado con el bind para la tecla alt.
 
 	  + Posibilidad de ignorar los molestos ctcp's SOUND que suelen hacer
-	  	determinados scripts por defecto.
+	  determinados scripts por defecto.
 
 
 	- 30/03/02
 
 	  + Añadida fecha de última sesión al iniciar los privados y presentar
-	  	últimas líneas del privado anterior.
+	  últimas líneas del privado anterior.
 	  
 
 	- 29/03/02
@@ -42,7 +30,7 @@
 	   + Implementado nuevo alias para ascii art basado en figlet.
 
 	   + Funcionalidad total en opción de ordenar las ventanas a libre
-	   	elección.
+	   elección.
 
 	
 	- 28/03/02
@@ -52,12 +40,12 @@
 	   + Mejoras de apariencia a petición de BaSS.
 
 	   + Inclusión de un par de nuevas Hot-keys como son las teclas Home y
-	   	End (Inicio y Fin) que a partir de ahora tendrán su función
-		standard (principio y fin de línea). ¿Quién dijo que se cambiaran?
-		;) .
+	   End (Inicio y Fin) que a partir de ahora tendrán su función
+	   standard (principio y fin de línea). ¿Quién dijo que se cambiaran?
+	   ;) .
 
 	   + Posibilidad de usar la función de autojoin en el momento en que
-	   	consideremos oportuno (no es necesario invocarlo al conectar).
+	   consideremos oportuno (no es necesario invocarlo al conectar).
 
 	   + Bastantes bugs solucionados.
 	   
@@ -65,19 +53,19 @@
 	- 27/03/02
 	
 	   + Añadida posibilidad de usar la tecla Ctrl como alternativa al Alt
-	   	en Hot-keys y evitar así comederos de cabeza para configurar las
-		teclas de método abreviado en las terminales X.
+	   en Hot-keys y evitar así comederos de cabeza para configurar las
+	   teclas de método abreviado en las terminales X.
 	
 	   + Pequeños bugs solucionados
 
 	- 26/03/02
 
 	   + Adaptado desde lunascript para sunlite hemos incluído un fichero
-	   	modificado de eventos para que nuestros nicks completions sean mas
-		intuitivos. Ahora no tendremos que añadir los caracteres
-		alfanuméricos de los nicks, sino que escribimos el nombre y
-		pulsamos tab y los carácteres alfanuméricos saldrán
-		automáticamente.
+	   modificado de eventos para que nuestros nicks completions sean mas
+	   intuitivos. Ahora no tendremos que añadir los caracteres
+	   alfanuméricos de los nicks, sino que escribimos el nombre y
+	   pulsamos tab y los carácteres alfanuméricos saldrán
+	   automáticamente.
 
 	   + Pequeños bugs solucionados.
 
@@ -85,17 +73,17 @@
 	- 25/03/02
 	
 	   + A partir de ahora tendremos en pantalla el servidor al que
-	   	estamos conectados. No necesitaremos hacernos un whois para
-		averiguarlo.
+	   estamos conectados. No necesitaremos hacernos un whois para
+	   averiguarlo.
 
 
 	- 20/03/02
 
 	   + Posibilidad de ordenar las ventanas a libre elección en la opción
-	   	multiventana (Beta).
+	   multiventana (Beta).
 
 	   + Más estética en la presentación de ventanas (líneas de división más
-	   	estilizadas).
+	   estilizadas).
 
 	   + Posibilidad de ignorar peticiones molestas ctcp`s sound.
 
@@ -110,10 +98,10 @@
 	- 12/03/02
 
 	   + Solucionados un par de bugs relacionados con los nombres de las 
-	   	ventanas y un mensaje de error en los envíos dcc.
+	   ventanas y un mensaje de error en los envíos dcc.
 
 	   + Comprobación de canal como ventana actual antes de realizar opme's, 
-	   	deopme's, voiceme's o similar.
+           deopme's, voiceme's o similar.
 
 
 	- 03/03/02
@@ -137,7 +125,7 @@
  		dcc's/dcc chat.
 
 	   + Añadida creación de privado único para todos los bots. Útil sólo 
-	   	para usuarios con la variable WinQuery activada.
+		para usuarios con la variable WinQuery activada.
 
 
 	- 24/02/02
